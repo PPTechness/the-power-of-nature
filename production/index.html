@@ -1169,7 +1169,20 @@
                     // Create proper lesson links
                     const lessonNumber = lesson.id.substring(1);
                     const lessonLink = `/lesson${lessonNumber}.html?lesson=${lesson.id}`;
-                    const teacherPackLink = `/Lesson${index + 1}.html`;
+                    // Teacher pack links - pointing to actual resources
+                    const teacherPackLinks = {
+                        'L1': '/Resources/4.3.1 The Power of Nature (design challenge and assembly).pdf',
+                        'L2': '/Resources/4.3.1 The Power of Nature (design challenge and assembly).pdf',
+                        'L3': '/Resources/4.3.1 The Power of Nature (design challenge and assembly).pdf',
+                        'L4': '/Resources/Lesson_4__Pavilion_cladding.docx',
+                        'L5': '/Resources/4.3.1 The Power of Nature (design challenge and assembly).pdf',
+                        'L6': '/Resources/4.3.1 The Power of Nature (design challenge and assembly).pdf',
+                        'L7': '/Resources/4.3.1 The Power of Nature (design challenge and assembly).pdf',
+                        'L8': '/Resources/4.3.1 The Power of Nature (design challenge and assembly).pdf',
+                        'L9': '/Resources/4.3.1 The Power of Nature (design challenge and assembly).pdf',
+                        'L10': '/Resources/4.3.1 The Power of Nature (design challenge and assembly).pdf'
+                    };
+                    const teacherPackLink = teacherPackLinks[lesson.id] || '/Resources/4.3.1 The Power of Nature (design challenge and assembly).pdf';
                     
                     const subjects = lesson.subjects || ['Geography', 'Science'];
                     const learningObjective = lesson.student?.learning_objective || lesson.learning_intention || 'Explore the power of nature through hands-on investigation';
