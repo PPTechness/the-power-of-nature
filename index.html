@@ -1173,18 +1173,18 @@
                         `/learn-lesson${lessonNumber}.html?lesson=${lesson.id}`;
                     // Teacher pack links - pointing to HTML teacher pack pages
                     const teacherPackLinks = {
-                        'L1': '/teacher-pack-L1.html',
-                        'L2': '/teacher-pack-L2.html',
-                        'L3': '/teacher-pack-L3.html',
-                        'L4': '/teacher-pack-L4.html',
-                        'L5': '/teacher-pack-L5.html',
-                        'L6': '/teacher-pack-L6.html',
-                        'L7': '/teacher-pack-L7.html',
-                        'L8': '/teacher-pack-L8.html',
-                        'L9': '/teacher-pack-L9.html',
-                        'L10': '/teacher-pack-L10.html'
+                        'L1': './production/teacher-pack-L1.html',
+                        'L2': './production/teacher-pack-L2.html',
+                        'L3': './production/teacher-pack-L3.html',
+                        'L4': './production/teacher-pack-L4.html',
+                        'L5': './production/teacher-pack-L5.html',
+                        'L6': './production/teacher-pack-L6.html',
+                        'L7': './production/teacher-pack-L7.html',
+                        'L8': './production/teacher-pack-L8.html',
+                        'L9': './production/teacher-pack-L9.html',
+                        'L10': './production/teacher-pack-L10.html'
                     };
-                    const teacherPackLink = teacherPackLinks[lesson.id] || '/teacher-pack-L1.html';
+                    const teacherPackLink = teacherPackLinks[lesson.id] || './production/teacher-pack-L1.html';
                     
                     const subjects = lesson.subjects || ['Geography', 'Science'];
                     const learningObjective = lesson.student?.learning_objective || lesson.learning_intention || 'Explore the power of nature through hands-on investigation';
