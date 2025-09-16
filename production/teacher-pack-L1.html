@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Teacher Pack — Lesson 1: Wonder (Power of Nature) • Gold Standard</title>
+
+<!-- Fonts (Google Education style) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Google+Sans+Display:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --blue:#4285f4; --green:#34a853; --yellow:#fbbc04; --red:#ea4335; --indigo:#6366f1; --teal:#14b8a6;
+    --ink:#202124; --muted:#5f6368; --line:#e6e8eb; --bg:#f6f8fb; --surface:#ffffff;
+    --radius:16px; --radius-sm:12px; --shadow:0 10px 30px rgba(0,0,0,.08);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"Google Sans",-apple-system,Segoe UI,system-ui,sans-serif;line-height:1.5}
+  a{color:var(--blue);text-decoration:none} a:hover{text-decoration:underline}
+
+  /* Top bar */
+  header.appbar{
+    position:sticky;top:0;z-index:50;
+    display:flex;align-items:center;gap:12px;
+    background:linear-gradient(135deg,var(--blue),var(--green));
+    color:#fff;padding:14px 18px
+  }
+  .brand{font-family:"Google Sans Display",sans-serif;font-size:20px;font-weight:600}
+  .grow{flex:1}
+  .btn{appearance:none;border:0;border-radius:12px;padding:10px 14px;font-weight:600;cursor:pointer}
+  .btn.primary{background:#fff;color:var(--blue)}
+  .btn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.42)}
+  .btn.neutral{background:#eef2ff;color:#1d4ed8;border:1px solid #dbeafe}
+
+  /* Containers */
+  main{max-width:1200px;margin:22px auto;padding:0 18px}
+  section.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;margin-bottom:18px}
+  section.card h3{margin:0 0 10px;font-size:20px}
+  section.card h4{margin:16px 0 8px;font-size:15px;color:#374151}
+  .micro{font-size:13px;color:var(--muted)}
+  .pillwrap{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{border:1px solid var(--line);padding:6px 10px;border-radius:999px;font-size:13px;background:#fff}
+  .grid-2{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .subcard{background:#fff;border:1px solid var(--line);border-radius:var(--radius-sm);padding:12px}
+  ul,ol{margin:8px 0 8px 20px}
+  .kbd{font-family:ui-monospace,Menlo,Consolas,monospace;background:#f3f4f6;border:1px solid #e5e7eb;padding:8px;border-radius:10px;font-size:13px;white-space:pre-wrap}
+  textarea,input[type="text"]{width:100%;border:1px solid var(--line);border-radius:12px;padding:10px;font:inherit}
+
+  /* Hero */
+  .hero{background:linear-gradient(135deg,#eef2ff,#e6f6f0);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px 22px;margin-bottom:18px}
+  .title{font-family:"Google Sans Display",sans-serif;font-size:32px;margin:0 0 8px}
+  .subtitle{color:var(--muted);margin:0 0 8px}
+  .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+
+  /* Inspection strip */
+  .inspection-strip{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .inspection-strip .chip{background:#fff;border:1px dashed #dbeafe}
+
+  /* Media frames */
+  .aspect-16x9{position:relative;aspect-ratio:16/9;max-width:100%}
+  .aspect-16x9 > iframe{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:12px}
+
+  /* Checklists */
+  .checklist{display:grid;gap:8px}
+  .checklist label{display:flex;gap:8px;align-items:flex-start}
+
+  /* Table */
+  table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  th,td{padding:10px 12px;border-bottom:1px solid var(--line);font-size:14px}
+  th{background:#f3f5fb;text-align:left}
+  tr:last-child td{border-bottom:0}
+
+  /* Vocab cards (Seesaw-ready, square) */
+  .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+  .vocab-card{
+    aspect-ratio:1/1;background:#fff;border-radius:18px;border:1px solid var(--line);box-shadow:0 6px 18px rgba(0,0,0,.06);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;text-align:center;position:relative
+  }
+  .vocab-card .emoji{font-size:42px;margin-bottom:6px}
+  .vocab-card .word{font-weight:700;font-size:20px;margin-bottom:4px}
+  .vocab-card .def{font-size:14px;color:#4b5563}
+  .vocab-card[data-tone="blue"]{background:#eef2ff}
+  .vocab-card[data-tone="green"]{background:#e7f7f0}
+  .vocab-card[data-tone="yellow"]{background:#fff7df}
+  .vocab-card[data-tone="teal"]{background:#e6fbf8}
+  .vocab-card[data-tone="rose"]{background:#ffeef1}
+  .vocab-help{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 0}
+  .vocab-help .chip{background:#fff;border-color:#dbeafe}
+
+  /* Thumbs / banner preview styling */
+  .thumb{border-radius:14px;padding:14px;display:flex;gap:10px;align-items:center;border:1px solid #d6dae0}
+  .thumb .btn{background:#fff;border:1px solid #d6dae0}
+  .thumb-title{font-weight:700}
+  .thumb-sub{font-size:13px;color:#64748b}
+
+  /* Footer actions */
+  .footbar{padding:10px 0;display:flex;gap:10px;align-items:center}
+  .right{margin-left:auto}
+
+  /* Print (PDF) */
+  @media print{
+    header.appbar{display:none}
+    body{background:#fff}
+    main{max-width:none;margin:0;padding:0}
+    .footbar{display:none}
+    @page{size:A4;margin:14mm 14mm 16mm 14mm}
+  }
+  @media (max-width: 980px){ .grid-2{grid-template-columns:1fr} .grid-3{grid-template-columns:1fr} }
+
+  /* Floating Action Button */
+  .fab {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+    transition: all 0.3s ease;
+    font-size: 14px;
+  }
+  .fab:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+    text-decoration: none;
+    color: white;
+  }
+</style>
+</head>
+
+<body>
+<header class="appbar">
+  <div class="brand">Nature • Teacher Pack</div>
+  <div class="grow"></div>
+  <a href="/" class="btn ghost">← All Lessons</a>
+  <a href="/learn-enhanced.html?lesson=L1" class="btn primary">Open Lesson 1</a>
+  <button class="btn neutral" onclick="window.print()">Print / Save PDF</button>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="lessonTitle">
+    <h1 id="lessonTitle" class="title">Lesson 1 — Wonder: What is the Power of Nature?</h1>
+    <p class="subtitle">Approx. 60 mins • Projector-first • Team model build + enquiry launch</p>
+    <div class="tags" aria-label="Curriculum tags">
+      <span class="chip">KS2 Geography</span>
+      <span class="chip">KS2 Science</span>
+      <span class="chip">KS2 D&amp;T</span>
+      <span class="chip">KS2 Computing</span>
+      <span class="chip">ISTE 1 • 4 • 6</span>
+    </div>
+    <!-- Inspection strip (Ofsted 2025) -->
+    <div class="inspection-strip">
+      <span class="chip">Intent → Implementation → Impact</span>
+      <span class="chip">EIF: Quality of education</span>
+      <span class="chip">EIF: Behaviour &amp; attitudes</span>
+      <span class="chip">EIF: Personal development</span>
+      <span class="chip">EIF: Inclusion (SEND/PP)</span>
+      <span class="chip">Leadership: workload-light evidence</span>
+    </div>
+    <p class="micro"><strong>Leader briefing:</strong> This launch lesson explicitly teaches core vocabulary and produces Seesaw evidence reviewed in Lesson 2. Expect concise modelling, paired talk, and one labelled feature linked to a local hazard.</p>
+  </section>
+
+  <!-- INTENT + TECH SUMMARY -->
+  <section class="card" id="intent">
+    <h3>Intent</h3>
+    <div class="grid-2">
+      <div class="subcard">
+        <ul>
+          <li><strong>Big question:</strong> What is the power of nature?</li>
+          <li><strong>KS2 links:</strong> Geography (physical processes; hazards), Science (observe, explain with evidence), D&amp;T (strengthen / stiffen / reinforce), Computing (communicate ideas clearly).</li>
+          <li><strong>ISTE:</strong> 1 Empowered Learner • 4 Innovative Designer • 6 Creative Communicator.</li>
+        </ul>
+        <h4>Why this matters (read aloud)</h4>
+        <p>Nature is powerful. It shapes where we live and how we live. We’re learning how people can design smart structures to stay safe.</p>
+
+        <h4>Prior ideas & likely misconceptions</h4>
+        <ul>
+          <li><strong>Prior:</strong> everyday weather words; simple forces; teamwork routines.</li>
+          <li><strong>Misconceptions:</strong> weather = climate; “heavier = stronger”; triangles are decorative.</li>
+        </ul>
+
+        <h4>Equity</h4>
+        <ul>
+          <li>ESL supports (icons + stems), talk moves, visualiser modelling.</li>
+        </ul>
+      </div>
+
+      <div class="subcard">
+        <h4>Technology (when & why)</h4>
+        <ul>
+          <li><strong>Slides (start):</strong> pacing + visuals.</li>
+          <li><strong>Clips (hook):</strong> short, high-impact contrast.</li>
+          <li><strong>Live visual (discuss):</strong> <a href="https://earth.nullschool.net/" target="_blank" rel="noopener">earth.nullschool.net</a> (winds/TPW).</li>
+          <li><strong>Simulation (extend):</strong> <a href="https://ssec.si.edu/weather-lab" target="_blank" rel="noopener">Smithsonian Weather Lab</a> • <a href="https://scied.ucar.edu/interactive/simple-climate-model" target="_blank" rel="noopener">UCAR Simple Climate Model</a>.</li>
+          <li><strong>Evidence (end):</strong> Seesaw photo + 20-sec voice note per team.</li>
+        </ul>
+        <p class="micro">Keep pupils off devices during core teaching; tools serve the enquiry.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDES -->
+  <section class="card" id="slides">
+    <h3>Slides (projector)</h3>
+    <div class="aspect-16x9" aria-label="Lesson 1 slides">
+      <iframe
+        src="https://docs.google.com/presentation/d/e/2PACX-1vQNgaTnBRnythnzzLfkKf4EogtNZEVMhMEV2kz8uu1KG68-c19B5MI-dMVwuicnEecQOTsIJMSd0blE/pubembed?start=false&loop=false&delayms=3000"
+        allowfullscreen title="Lesson 1 Slides"></iframe>
+    </div>
+    <p style="margin-top:10px">
+      <a class="btn neutral"
+         target="_blank" rel="noopener"
+         href="https://docs.google.com/presentation/d/1AqJg_yFXlZ3wJMkVioi--bqGr2rAgBrgEO9CDUGhIG0/present">
+        Open full screen in new tab
+      </a>
+    </p>
+  </section>
+
+  <!-- QUICK CLIPS -->
+  <section class="card" id="clips">
+    <h3>Quick clips (hook & vocabulary)</h3>
+    <div class="grid-2">
+      <div class="subcard">
+        <h4>NASA Climate Kids — Weather vs Climate (2–3 min excerpt)</h4>
+        <div class="aspect-16x9">
+          <iframe src="https://www.youtube.com/embed/vH298zSCQzY" title="NASA: Weather vs Climate" allowfullscreen></iframe>
+        </div>
+        <ul class="micro">
+          <li><strong>Kid hook:</strong> “Is your coat for today or forever?”</li>
+          <li><strong>Mini-objective:</strong> say what makes weather different from climate.</li>
+          <li><strong>Prompts:</strong> “Short-term or long-term? Why?” • “Give an example from today.”</li>
+        </ul>
+      </div>
+
+      <div class="subcard">
+        <h4>SciShow Kids — Earth’s Most Extreme Weather (first 5–7 min)</h4>
+        <div class="aspect-16x9">
+          <iframe src="https://www.youtube.com/embed/XnQy_aKpMcw" title="SciShow Kids: Extreme Weather" allowfullscreen></iframe>
+        </div>
+        <ul class="micro">
+          <li><strong>Kid hook:</strong> “A wave faster than a jet!”</li>
+          <li><strong>Mini-objective:</strong> name two powerful weather examples and who/what they affect.</li>
+          <li><strong>Prompts:</strong> “Which could happen in Singapore? What would people need?”</li>
+        </ul>
+      </div>
+    </div>
+    <p class="micro">Optional: show <a target="_blank" rel="noopener" href="https://earth.nullschool.net/">live wind / TPW</a> for 60 seconds, then return to slides.</p>
+
+    <!-- Triangulation -->
+    <div class="triangulation subcard">
+      <strong>Triangulation (inspection-ready):</strong>
+      <ul>
+        <li><em>Pupil work:</em> vocabulary used in Seesaw Activities 1 &amp; 3</li>
+        <li><em>Pupil voice:</em> 3 cold-call checks using stems</li>
+        <li><em>Teacher explanation:</em> framed weather vs climate with examples</li>
+        <li><em>Over time:</em> revisited in Lesson 2 when reviewing model outcomes</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- TEACHING MOVES -->
+  <section class="card teaching-moves" id="moves">
+    <h3>Teaching moves — how to run discussion</h3>
+    <p class="micro">Use this script to turn talk into learning. Keep pace; capture three takeaways on the board.</p>
+
+    <div class="grid-2">
+      <div class="subcard">
+        <h4>📖 Vocabulary (projector)</h4>
+        <ul>
+          <li>🌦 <strong>Weather</strong> — what the air is like <em>today</em>.</li>
+          <li>📅 <strong>Climate</strong> — the <em>usual pattern</em> over many years.</li>
+          <li>🌊 <strong>Flood</strong> — too much water where people live.</li>
+          <li>💨 <strong>Wind</strong> — moving air that can push things over.</li>
+          <li>⛈ <strong>Storm</strong> — heavy rain with strong wind.</li>
+          <li>🧱 <strong>Structure</strong> — something built.</li>
+          <li>🔺 <strong>Brace</strong> — a triangle piece that makes structures stronger.</li>
+          <li>🏷 <strong>Feature</strong> — a part of the model.</li>
+          <li>⚠️ <strong>Hazard</strong> — something that can cause harm.</li>
+        </ul>
+        <p class="micro">Stretch: 🌡 Temperature • 💧 Precipitation • 🌀 Tropical</p>
+      </div>
+
+      <div class="subcard">
+        <h4>🗣️ Timed routine + scripts</h4>
+        <ol>
+          <li><strong>Think–Pair–Share (60–60–60)</strong><br>
+            <em>Say:</em> “What is the power of nature? Think quietly.” →  
+            “Partner A then B: ‘Nature shows power when … because …’” →  
+            “Two pairs to share.”</li>
+          <li><strong>Clarify (90s)</strong> — 🌦 Weather (today) vs 📅 Climate (pattern).<br>
+            <em>Say:</em> “Rain today: 1 or 2?” (Finger check.)</li>
+          <li><strong>Local hazard (60s)</strong><br>
+            <em>Say:</em> “In Singapore, flood or strong wind? Why?”</li>
+          <li><strong>Bridge to build (90s)</strong> — show 🔺 brace on visualiser.<br>
+            <em>Say:</em> “Prediction: where might it fail? One feature + the hazard it helps.”</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="subcard">
+      <h4>Observation look-fors (valid &amp; reliable)</h4>
+      <ul>
+        <li>Precise vocabulary taught; pupils use stems accurately</li>
+        <li>Brief retrieval check (weather vs climate) with corrections</li>
+        <li>Modelling on visualiser; scaffold faded before independent build</li>
+        <li>High-quality interactions: re-phrase, probe for evidence, add-on moves</li>
+        <li>Workload-light capture: Seesaw voice notes instead of heavy marking</li>
+      </ul>
+    </div>
+
+    <div class="subcard">
+      <h4>🌍 ESL / low confidence</h4>
+      <ul>
+        <li>Stems: “The <strong>hazard</strong> is … <strong>because</strong> …” • “We made it <strong>stronger</strong> by …”</li>
+        <li>Gestures: rain (hand down) vs climate (draw a calendar).</li>
+        <li>Partner A/B cards; “one idea + one reason”.</li>
+      </ul>
+    </div>
+
+    <div class="subcard">
+      <h4>✨ Extend</h4>
+      <p>Compare hazards in <strong>Singapore vs UK</strong> this month. Which is more likely and why? What one feature would you change on your model?</p>
+    </div>
+
+    <div class="subcard">
+      <h4>📝 Board plan (copy this)</h4>
+      <pre class="kbd">WEATHER (today) 🌦      CLIMATE (pattern) 📅
+Local hazards: flood 🌊   wind 💨   storm ⛈
+Our features → hazards: wide base → wind   brace → storm</pre>
+    </div>
+
+    <!-- Triangulation -->
+    <div class="triangulation subcard">
+      <strong>Triangulation (inspection-ready):</strong>
+      <ul>
+        <li><em>Pupil work:</em> stems used in talk; labelled sketches</li>
+        <li><em>Pupil voice:</em> cold-call “because” statements</li>
+        <li><em>Teacher explanation:</em> brace modelled on visualiser</li>
+        <li><em>Over time:</em> Lesson 2 retrieval checks track these terms</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- INCLUSION & SEND -->
+  <section class="card" id="inclusion">
+    <h3>Inclusion &amp; SEND adjustments (workload-light)</h3>
+    <table>
+      <thead><tr><th>Need</th><th>Strategy</th><th>Evidence seen</th></tr></thead>
+      <tbody>
+        <tr><td>Language load</td><td>Icons + stems on slide; pair roles A/B</td><td>Pupil voice uses “because”; stems visible in photos</td></tr>
+        <tr><td>Working memory</td><td>Board plan + 3 takeaways captured</td><td>Impact log + photo of board</td></tr>
+        <tr><td>Motor/processing</td><td>Job cards; extra time at stations</td><td>Participation noted; design labelled</td></tr>
+      </tbody>
+    </table>
+    <p class="micro">Mapped to EIF: Inclusion; Quality of education.</p>
+  </section>
+
+  <!-- MAKE IT -->
+  <section class="card" id="make">
+    <h3>Make it (30 minutes — team build)</h3>
+    <ul>
+      <li><strong>Aim:</strong> build a model that could stand up to Singapore weather for 3 days.</li>
+      <li><strong>Rules:</strong> A5 base; given kit only; team roles; safe carry to testing zone.</li>
+      <li><strong>Materials (class):</strong> ~200 paper straws • 8× A5 card bases • 4× bin liners • Blu-Tack • paper • scissors.</li>
+    </ul>
+
+    <h4>Model like a pro (visualiser)</h4>
+    <ul>
+      <li>Show a <strong>triangle brace</strong> on a corner; ask “Where might this fail?”</li>
+      <li>Rotate to show joints; model a light, wide base.</li>
+    </ul>
+
+    <h4>Exemplars / similar builds</h4>
+    <ul class="micro">
+      <li><a target="_blank" rel="noopener" href="https://www.teachengineering.org/activities/view/ucd_straw_tower_activity1">TeachEngineering — Straw towers</a></li>
+      <li><a target="_blank" rel="noopener" href="https://www.sciencebuddies.org/blog/tallest-paper-tower-fluor-challenge-success">Science Buddies — Paper tower gallery</a></li>
+      <li><a target="_blank" rel="noopener" href="https://discovere.org/engineering-activities/strong-paper-structure/">DiscoverE — Strong paper structure</a></li>
+    </ul>
+
+    <h4>Timing</h4>
+    <ol>
+      <li>2 min planning sketch</li>
+      <li>24 min build (pause at 12 min to share a class tip)</li>
+      <li>4 min tidy, photo, label</li>
+    </ol>
+
+    <h4>Success checklist (tick on the board)</h4>
+    <div class="checklist">
+      <label><input type="checkbox"> Model stands without wobbling</label>
+      <label><input type="checkbox"> One strong feature linked to a real hazard</label>
+      <label><input type="checkbox"> Label shows feature + hazard</label>
+      <label><input type="checkbox"> Team name &amp; class on base</label>
+    </div>
+
+    <p class="micro">Safeguarding/health &amp; safety noted? ☐ ratio ☐ route ☐ supervision ☐ first-aid kit.</p>
+
+    <!-- Triangulation -->
+    <div class="triangulation subcard">
+      <strong>Triangulation (inspection-ready):</strong>
+      <ul>
+        <li><em>Pupil work:</em> labelled model photo (Seesaw Activity 2)</li>
+        <li><em>Pupil voice:</em> 20-sec explanation of feature→hazard</li>
+        <li><em>Teacher explanation:</em> joints/brace modelled on visualiser</li>
+        <li><em>Over time:</em> Lesson 2 roof-test reflections reference L1 predictions</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- EVIDENCE / SEESAW -->
+  <section class="card" id="evidence">
+    <h3>Evidence (Seesaw activity — ready to assign)</h3>
+
+    <h4>Teacher setup (once)</h4>
+    <ol class="micro">
+      <li>Seesaw → <em>Create new activity</em> → paste the template below into “Instructions”.</li>
+      <li>Add a <em>Template for student response</em> (blank page with two text labels “Feature” and “Hazard”).</li>
+      <li>Schedule for end of lesson; allow voice notes.</li>
+    </ol>
+
+    <h4>Activity template (copy/paste)</h4>
+    <pre class="kbd">Title: L1 — Our model: before photo + voice note
+
+Student steps (Year 4):
+1) Tap  ➕  Add response
+2) Take a photo of your model (BEFORE it goes outside)
+3) Tap 🗣️  Microphone (max 20 seconds). Say:
+   “Our strongest feature is … because …”
+4) Add labels:
+   • Feature:
+   • Hazard:
+5) Tap ✅  to post
+
+Success criteria:
+☐ Photo is clear and shows the whole model
+☐ Voice note explains the strongest feature and why it helps
+☐ Labels show one feature + one hazard
+</pre>
+
+    <p class="micro">Safeguarding note: do not show pupil faces in photos. Check sharing settings in Seesaw before posting.</p>
+
+    <!-- Triangulation -->
+    <div class="triangulation subcard">
+      <strong>Triangulation (inspection-ready):</strong>
+      <ul>
+        <li><em>Pupil work:</em> Activity 2 posts in “L1 Wonder” collection</li>
+        <li><em>Pupil voice:</em> reasons contain “because”</li>
+        <li><em>Teacher explanation:</em> feedback tags link feature→hazard</li>
+        <li><em>Over time:</em> compared with Lesson 2 test evidence</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- IMPACT & ADAPTATION LOG -->
+  <section class="card" id="impact">
+    <h3>Impact &amp; adaptation log (fill before printing)</h3>
+    <p class="micro">Record what changed in pupil thinking today. Tick, add a short note, then print to PDF.</p>
+
+    <h4>Today we achieved</h4>
+    <div class="checklist">
+      <label><input type="checkbox"> Weather vs climate explained — <em>how checked?</em> (cold-call / exit prompt)</label>
+      <label><input type="checkbox"> Two local hazards identified — <em>examples given</em></label>
+      <label><input type="checkbox"> Model built with one justified feature — <em>name the feature</em></label>
+      <label><input type="checkbox"> Evidence captured in Seesaw — <em>count</em></label>
+    </div>
+
+    <h4>Adaptive teaching used</h4>
+    <div class="checklist">
+      <label><input type="checkbox"> ESL stems on screen</label>
+      <label><input type="checkbox"> Word bank used in talk</label>
+      <label><input type="checkbox"> Extend task attempted (who/what)</label>
+    </div>
+
+    <h4>Behaviour &amp; routines (seen/heard)</h4>
+    <div class="checklist">
+      <label><input type="checkbox"> Calm entry and slide cues for talk timings</label>
+      <label><input type="checkbox"> Clean transitions to build; tools collected safely</label>
+      <label><input type="checkbox"> Respectful partner talk using sentence stems</label>
+    </div>
+
+    <h4>What we’ll reteach / pre-teach next</h4>
+    <textarea rows="2" placeholder="E.g., many said ‘heavy = strong’; re-teach triangle braces at start of L2. "></textarea>
+
+    <h4>Notes (1–2 lines)</h4>
+    <textarea rows="3" placeholder="Key observation/adjustment."></textarea>
+  </section>
+
+  <!-- REPORT-CARD ALIGNMENT -->
+  <section class="card" id="report-card">
+    <h3>Report-card alignment (self-audit)</h3>
+    <table>
+      <thead><tr><th>Evaluation area</th><th>Our narrative evidence this lesson</th><th>Indicative level (1–5)</th></tr></thead>
+      <tbody>
+        <tr><td>Quality of education</td><td>Vocabulary taught; misconceptions corrected; models labelled with “feature→hazard”</td><td><input type="text" placeholder="Expected / Strong / Exceptional"></td></tr>
+        <tr><td>Behaviour &amp; attitudes</td><td>Calm transitions; paired talk routines; on-task build</td><td></td></tr>
+        <tr><td>Personal development</td><td>Team roles; resilience in testing; safety talk</td><td></td></tr>
+        <tr><td>Inclusion</td><td>ESL stems used; participation from targeted pupils</td><td></td></tr>
+        <tr><td>Leadership/culture</td><td>Workload-light evidence; sequence ties to next lesson review</td><td></td></tr>
+      </tbody>
+    </table>
+    <p class="micro">Maps to EIF 2025 five-point scale and narrative reporting.</p>
+  </section>
+
+  <!-- RESOURCES -->
+  <section class="card" id="resources">
+    <h3>Resource list (quick links)</h3>
+    <table>
+      <thead><tr><th>Resource</th><th>Link</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>Slides (present)</td><td><a target="_blank" rel="noopener" href="https://docs.google.com/presentation/d/1AqJg_yFXlZ3wJMkVioi--bqGr2rAgBrgEO9CDUGhIG0/present">Open</a></td><td>Landscape, projector-friendly</td></tr>
+        <tr><td>Live wind / TPW</td><td><a target="_blank" rel="noopener" href="https://earth.nullschool.net/">earth.nullschool.net</a></td><td>60-second wonder view</td></tr>
+        <tr><td>Singapore rain radar (MSS)</td><td><a target="_blank" rel="noopener" href="https://www.weather.gov.sg/weather-rain-area-50km/">50 km</a> | <a target="_blank" rel="noopener" href="https://www.weather.gov.sg/weather-rain-area-240km/">240 km</a></td><td>Local link to hazards</td></tr>
+        <tr><td>Simulation (extend)</td><td><a target="_blank" rel="noopener" href="https://ssec.si.edu/weather-lab">Smithsonian Weather Lab</a> • <a target="_blank" rel="noopener" href="https://scied.ucar.edu/interactive/simple-climate-model">UCAR Simple Climate Model</a></td><td>Try variables together</td></tr>
+        <tr><td>Straw towers (exemplar)</td><td><a target="_blank" rel="noopener" href="https://www.teachengineering.org/activities/view/ucd_straw_tower_activity1">TeachEngineering</a></td><td>Build references</td></tr>
+        <tr><td>Paper towers gallery</td><td><a target="_blank" rel="noopener" href="https://www.sciencebuddies.org/blog/tallest-paper-tower-fluor-challenge-success">Science Buddies</a></td><td>Show real examples</td></tr>
+        <tr><td>Strong paper structure</td><td><a target="_blank" rel="noopener" href="https://discovere.org/engineering-activities/strong-paper-structure/">DiscoverE</a></td><td>Triangles and bracing</td></tr>
+        <tr><td>Paper straws</td><td><a target="_blank" rel="noopener" href="https://www.amazon.co.uk/s?k=paper+straws">Amazon UK</a></td><td>Class pack</td></tr>
+        <tr><td>Masking tape</td><td><a target="_blank" rel="noopener" href="https://www.amazon.co.uk/s?k=masking+tape">Amazon UK</a></td><td>Flexible joins</td></tr>
+        <tr><td>Card sheets</td><td><a target="_blank" rel="noopener" href="https://www.amazon.co.uk/s?k=card+craft+sheets">Amazon UK</a></td><td>Walls/roof</td></tr>
+        <tr><td>Plastic cups</td><td><a target="_blank" rel="noopener" href="https://www.amazon.co.uk/s?k=plastic+cups">Amazon UK</a></td><td>Base/weight</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- REFLECTION -->
+  <section class="card" id="reflection">
+    <h3>Teacher reflection (2 minutes)</h3>
+    <p class="micro">Capture one strength and one tweak. This informs next week and gives SLT a clear view of learning. Print to PDF and file in your shared area.</p>
+    <div class="grid-2">
+      <label>What worked well<textarea rows="3" placeholder="E.g., word bank boosted talk; pairs used stems well."></textarea></label>
+      <label>To tweak next time<textarea rows="3" placeholder="E.g., model triangle joints earlier; add a 2-minute planning timer. "></textarea></label>
+    </div>
+    <div class="grid-2" style="margin-top:8px">
+      <input type="text" placeholder="Teacher name" />
+      <input type="text" placeholder="Date" />
+    </div>
+    <p class="micro">Teacher wellbeing/workload: where did tech save time today?</p>
+  </section>
+
+  <!-- VOCAB CARDS (SEESAW-READY) -->
+  <section class="card" id="vocab-cards">
+    <h3>Vocab cards (Seesaw-ready)</h3>
+    <p class="micro">Square cards. Project, or screenshot each card to upload as Seesaw “Template for student response”. Prompts are included for voice notes.</p>
+
+    <div class="card-grid">
+      <!-- Core set -->
+      <div class="vocab-card" data-tone="blue" aria-label="Weather card">
+        <input type="checkbox" title="Select card" class="card-select" style="position:absolute;top:10px;left:10px;transform:scale(1.2)">
+        <div class="emoji">🌦</div>
+        <div class="word">Weather</div>
+        <div class="def">What the air is like <strong>today</strong>.</div>
+        <div class="vocab-help"><span class="chip">Prompt: “The weather today is …”</span></div>
+      </div>
+
+      <div class="vocab-card" data-tone="green" aria-label="Climate card">
+        <input type="checkbox" title="Select card" class="card-select" style="position:absolute;top:10px;left:10px;transform:scale(1.2)">
+        <div class="emoji">📅</div>
+        <div class="word">Climate</div>
+        <div class="def">The <strong>usual pattern</strong> over many years.</div>
+        <div class="vocab-help"><span class="chip">Prompt: “The climate in Singapore is …”</span></div>
+      </div>
+
+      <div class="vocab-card" data-tone="yellow" aria-label="Flood card">
+        <input type="checkbox" title="Select card" class="card-select" style="position:absolute;top:10px;left:10px;transform:scale(1.2)">
+        <div class="emoji">🌊</div>
+        <div class="word">Flood</div>
+        <div class="def">Too much water where people live.</div>
+        <div class="vocab-help"><span class="chip">Prompt: “A flood happens when …”</span></div>
+      </div>
+
+      <div class="vocab-card" data-tone="teal" aria-label="Wind card">
+        <input type="checkbox" title="Select card" class="card-select" style="position:absolute;top:10px;left:10px;transform:scale(1.2)">
+        <div class="emoji">💨</div>
+        <div class="word">Wind</div>
+        <div class="def">Moving air that can push things over.</div>
+        <div class="vocab-help"><span class="chip">Prompt: “Wind is strong when …”</span></div>
+      </div>
+
+      <div class="vocab-card" data-tone="rose" aria-label="Storm card">
+        <input type="checkbox" title="Select card" class="card-select" style="position:absolute;top:10px;left:10px;transform:scale(1.2)">
+        <div class="emoji">⛈</div>
+        <div class="word">Storm</div>
+        <div class="def">Heavy rain with strong wind.</div>
+        <div class="vocab-help"><span class="chip">Prompt: “A storm feels like …”</span></div>
+      </div>
+
+      <div class="vocab-card" data-tone="blue" aria-label="Structure card">
+        <input type="checkbox" title="Select card" class="card-select" style="position:absolute;top:10px;left:10px;transform:scale(1.2)">
+        <div class="emoji">🧱</div>
+        <div class="word">Structure</div>
+        <div class="def">Something built.</div>
+        <div class="vocab-help"><span class="chip">Prompt: “Our structure is …”</span></div>
+      </div>
+
+      <div class="vocab-card" data-tone="green" aria-label="Brace card">
+        <input type="checkbox" title="Select card" class="card-select" style="position:absolute;top:10px;left:10px;transform:scale(1.2)">
+        <div class="emoji">🔺</div>
+        <div class="word">Brace</div>
+        <div class="def">A triangle piece that makes it stronger.</div>
+        <div class="vocab-help"><span class="chip">Prompt: “We used a brace to …”</span></div>
+      </div>
+
+      <div class="vocab-card" data-tone="yellow" aria-label="Feature card">
+        <input type="checkbox" title="Select card" class="card-select" style="position:absolute;top:10px;left:10px;transform:scale(1.2)">
+        <div class="emoji">🏷</div>
+        <div class="word">Feature</div>
+        <div class="def">A part of the model.</div>
+        <div class="vocab-help"><span class="chip">Prompt: “One feature is …”</span></div>
+      </div>
+
+      <div class="vocab-card" data-tone="teal" aria-label="Hazard card">
+        <input type="checkbox" title="Select card" class="card-select" style="position:absolute;top:10px;left:10px;transform:scale(1.2)">
+        <div class="emoji">⚠️</div>
+        <div class="word">Hazard</div>
+        <div class="def">Something that can cause harm.</div>
+        <div class="vocab-help"><span class="chip">Prompt: “This hazard is dangerous because …”</span></div>
+      </div>
+
+      <!-- Stretch set -->
+      <div class="vocab-card" data-tone="rose" aria-label="Temperature card">
+        <input type="checkbox" title="Select card" class="card-select" style="position:absolute;top:10px;left:10px;transform:scale(1.2)">
+        <div class="emoji">🌡</div>
+        <div class="word">Temperature</div>
+        <div class="def">How hot or cold it is.</div>
+        <div class="vocab-help"><span class="chip">Prompt: “Today it feels …”</span></div>
+      </div>
+      <div class="vocab-card" data-tone="blue" aria-label="Precipitation card">
+        <input type="checkbox" title="Select card" class="card-select" style="position:absolute;top:10px;left:10px;transform:scale(1.2)">
+        <div class="emoji">💧</div>
+        <div class="word">Precipitation</div>
+        <div class="def">Rain, hail, or snow.</div>
+        <div class="vocab-help"><span class="chip">Prompt: “We saw …”</span></div>
+      </div>
+      <div class="vocab-card" data-tone="green" aria-label="Tropical card">
+        <input type="checkbox" title="Select card" class="card-select" style="position:absolute;top:10px;left:10px;transform:scale(1.2)">
+        <div class="emoji">🌀</div>
+        <div class="word">Tropical</div>
+        <div class="def">Hot and wet most of the year.</div>
+        <div class="vocab-help"><span class="chip">Prompt: “A tropical place is …”</span></div>
+      </div>
+    </div>
+
+    <div class="pillwrap" style="margin-top:10px">
+      <button class="btn" id="select-all-cards">Select all</button>
+      <button class="btn" id="clear-all-cards">Clear</button>
+      <button class="btn" id="download-selected-cards">Download selected (PNG)</button>
+      <button class="btn" id="download-all-cards">Download all (PNG)</button>
+      <span id="cards-status" class="micro" aria-live="polite"></span>
+    </div>
+  </section>
+
+  <!-- ===== SEESAW ACTIVITY PACK: BANNER, THUMBS, INSTRUCTIONS, EXPORT ===== -->
+  <section class="card" id="seesaw-pack">
+    <h3>Seesaw Activity Pack — Lesson 1</h3>
+    <p class="micro">Download the banner, thumbnails, and vocab cards as PNGs, then upload into Seesaw. Use the copy-paste instructions for three ready-to-assign activities.</p>
+
+    <!-- Collection Banner -->
+    <div class="subcard">
+      <h4>Collection banner (for “L1 Wonder”)</h4>
+      <div id="banner-preview" style="display:flex;align-items:center;gap:14px;padding:16px;border:1px dashed #d6dae0;border-radius:14px;background:linear-gradient(135deg,#eef2ff,#e6f6f0)">
+        <div style="font-size:40px">🌱</div>
+        <div>
+          <div style="font-family:'Google Sans Display',sans-serif;font-size:22px;font-weight:700;line-height:1.2">Lesson 1 · Wonder</div>
+          <div style="color:#5f6368">Power of Nature · Vocabulary · Model build · Evidence</div>
+        </div>
+        <div style="margin-left:auto;display:flex;gap:8px;align-items:center">
+          <span class="chip">KS2</span><span class="chip">Geog</span><span class="chip">Science</span><span class="chip">D&amp;T</span>
+        </div>
+      </div>
+      <div class="pillwrap" style="margin-top:8px">
+        <button class="btn" id="download-banner">Download banner (PNG)</button>
+      </div>
+    </div>
+
+    <!-- Activity Thumbnails -->
+    <div class="subcard">
+      <h4>Activity thumbnails (covers)</h4>
+      <div id="thumbs" class="grid-3">
+        <div class="thumb" data-name="L1_Vocab_Cards" style="background:#eef2ff">
+          <div style="font-size:30px">🔊</div>
+          <div>
+            <div class="thumb-title">L1 — Vocabulary Cards</div>
+            <div class="thumb-sub">Say it • Label it • Short voice note</div>
+          </div>
+          <div style="margin-left:auto"><button class="btn" data-dl>Download</button></div>
+        </div>
+        <div class="thumb" data-name="L1_Model_Evidence" style="background:#e6fbf8">
+          <div style="font-size:30px">📸</div>
+          <div>
+            <div class="thumb-title">L1 — Model Evidence</div>
+            <div class="thumb-sub">Photo • 20s voice • Feature + Hazard labels</div>
+          </div>
+          <div style="margin-left:auto"><button class="btn" data-dl>Download</button></div>
+        </div>
+        <div class="thumb" data-name="L1_Reflection" style="background:#fff7df">
+          <div style="font-size:30px">💭</div>
+          <div>
+            <div class="thumb-title">L1 — Reflection</div>
+            <div class="thumb-sub">“Nature shows power when… because…”</div>
+          </div>
+          <div style="margin-left:auto"><button class="btn" data-dl>Download</button></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Activity 1 -->
+    <div class="subcard">
+      <h4>Activity 1 — Vocabulary Cards (voice + labelling)</h4>
+      <ul>
+        <li><strong>Purpose:</strong> say and use new words accurately; build confidence.</li>
+        <li><strong>Teacher set-up:</strong> upload 3–5 PNG cards as Seesaw template pages.</li>
+      </ul>
+      <details>
+        <summary><strong>Copy-paste this into Seesaw “Instructions”</strong></summary>
+        <pre class="kbd">Title: L1 Vocabulary — Say it and label it
+
+Student steps:
+1) Tap  ➕  Add response
+2) Choose the page for your word
+3) Tap 🗣️  Microphone and say:
+   “The word is ________. It means ________.”
+4) Use 📝  Labels to add:
+   • An example in a sentence
+   • An emoji or small drawing to help you remember
+5) Tap ✅  to post
+
+Success:
+☐ Clear voice note (5–15 seconds)
+☐ Sentence uses the word correctly
+☐ Small drawing/emoji helps meaning</pre>
+      </details>
+
+      <div class="pillwrap" style="margin-top:8px">
+        <button class="btn" id="select-all">Select all</button>
+        <button class="btn" id="clear-all">Clear</button>
+        <button class="btn" id="download-selected">Download selected cards (PNG)</button>
+        <button class="btn" id="download-all">Download all cards (PNG)</button>
+        <span id="dl-status" class="micro" aria-live="polite"></span>
+      </div>
+
+      <!-- Export grid (duplicate tiles; exporter will prefer master cards above) -->
+      <div class="card-grid" id="seesaw-vocab-export-grid" style="margin-top:10px">
+        <label class="vocab-card" data-tone="blue" data-word="Weather" style="cursor:pointer">
+          <input type="checkbox" aria-label="Select Weather" class="card-select" />
+          <div class="emoji">🌦</div><div class="word">Weather</div>
+          <div class="def">What the air is like <strong>today</strong>.</div>
+        </label>
+        <label class="vocab-card" data-tone="green" data-word="Climate" style="cursor:pointer">
+          <input type="checkbox" aria-label="Select Climate" class="card-select" />
+          <div class="emoji">📅</div><div class="word">Climate</div>
+          <div class="def">The <strong>usual pattern</strong> over many years.</div>
+        </label>
+        <label class="vocab-card" data-tone="yellow" data-word="Flood" style="cursor:pointer">
+          <input type="checkbox" aria-label="Select Flood" class="card-select" />
+          <div class="emoji">🌊</div><div class="word">Flood</div>
+          <div class="def">Too much water where people live.</div>
+        </label>
+        <label class="vocab-card" data-tone="teal" data-word="Wind" style="cursor:pointer">
+          <input type="checkbox" aria-label="Select Wind" class="card-select" />
+          <div class="emoji">💨</div><div class="word">Wind</div>
+          <div class="def">Moving air that can push things over.</div>
+        </label>
+        <label class="vocab-card" data-tone="rose" data-word="Storm" style="cursor:pointer">
+          <input type="checkbox" aria-label="Select Storm" class="card-select" />
+          <div class="emoji">⛈</div><div class="word">Storm</div>
+          <div class="def">Heavy rain with strong wind.</div>
+        </label>
+        <label class="vocab-card" data-tone="blue" data-word="Structure" style="cursor:pointer">
+          <input type="checkbox" aria-label="Select Structure" class="card-select" />
+          <div class="emoji">🧱</div><div class="word">Structure</div>
+          <div class="def">Something built.</div>
+        </label>
+        <label class="vocab-card" data-tone="green" data-word="Brace" style="cursor:pointer">
+          <input type="checkbox" aria-label="Select Brace" class="card-select" />
+          <div class="emoji">🔺</div><div class="word">Brace</div>
+          <div class="def">A triangle piece that makes it stronger.</div>
+        </label>
+        <label class="vocab-card" data-tone="yellow" data-word="Feature" style="cursor:pointer">
+          <input type="checkbox" aria-label="Select Feature" class="card-select" />
+          <div class="emoji">🏷</div><div class="word">Feature</div>
+          <div class="def">A part of the model.</div>
+        </label>
+        <label class="vocab-card" data-tone="teal" data-word="Hazard" style="cursor:pointer">
+          <input type="checkbox" aria-label="Select Hazard" class="card-select" />
+          <div class="emoji">⚠️</div><div class="word">Hazard</div>
+          <div class="def">Something that can cause harm.</div>
+        </label>
+      </div>
+    </div>
+
+    <!-- Activity 2 -->
+    <div class="subcard">
+      <h4>Activity 2 — Evidence: “Our model” (photo + 20-sec voice)</h4>
+      <ul>
+        <li><strong>Purpose:</strong> capture the “before” photo and clear explanation ready for next week’s review.</li>
+        <li><strong>Teacher set-up:</strong> template page labelled “Feature” and “Hazard”.</li>
+      </ul>
+      <details>
+        <summary><strong>Copy-paste this into Seesaw “Instructions”</strong></summary>
+        <pre class="kbd">Title: L1 — Our model: before photo + voice note
+
+Student steps (Year 4):
+1) Tap  ➕  Add response
+2) Take a photo of your model (BEFORE it goes outside)
+3) Tap 🗣️  Microphone (max 20 seconds). Say:
+   “Our strongest feature is … because …”
+4) Add labels:
+   • Feature:
+   • Hazard:
+5) Tap ✅  to post
+
+Success criteria:
+☐ Photo is clear and shows the whole model
+☐ Voice note explains the strongest feature and why it helps
+☐ Labels show one feature + one hazard</pre>
+      </details>
+    </div>
+
+    <!-- Activity 3 -->
+    <div class="subcard">
+      <h4>Activity 3 — Reflection: “What is the power of nature?”</h4>
+      <ul>
+        <li><strong>Purpose:</strong> quick retrieval; checks weather vs climate and one local hazard.</li>
+        <li><strong>Teacher set-up:</strong> accept short text or audio.</li>
+      </ul>
+      <details>
+        <summary><strong>Copy-paste this into Seesaw “Instructions”</strong></summary>
+        <pre class="kbd">Title: L1 — Reflection: What is the power of nature?
+
+Student steps:
+1) Tap  ➕  Add response
+2) Choose 🗣️  Microphone or 📝  Text
+3) Answer in one or two sentences:
+   “Nature shows power when … because …”
+   and tell me: Is that WEATHER (today) or CLIMATE (pattern)?
+4) Add one local hazard word: flood / wind / storm
+5) Tap ✅  to post
+
+Success criteria:
+☐ Weather vs climate used correctly
+☐ One local hazard named
+☐ One reason using “because”</pre>
+      </details>
+    </div>
+
+    <p class="micro">Tip: in Seesaw, group the three activities into a collection called “L1 Wonder”. Schedule Activity 2 to unlock in the last 10 minutes of the lesson.</p>
+  </section>
+
+  <!-- FOOT ACTIONS -->
+  <div class="footbar">
+    <a class="btn" href="#lessonTitle">Back to top</a>
+    <div class="right">
+      <button class="btn primary" onclick="window.print()">Print / Save PDF</button>
+    </div>
+  </div>
+</main>
+
+<!-- html2canvas (for PNG export) -->
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script>
+(function(){
+  // Generic save helper
+  function saveCanvas(canvas, name){
+    const a = document.createElement('a');
+    a.download = name + '.png';
+    a.href = canvas.toDataURL('image/png');
+    a.click();
+  }
+  async function renderNodeToPng(node, name){
+    const canvas = await html2canvas(node, {scale: 3, backgroundColor: null, useCORS: true});
+    saveCanvas(canvas, name);
+  }
+
+  /* ---- Vocab cards export (master section) ---- */
+  const cardsStatus = document.getElementById('cards-status');
+  function getMasterCards(){ return Array.from(document.querySelectorAll('#vocab-cards .vocab-card')); }
+  function setCardsBusy(busy){
+    const btns = ['select-all-cards','clear-all-cards','download-selected-cards','download-all-cards']
+      .map(id=>document.getElementById(id)).filter(Boolean);
+    btns.forEach(b=>{ b.disabled = busy; b.style.opacity = busy ? .6 : 1; });
+    if(cardsStatus) cardsStatus.textContent = busy ? 'Preparing downloads…' : '';
+  }
+  function setAllCards(checked){
+    getMasterCards().forEach(c=>{ const cb = c.querySelector('.card-select'); if(cb) cb.checked = checked; });
+  }
+  const btnSelAll = document.getElementById('select-all-cards');
+  const btnClrAll = document.getElementById('clear-all-cards');
+  const btnDlSel = document.getElementById('download-selected-cards');
+  const btnDlAll = document.getElementById('download-all-cards');
+  if(btnSelAll) btnSelAll.addEventListener('click', ()=> setAllCards(true));
+  if(btnClrAll) btnClrAll.addEventListener('click', ()=> setAllCards(false));
+
+  if(btnDlSel){
+    btnDlSel.addEventListener('click', async ()=>{
+      const chosen = getMasterCards().filter(c=>c.querySelector('.card-select')?.checked);
+      if(!chosen.length){ if(cardsStatus) cardsStatus.textContent = 'Select at least one card.'; return; }
+      setCardsBusy(true);
+      try{
+        for(const card of chosen){
+          const name = 'L1_vocab_' + (card.querySelector('.word')?.textContent || 'card').replace(/\s+/g,'_');
+          await renderNodeToPng(card, name);
+        }
+        if(cardsStatus) cardsStatus.textContent = 'Selected cards downloaded.';
+      } finally { setCardsBusy(false); }
+    });
+  }
+  if(btnDlAll){
+    btnDlAll.addEventListener('click', async ()=>{
+      const all = getMasterCards();
+      setCardsBusy(true);
+      try{
+        for(const card of all){
+          const name = 'L1_vocab_' + (card.querySelector('.word')?.textContent || 'card').replace(/\s+/g,'_');
+          await renderNodeToPng(card, name);
+        }
+        if(cardsStatus) cardsStatus.textContent = 'All cards downloaded.';
+      } finally { setCardsBusy(false); }
+    });
+  }
+
+  /* ---- Seesaw pack: banner + thumbs + export grid (fallback) ---- */
+  const statusEl = document.getElementById('dl-status');
+  function setBusy(btns, busy){
+    btns.forEach(b=>{ b.disabled = busy; b.style.opacity = busy ? .6 : 1; });
+    if (busy && statusEl) statusEl.textContent = 'Preparing downloads…';
+    else if (statusEl) statusEl.textContent = '';
+  }
+
+  // Banner
+  const bannerBtn = document.getElementById('download-banner');
+  const bannerPreview = document.getElementById('banner-preview');
+  if (bannerBtn && bannerPreview){
+    bannerBtn.addEventListener('click', async ()=>{
+      const btns = [bannerBtn];
+      setBusy(btns, true);
+      try{ await renderNodeToPng(bannerPreview, 'L1_Wonder_banner'); }
+      finally { setBusy(btns, false); }
+    });
+  }
+
+  // Thumbnails
+  const thumbWrap = document.getElementById('thumbs');
+  if (thumbWrap){
+    thumbWrap.querySelectorAll('[data-dl]').forEach(btn=>{
+      btn.addEventListener('click', async (e)=>{
+        const card = e.target.closest('.thumb');
+        const name = card.getAttribute('data-name') || 'thumb';
+        const btns = [btn];
+        setBusy(btns, true);
+        try{ await renderNodeToPng(card, name); }
+        finally { setBusy(btns, false); }
+      });
+    });
+  }
+
+  // Export grid controls (duplicate tiles — used only if needed elsewhere)
+  const grid = document.getElementById('seesaw-vocab-export-grid');
+  const selectAllBtn = document.getElementById('select-all');
+  const clearAllBtn  = document.getElementById('clear-all');
+  const dlSelBtn     = document.getElementById('download-selected');
+  const dlAllBtn     = document.getElementById('download-all');
+
+  function getExportTiles(){ return Array.from(grid.querySelectorAll('.vocab-card')); }
+  function setAll(checked){ getExportTiles().forEach(t=>{ const cb=t.querySelector('.card-select'); if(cb) cb.checked=checked; }); }
+
+  if(selectAllBtn) selectAllBtn.addEventListener('click', ()=> setAll(true));
+  if(clearAllBtn)  clearAllBtn.addEventListener('click', ()=> setAll(false));
+
+  // Export selected (prefers master cards; falls back to these tiles)
+  if (dlSelBtn){
+    dlSelBtn.addEventListener('click', async ()=>{
+      const tiles = getExportTiles().filter(t => t.querySelector('.card-select')?.checked);
+      if (!tiles.length){ if (statusEl) statusEl.textContent='Select at least one card.'; return; }
+      const btns = [selectAllBtn, clearAllBtn, dlSelBtn, dlAllBtn].filter(Boolean);
+      setBusy(btns, true);
+      try{
+        for (const tile of tiles){
+          const word = tile.getAttribute('data-word') || tile.querySelector('.word')?.textContent || 'card';
+          const master = Array.from(document.querySelectorAll('#vocab-cards .vocab-card .word'))
+            .find(el=>el.textContent.trim().toLowerCase()===word.trim().toLowerCase());
+          const node = master ? master.closest('.vocab-card') : tile;
+          await renderNodeToPng(node, 'L1_vocab_' + word.replace(/\s+/g,'_'));
+        }
+        if (statusEl) statusEl.textContent = 'Selected cards downloaded.';
+      } finally { setBusy(btns, false); }
+    });
+  }
+
+  // Export all
+  if (dlAllBtn){
+    dlAllBtn.addEventListener('click', async ()=>{
+      const tiles = getExportTiles();
+      const btns = [selectAllBtn, clearAllBtn, dlSelBtn, dlAllBtn].filter(Boolean);
+      setBusy(btns, true);
+      try{
+        for (const tile of tiles){
+          const word = tile.getAttribute('data-word') || tile.querySelector('.word')?.textContent || 'card';
+          const master = Array.from(document.querySelectorAll('#vocab-cards .vocab-card .word'))
+            .find(el=>el.textContent.trim().toLowerCase()===word.trim().toLowerCase());
+          const node = master ? master.closest('.vocab-card') : tile;
+          await renderNodeToPng(node, 'L1_vocab_' + word.replace(/\s+/g,'_'));
+        }
+        if (statusEl) statusEl.textContent = 'All cards downloaded.';
+      } finally { setBusy(btns, false); }
+    });
+  }
+})();
+</script>
+
+<!-- Floating Action Button -->
+<a href="/learn-enhanced.html?lesson=L1" class="fab">
+  <span>Open Lesson 1</span>
+  <span style="font-size: 16px;">↗</span>
+</a>
+</body>
+</html>

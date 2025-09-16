@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Teacher Pack — Lesson 3: [Lesson Title] • Gold Standard</title>
+
+<!-- Fonts (Google Education style) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Google+Sans+Display:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --blue:#4285f4; --green:#34a853; --yellow:#fbbc04; --red:#ea4335; --indigo:#6366f1; --teal:#14b8a6;
+    --ink:#202124; --muted:#5f6368; --line:#e6e8eb; --bg:#f6f8fb; --surface:#ffffff;
+    --radius:16px; --radius-sm:12px; --shadow:0 10px 30px rgba(0,0,0,.08);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"Google Sans",-apple-system,Segoe UI,system-ui,sans-serif;line-height:1.5}
+  a{color:var(--blue);text-decoration:none} a:hover{text-decoration:underline}
+
+  /* Top bar */
+  header.appbar{
+    position:sticky;top:0;z-index:50;
+    display:flex;align-items:center;gap:12px;
+    background:linear-gradient(135deg,var(--teal),var(--blue));
+    color:#fff;padding:14px 18px
+  }
+  .brand{font-family:"Google Sans Display",sans-serif;font-size:20px;font-weight:600}
+  .grow{flex:1}
+  .btn{appearance:none;border:0;border-radius:12px;padding:10px 14px;font-weight:600;cursor:pointer}
+  .btn.primary{background:#fff;color:var(--teal)}
+  .btn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.42)}
+  .btn.neutral{background:#eef2ff;color:#1d4ed8;border:1px solid #dbeafe}
+
+  /* Containers */
+  main{max-width:1200px;margin:22px auto;padding:0 18px}
+  section.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;margin-bottom:18px}
+  section.card h3{margin:0 0 10px;font-size:20px}
+  section.card h4{margin:16px 0 8px;font-size:15px;color:#374151}
+  .micro{font-size:13px;color:var(--muted)}
+  .pillwrap{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{border:1px solid var(--line);padding:6px 10px;border-radius:999px;font-size:13px;background:#fff}
+  .grid-2{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .subcard{background:#fff;border:1px solid var(--line);border-radius:var(--radius-sm);padding:12px}
+  ul,ol{margin:8px 0 8px 20px}
+  .kbd{font-family:ui-monospace,Menlo,Consolas,monospace;background:#f3f4f6;border:1px solid #e5e7eb;padding:8px;border-radius:10px;font-size:13px;white-space:pre-wrap}
+  textarea,input[type="text"]{width:100%;border:1px solid var(--line);border-radius:12px;padding:10px;font:inherit}
+</style>
+</head>
+
+<body>
+<header class="appbar">
+  <div class="brand">🏠 Teacher Pack</div>
+  <div class="grow"></div>
+  <a href="/lesson3.html" class="btn primary">← Back to Lesson 2</a>
+  <a href="/" class="btn ghost">🏠 Home</a>
+</header>
+
+<main>
+  <section class="card">
+    <h3>Lesson 3: [Lesson Title]</h3>
+    <p class="micro">Design & Technology • Geography • Science • 45-60 minutes</p>
+    
+    <div class="grid-2">
+      <div>
+        <h4>🎯 Learning Intent</h4>
+        <p>Students will understand how homes around the world are designed to adapt to their local climate conditions, and design their own climate-appropriate home features.</p>
+        
+        <h4>🔑 Key Vocabulary</h4>
+        <div class="pillwrap">
+          <span class="chip">climate</span>
+          <span class="chip">adapt</span>
+          <span class="chip">feature</span>
+          <span class="chip">hazard</span>
+          <span class="chip">insulate</span>
+          <span class="chip">ventilate</span>
+          <span class="chip">stilt</span>
+          <span class="chip">gutter</span>
+        </div>
+      </div>
+      
+      <div>
+        <h4>📋 Success Criteria</h4>
+        <ul>
+          <li>Can identify climate-appropriate home features</li>
+          <li>Understands the relationship between climate and building design</li>
+          <li>Can design and test a weather-resistant feature</li>
+          <li>Explains design choices using scientific reasoning</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h3>🛠️ Materials & Setup</h3>
+    <div class="grid-3">
+      <div class="subcard">
+        <h4>Building Materials</h4>
+        <ul>
+          <li>Paper cups (2 per team)</li>
+          <li>Cardboard squares (A4 size)</li>
+          <li>Tape and scissors</li>
+          <li>Straws (5 per team)</li>
+          <li>Cotton balls (for wind simulation)</li>
+        </ul>
+      </div>
+      
+      <div class="subcard">
+        <h4>Testing Stations</h4>
+        <ul>
+          <li>🌧️ Rain Rig: Watering can</li>
+          <li>💨 Wind Tunnel: Desk fan + paper debris</li>
+          <li>🌊 Flood Tray: Shallow water container</li>
+        </ul>
+      </div>
+      
+      <div class="subcard">
+        <h4>Technology</h4>
+        <ul>
+          <li>Live weather map (Windy.com)</li>
+          <li>Timer for build sessions</li>
+          <li>Seesaw for documentation</li>
+          <li>Optional: Makey Makey/micro:bit</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h3>📚 Teaching Sequence</h3>
+    
+    <div class="subcard">
+      <h4>1. Present (10 minutes)</h4>
+      <p><strong>Hook:</strong> Show live weather map and ask "How does weather affect how people build homes?"</p>
+      <p><strong>Gallery:</strong> Explore global homes carousel - Arctic, Tropical, Desert, UK examples</p>
+      <p><strong>Vocabulary:</strong> Introduce key terms with visual examples</p>
+    </div>
+    
+    <div class="subcard">
+      <h4>2. Explore (15 minutes)</h4>
+      <p><strong>Videos:</strong> NASA Climate for Kids, Weather vs Climate resources</p>
+      <p><strong>Discussion:</strong> "What problem does each home feature solve?"</p>
+      <p><strong>Pattern Spotting:</strong> Connect climate patterns to building features</p>
+    </div>
+    
+    <div class="subcard">
+      <h4>3. Question (10 minutes)</h4>
+      <p><strong>Talk Moves:</strong> Turn and talk, revoicing, wait time</p>
+      <p><strong>Feature Match:</strong> Match hazards to appropriate features</p>
+      <p><strong>Planning:</strong> "Our place is usually... so we need..."</p>
+    </div>
+    
+    <div class="subcard">
+      <h4>4. Do (20 minutes)</h4>
+      <p><strong>Design Brief:</strong> Choose climate, sketch plan, build for 10 minutes</p>
+      <p><strong>Materials:</strong> Distribute building supplies</p>
+      <p><strong>Timer:</strong> 15-minute focused building session</p>
+    </div>
+    
+    <div class="subcard">
+      <h4>5. Test (15 minutes)</h4>
+      <p><strong>Stations:</strong> Rotate through rain, wind, flood tests</p>
+      <p><strong>Success Criteria:</strong> Check against criteria checklist</p>
+      <p><strong>Evidence:</strong> Photo + voice note on Seesaw</p>
+    </div>
+    
+    <div class="subcard">
+      <h4>6. Wrap (10 minutes)</h4>
+      <p><strong>Exit Ticket:</strong> Weather vs Climate, feature selection</p>
+      <p><strong>Reflection:</strong> "What worked? What would you change?"</p>
+      <p><strong>Next Steps:</strong> Preview Lesson 3 - Structures and Strength</p>
+    </div>
+  </section>
+
+  <section class="card">
+    <h3>🎯 Assessment Opportunities</h3>
+    <div class="grid-2">
+      <div>
+        <h4>Formative Assessment</h4>
+        <ul>
+          <li>Quick tallies during planning phase</li>
+          <li>Feature match challenge responses</li>
+          <li>Design sketch quality and reasoning</li>
+          <li>Testing station observations</li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4>Summative Assessment</h4>
+        <ul>
+          <li>Exit ticket (2 questions)</li>
+          <li>Seesaw documentation</li>
+          <li>Success criteria checklist</li>
+          <li>Design explanation quality</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h3>🔧 Differentiation & Support</h3>
+    <div class="grid-3">
+      <div class="subcard">
+        <h4>Support</h4>
+        <ul>
+          <li>Pre-made feature examples</li>
+          <li>Simplified vocabulary cards</li>
+          <li>Partner work for building</li>
+          <li>Visual success criteria</li>
+        </ul>
+      </div>
+      
+      <div class="subcard">
+        <h4>Challenge</h4>
+        <ul>
+          <li>Design for multiple hazards</li>
+          <li>Research real-world examples</li>
+          <li>Calculate material efficiency</li>
+          <li>Present to class</li>
+        </ul>
+      </div>
+      
+      <div class="subcard">
+        <h4>Inclusion</h4>
+        <ul>
+          <li>Multiple representation modes</li>
+          <li>Flexible grouping options</li>
+          <li>Alternative assessment methods</li>
+          <li>Clear visual instructions</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h3>📝 Teacher Notes</h3>
+    <textarea rows="6" placeholder="Add your observations, adaptations, and notes for this lesson..."></textarea>
+  </section>
+</main>
+</body>
+</html>
