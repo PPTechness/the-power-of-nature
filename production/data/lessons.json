@@ -1,0 +1,140 @@
+{
+  "course": "Y4 Harness the Power of Nature",
+  "bigQuestion": "How can we harness the power of nature?",
+  "lessons": [
+    {
+      "id": "L1",
+      "title": "Wonder launch",
+      "time_minutes": 45,
+      "subjects": ["Geography","Science","Computing"],
+      "student": {
+        "learning_objective": "What is the power of nature?",
+        "tabs": ["See it","Think it","Make it","Share it"],
+        "tasks": [
+          {"type":"carousel","ref":"phenomena_intro_6"},
+          {"type":"poll","ref":"L1_precheck_v1"},
+          {"type":"pinsLite","ref":"SG_hazards_lite"},
+          {"type":"timer","durations":[15,10,5]},
+          {"type":"upload","slots":["Sketch","Build – before"]},
+          {"type":"exitTicket","ref":"L1_reflect_v1"}
+        ]
+      },
+      "teacher": {
+        "slides":"L1_embed_id",
+        "printables":["kit_list","rules","roles"],
+        "script_ref":"L1_teacher_script_v1"
+      }
+    },
+    {
+      "id": "L2",
+      "title": "Homes fit their climates",
+      "time_minutes": 45,
+      "learning_intention": "Explain how a home's design fits climate.",
+      "sticky_knowledge": ["Designs adapt to heat, rain, wind and hazards."],
+      "online": ["houseGallery"],
+      "offline": ["Sketch your home and circle one climate-fit feature."],
+      "check_in": "Which feature surprised you? Why does it help?",
+      "assessment_prompt": "Link one feature to one climate factor with a reason.",
+      "badge": "B2_home_matcher"
+    },
+    {
+      "id": "L3",
+      "title": "Electricity: Make a simple circuit",
+      "time_minutes": 40,
+      "learning_intention": "Construct a simple series circuit; switch opens/closes.",
+      "sticky_knowledge": ["A complete loop lights the lamp.", "A switch controls flow."],
+      "online": ["circuits"],
+      "offline": ["Build the same circuit with kit (safety first)."],
+      "check_in": "What is the minimum needed to light the lamp?",
+      "assessment_prompt": "Explain how your switch worked.",
+      "badge": "B3_circuit_starter"
+    },
+    {
+      "id": "L4",
+      "title": "Singapore case study: Harnessing nature",
+      "time_minutes": 45,
+      "learning_intention": "Identify a sustainability feature in a local building and its benefit.",
+      "sticky_knowledge": ["Green roofs, shade, vents, rain capture help buildings work with climate."],
+      "online": ["singaporeTour"],
+      "offline": ["Walk-and-spot sustainability features around school (with permission)."],
+      "check_in": "Name one local feature and its benefit.",
+      "assessment_prompt": "Describe the feature you found and why it helps.",
+      "badge": "B4_city_solver"
+    },
+    {
+      "id": "L5",
+      "title": "Renewable energy",
+      "time_minutes": 45,
+      "learning_intention": "Name solar, wind, hydro and when each works best.",
+      "sticky_knowledge": ["Renewables use sun, wind, and water; not fossil fuels."],
+      "online": ["renewablesArcade"],
+      "offline": ["Paper pinwheel: which wind works best?"],
+      "check_in": "Which energy worked best and why?",
+      "assessment_prompt": "Explain one renewable and the condition it needs.",
+      "badge": "B5_energy_explorer"
+    },
+    {
+      "id": "L6",
+      "title": "Consolidation / Swimming Gala week",
+      "time_minutes": 25,
+      "learning_intention": "Review journals; practise sentence starters.",
+      "sticky_knowledge": ["We explain with evidence and clear reasons."],
+      "online": ["posterMaker"],
+      "offline": ["Rehearse 60-second talk with a partner."],
+      "check_in": "Read one journal entry to a partner; ask a clarifying question.",
+      "assessment_prompt": "Give a reason using evidence.",
+      "badge": "B6_reflector"
+    },
+    {
+      "id": "L7",
+      "title": "Earthquakes: Where and why?",
+      "time_minutes": 45,
+      "learning_intention": "Locate the Ring of Fire; basic plate movement.",
+      "sticky_knowledge": ["Many quakes happen at plate boundaries."],
+      "online": ["platesMap"],
+      "offline": ["Straw tower: gentle vs strong shake."],
+      "check_in": "Where is the Ring of Fire?",
+      "assessment_prompt": "Name one city near a plate boundary.",
+      "badge": "B7_quake_mapper"
+    },
+    {
+      "id": "L8",
+      "title": "Adapting to earthquakes",
+      "time_minutes": 45,
+      "learning_intention": "Name an adaptation (Tokyo, Christchurch) and why it helps.",
+      "sticky_knowledge": ["Design choices reduce risk (bracing, base isolation)."],
+      "online": ["platesMap"],
+      "offline": ["Design a brace idea for your straw tower."],
+      "check_in": "Name one adaptation and why it helps.",
+      "assessment_prompt": "Explain a building adaptation with cause-effect.",
+      "badge": "B8_resilience_designer"
+    },
+    {
+      "id": "L9",
+      "title": "Design a future-ready home (Plan & Prototype)",
+      "time_minutes": 60,
+      "learning_intention": "Change one variable and predict impact.",
+      "sticky_knowledge": ["One change at a time shows cause and effect."],
+      "online": ["designTester"],
+      "offline": ["Collect materials for next week; plan cladding textures (cut/fold/weave/scrunch)."],
+      "check_in": "Which one change will you test first and why?",
+      "assessment_prompt": "Write your 'because' sentence before building.",
+      "badge": "B9_architect_in_action"
+    },
+    {
+      "id": "L10",
+      "title": "Design a future-ready home (Make & Present)",
+      "time_minutes": 60,
+      "learning_intention": "Build, test, and present your design with evidence.",
+      "sticky_knowledge": [
+        "Cladding adds protection and texture.",
+        "Good presentations explain choices with evidence."
+      ],
+      "online": ["posterMaker", "designTester"],
+      "offline": ["Model-making; class expo; invite Y5."],
+      "check_in": "Which change made the biggest impact?",
+      "assessment_prompt": "Present one clear reason using evidence.",
+      "badge": "B10_future_builder"
+    }
+  ]
+}

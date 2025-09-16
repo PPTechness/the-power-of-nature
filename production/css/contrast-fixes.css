@@ -1,0 +1,547 @@
+/* =============================================================================
+   Contrast and Layout Fixes - High Priority
+   ============================================================================= */
+
+/* Global contrast improvements */
+:root {
+  /* Enhanced contrast colors */
+  --text-primary: #111827;
+  --text-secondary: #374151;
+  --text-muted: #6B7280;
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F9FAFB;
+  --bg-soft: #F3F4F6;
+  --border-light: #E5E7EB;
+  --border-medium: #D1D5DB;
+  --border-dark: #9CA3AF;
+  
+  /* Semantic colors with high contrast */
+  --primary-text: #1E40AF;
+  --success-text: #065F46;
+  --warning-text: #92400E;
+  --error-text: #991B1B;
+  --info-text: #1E3A8A;
+}
+
+/* Fix hero section light theme contrast */
+.hero.hero-enhanced.hero--light {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  color: var(--text-primary);
+}
+
+.hero--light .hero-title-enhanced {
+  color: var(--text-primary) !important;
+  text-shadow: none !important;
+  font-weight: 800;
+}
+
+.hero--light .hero-subtitle-enhanced {
+  color: var(--text-secondary) !important;
+  max-width: 60ch;
+  margin: 0 auto;
+}
+
+.hero--light .btn.btn-primary {
+  background: #1D4ED8;
+  color: #FFFFFF;
+  border-color: #1D4ED8;
+}
+
+.hero--light .btn.btn-outlined {
+  border: 2px solid #1D4ED8;
+  color: #1D4ED8;
+  background: #FFFFFF;
+  font-weight: 600;
+}
+
+/* Fix step cards contrast */
+.steps-grid .card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 4px 12px rgba(17, 24, 39, 0.08);
+}
+
+.demo-title {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.demo-description {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.micro-scaffold {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.micro-scaffold li {
+  color: var(--text-primary);
+  margin: 0.5rem 0;
+  list-style: disc;
+  font-weight: 500;
+}
+
+/* Fix progress indicators */
+.progress-enhanced {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  margin: 16px 0 24px;
+}
+
+.progress-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.progress-step .step-number {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--bg-soft);
+  color: var(--text-muted);
+  font-weight: 700;
+  border: 2px solid var(--border-medium);
+}
+
+.progress-step.active .step-number {
+  background: #1D4ED8;
+  color: #FFFFFF;
+  border-color: #1D4ED8;
+}
+
+.progress-step.active span {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+/* Fix glossary chips */
+.glossary-chip {
+  background: #EFF6FF;
+  border: 1px solid #3B82F6;
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  color: #1E40AF;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.glossary-chip:hover {
+  background: #DBEAFE;
+  border-color: #2563EB;
+}
+
+.glossary-tip {
+  position: absolute;
+  left: -9999px;
+  background: #FFFFFF;
+  border: 1px solid var(--border-medium);
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
+.glossary-chip:focus + .glossary-tip,
+.glossary-chip:hover + .glossary-tip {
+  position: static;
+  margin-left: 0.75rem;
+}
+
+/* Fix wonder card inputs */
+.wonder-card .input {
+  width: 100%;
+  border: 2px solid var(--border-medium);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  color: var(--text-primary);
+  background: #FFFFFF;
+  font-size: 1rem;
+}
+
+.wonder-card .input:focus {
+  outline: none;
+  border-color: #2563EB;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.wonder-card .input::placeholder {
+  color: var(--text-muted);
+}
+
+.slider-label {
+  color: var(--text-primary);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.output-text {
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.hint-text {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+/* Fix read-aloud pill */
+.readaloud-pill {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  background: #FFFFFF;
+  border: 1px solid var(--border-medium);
+  border-radius: 999px;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-weight: 500;
+}
+
+.readaloud-pill:hover {
+  background: #F3F4F6;
+  border-color: var(--border-dark);
+}
+
+/* Fix navigation contrast */
+.nav-header {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.nav-links a {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.nav-links a:hover {
+  color: #1D4ED8;
+  background: rgba(29, 78, 216, 0.1);
+}
+
+/* Fix section backgrounds with better contrast */
+.how-it-works {
+  background: #FFFFFF;
+  padding: 2rem 0;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.how-steps {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.how-steps li {
+  color: var(--text-primary);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.badge {
+  background: #1D4ED8;
+  color: #FFFFFF;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+/* Fix glossary bar */
+.glossary-bar {
+  background: var(--bg-secondary);
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.glossary-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Fix wonder card section */
+.todays-wonder {
+  background: #FFFFFF;
+  padding: 3rem 0;
+}
+
+.wonder-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 8px 24px rgba(17, 24, 39, 0.08);
+}
+
+.wonder-title {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.wonder-subtitle {
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+/* Fix digital citizenship preview */
+.digital-citizenship-preview {
+  background: var(--bg-secondary);
+  padding: 3rem 0;
+}
+
+.dc-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 8px 24px rgba(17, 24, 39, 0.08);
+}
+
+.dc-title {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.dc-description {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Fix status indicators */
+.status-indicator {
+  background: #DBEAFE;
+  color: #1E40AF;
+  padding: 0.375rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border: 1px solid #93C5FD;
+}
+
+.status-indicator.success {
+  background: #D1FAE5;
+  color: #065F46;
+  border-color: #86EFAC;
+}
+
+/* Fix footer */
+.footer {
+  background: #FFFFFF;
+  border-top: 1px solid var(--border-light);
+}
+
+.footer-links a {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.footer-links a:hover {
+  color: var(--text-primary);
+}
+
+/* Fix mode banner */
+.mode-banner {
+  background: #FEF3C7;
+  border: 1px solid #F59E0B;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: #92400E;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+/* Fix info card */
+.info-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(17, 24, 39, 0.08);
+}
+
+.lesson-today h2 {
+  color: var(--text-primary);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.lesson-today p {
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.lesson-today ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.lesson-today li {
+  color: var(--text-primary);
+  margin: 0.75rem 0;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.lesson-today li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #059669;
+  font-weight: 700;
+}
+
+/* Fix temperature gauges */
+.temperature-gauge {
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 1rem;
+  border: 1px solid var(--border-light);
+}
+
+.gauge-value {
+  color: var(--text-primary);
+  font-weight: 800;
+}
+
+.gauge-label {
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+/* Fix impact arrows */
+.impact-arrow {
+  color: #1D4ED8;
+  font-weight: 700;
+}
+
+.impact-arrow .text {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Ensure all buttons have proper contrast */
+.btn {
+  font-weight: 600;
+  border: 2px solid transparent;
+}
+
+.btn-primary {
+  background: #1D4ED8;
+  color: #FFFFFF;
+  border-color: #1D4ED8;
+}
+
+.btn-primary:hover {
+  background: #1E3A8A;
+  border-color: #1E3A8A;
+}
+
+.btn-secondary {
+  background: #FFFFFF;
+  color: #1D4ED8;
+  border-color: #1D4ED8;
+}
+
+.btn-secondary:hover {
+  background: #1D4ED8;
+  color: #FFFFFF;
+}
+
+.btn-accent {
+  background: #F59E0B;
+  color: #FFFFFF;
+  border-color: #F59E0B;
+}
+
+.btn-accent:hover {
+  background: #D97706;
+  border-color: #D97706;
+}
+
+.btn-outlined {
+  background: #FFFFFF;
+  color: #1D4ED8;
+  border-color: #1D4ED8;
+}
+
+.btn-outlined:hover {
+  background: #1D4ED8;
+  color: #FFFFFF;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --text-primary: #000000;
+    --text-secondary: #333333;
+    --bg-primary: #FFFFFF;
+    --border-medium: #666666;
+  }
+  
+  .btn {
+    border-width: 3px;
+  }
+  
+  .glossary-chip,
+  .status-indicator,
+  .readaloud-pill {
+    border-width: 2px;
+  }
+}
+
+/* Mobile responsiveness for small screens */
+@media (max-width: 768px) {
+  .hero-visual,
+  .hero-image {
+    opacity: 0.9;
+  }
+  
+  .progress-enhanced {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .how-steps {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .glossary-container {
+    justify-content: center;
+    gap: 0.75rem;
+  }
+  
+  .glossary-chip {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "badges": [
+    {
+      "id": "B1_nature_detective",
+      "title": "Nature Detective",
+      "icon": "🧭",
+      "caption": "I can compare places and spot patterns."
+    },
+    {
+      "id": "B2_home_matcher",
+      "title": "Home Matcher",
+      "icon": "🏠",
+      "caption": "I can link a home feature to climate."
+    },
+    {
+      "id": "B3_circuit_starter",
+      "title": "Circuit Starter",
+      "icon": "💡",
+      "caption": "I can make a simple circuit and use a switch."
+    },
+    {
+      "id": "B4_city_solver",
+      "title": "City Solver",
+      "icon": "🏙️",
+      "caption": "I can spot sustainability features locally."
+    },
+    {
+      "id": "B5_energy_explorer",
+      "title": "Energy Explorer",
+      "icon": "⚡",
+      "caption": "I can explain a renewable and its condition."
+    },
+    {
+      "id": "B6_reflector",
+      "title": "Reflector",
+      "icon": "📝",
+      "caption": "I can explain with evidence clearly."
+    },
+    {
+      "id": "B7_quake_mapper",
+      "title": "Quake Mapper",
+      "icon": "🌋",
+      "caption": "I can locate the Ring of Fire."
+    },
+    {
+      "id": "B8_resilience_designer",
+      "title": "Resilience Designer",
+      "icon": "🛡️",
+      "caption": "I can explain an adaptation to reduce risk."
+    },
+    {
+      "id": "B9_architect_in_action",
+      "title": "Architect in Action",
+      "icon": "📐",
+      "caption": "I can plan and test one variable at a time."
+    },
+    {
+      "id": "B10_future_builder",
+      "title": "Future Builder",
+      "icon": "🏗️",
+      "caption": "I can build and present with evidence."
+    }
+  ]
+}
