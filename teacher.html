@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Room | Nature Power Learning Journey</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/tokens.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/accessibility.css">
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-container">
+                <div class="header-left">
+                    <a href="/" class="logo">
+                        <div class="logo-icon">🌱</div>
+                        <span>Nature Power</span>
+                    </a>
+                    <nav>
+                        <ul class="nav-links">
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/learn.html">Learn</a></li>
+                            <li><a href="/digital-citizenship.html">Digital Citizenship</a></li>
+                            <li><a href="/build.html">Build</a></li>
+                            <li><a href="/gallery.html">Gallery</a></li>
+                            <li><a href="/profile.html">Profile</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="header-right">
+                    <button class="btn btn-ghost" onclick="window.location.href='/gallery.html'">
+                        🛡️ Moderate Gallery
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main" class="main-content">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1>🏫 Teacher Room</h1>
+                <p class="page-subtitle">Resources, planning tools, and safeguarding guidance for Y4 Nature Power</p>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <a href="#mtp" class="quick-action">
+                    <span class="action-icon">📅</span>
+                    <span class="action-text">Medium Term Plan</span>
+                </a>
+                <a href="#downloads" class="quick-action">
+                    <span class="action-icon">📥</span>
+                    <span class="action-text">Downloads</span>
+                </a>
+                <a href="#rubrics" class="quick-action">
+                    <span class="action-icon">📊</span>
+                    <span class="action-text">Assessment</span>
+                </a>
+                <a href="#safety" class="quick-action">
+                    <span class="action-icon">🛡️</span>
+                    <span class="action-text">Safeguarding</span>
+                </a>
+            </div>
+
+            <!-- Medium Term Plan Section -->
+            <section id="mtp" class="teacher-section">
+                <div class="section-header">
+                    <h2>📅 Medium Term Plan</h2>
+                    <p>Interactive overview of all 10 lessons - click to preview student experience</p>
+                </div>
+                
+                <div class="mtp-grid" id="mtpGrid">
+                    <!-- MTP cards will be populated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Downloads Section -->
+            <section id="downloads" class="teacher-section">
+                <div class="section-header">
+                    <h2>📥 Teaching Resources</h2>
+                    <p>Downloadable resources to support your lessons</p>
+                </div>
+                
+                <div class="resources-grid">
+                    <div class="resource-category">
+                        <h3>📊 Slide Decks</h3>
+                        <div class="resource-items">
+                            <div class="resource-item">
+                                <div class="resource-info">
+                                    <div class="resource-title">L1-L3: Weather & Climate Foundation</div>
+                                    <div class="resource-description">Introduction to weather vs climate, home adaptations, and circuits</div>
+                                </div>
+                                <button class="btn btn-primary btn-sm" onclick="teacherRoom.downloadSlides('L1-L3')">
+                                    📥 Download
+                                </button>
+                            </div>
+                            <div class="resource-item">
+                                <div class="resource-info">
+                                    <div class="resource-title">L4-L6: Sustainability & Energy</div>
+                                    <div class="resource-description">Singapore case study, renewable energy, and consolidation</div>
+                                </div>
+                                <button class="btn btn-primary btn-sm" onclick="teacherRoom.downloadSlides('L4-L6')">
+                                    📥 Download
+                                </button>
+                            </div>
+                            <div class="resource-item">
+                                <div class="resource-info">
+                                    <div class="resource-title">L7-L10: Earthquakes & Design</div>
+                                    <div class="resource-description">Plate tectonics, adaptations, and future home design</div>
+                                </div>
+                                <button class="btn btn-primary btn-sm" onclick="teacherRoom.downloadSlides('L7-L10')">
+                                    📥 Download
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="resource-category">
+                        <h3>🛠️ Digital Tools Templates</h3>
+                        <div class="resource-items">
+                            <div class="resource-item">
+                                <div class="resource-info">
+                                    <div class="resource-title">CoSpaces Template</div>
+                                    <div class="resource-description">Pre-built VR environment for L10 house design</div>
+                                </div>
+                                <button class="btn btn-primary btn-sm" onclick="teacherRoom.openTemplate('cospaces')">
+                                    🔗 Open Template
+                                </button>
+                            </div>
+                            <div class="resource-item">
+                                <div class="resource-info">
+                                    <div class="resource-title">Tinkercad Classroom</div>
+                                    <div class="resource-description">3D design activities for sustainable buildings</div>
+                                </div>
+                                <button class="btn btn-primary btn-sm" onclick="teacherRoom.openTemplate('tinkercad')">
+                                    🔗 Open Classroom
+                                </button>
+                            </div>
+                            <div class="resource-item">
+                                <div class="resource-info">
+                                    <div class="resource-title">Poster Template Pack</div>
+                                    <div class="resource-description">Editable templates for L6 and L10 presentations</div>
+                                </div>
+                                <button class="btn btn-primary btn-sm" onclick="teacherRoom.downloadTemplate('poster')">
+                                    📥 Download Pack
+                                </button>
+                            </div>
+                            <div class="resource-item">
+                                <div class="resource-info">
+                                    <div class="resource-title">Journal Export Tool</div>
+                                    <div class="resource-description">Download all student journals as CSV for assessment</div>
+                                </div>
+                                <button class="btn btn-success btn-sm" onclick="teacherRoom.exportAllJournals()">
+                                    📊 Export Student Data
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Assessment & Rubrics Section -->
+            <section id="rubrics" class="teacher-section">
+                <div class="section-header">
+                    <h2>📊 Assessment Tools</h2>
+                    <p>Rubrics and guidance for evaluating student work</p>
+                </div>
+                
+                <div class="assessment-grid">
+                    <div class="rubric-card">
+                        <h3>📝 Data Story Rubric</h3>
+                        <p>For assessing evidence-based reasoning in lessons L1-L6</p>
+                        <div class="rubric-preview" id="dataStoryRubric">
+                            <!-- Populated by JavaScript -->
+                        </div>
+                        <div class="rubric-actions">
+                            <button class="btn btn-primary btn-sm" onclick="teacherRoom.viewRubric('data_story')">
+                                👁️ View Full Rubric
+                            </button>
+                            <button class="btn btn-secondary btn-sm" onclick="teacherRoom.downloadRubric('data_story')">
+                                📥 Download PDF
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="rubric-card">
+                        <h3>🏗️ Design Summary Rubric</h3>
+                        <p>For evaluating design thinking in lessons L8-L10</p>
+                        <div class="rubric-preview" id="designSummaryRubric">
+                            <!-- Populated by JavaScript -->
+                        </div>
+                        <div class="rubric-actions">
+                            <button class="btn btn-primary btn-sm" onclick="teacherRoom.viewRubric('design_summary')">
+                                👁️ View Full Rubric
+                            </button>
+                            <button class="btn btn-secondary btn-sm" onclick="teacherRoom.downloadRubric('design_summary')">
+                                📥 Download PDF
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tech in 10 Section -->
+            <section id="tech-in-10" class="teacher-section">
+                <div class="section-header">
+                    <h2>⚡ Tech in 10</h2>
+                    <p>Quick video guides for key technical concepts</p>
+                </div>
+                
+                <div class="video-grid">
+                    <div class="video-card">
+                        <div class="video-placeholder">
+                            <div class="play-icon">▶️</div>
+                            <div class="video-duration">2:30</div>
+                        </div>
+                        <div class="video-info">
+                            <h4>Setting Up Weather Explorer</h4>
+                            <p>Quick guide to helping students use the weather comparison widget</p>
+                        </div>
+                    </div>
+                    
+                    <div class="video-card">
+                        <div class="video-placeholder">
+                            <div class="play-icon">▶️</div>
+                            <div class="video-duration">3:15</div>
+                        </div>
+                        <div class="video-info">
+                            <h4>Journal System for Teachers</h4>
+                            <p>How to export and review student journal entries</p>
+                        </div>
+                    </div>
+                    
+                    <div class="video-card">
+                        <div class="video-placeholder">
+                            <div class="play-icon">▶️</div>
+                            <div class="video-duration">1:45</div>
+                        </div>
+                        <div class="video-info">
+                            <h4>Design Tester Widget</h4>
+                            <p>Supporting students with the building features testing tool</p>
+                        </div>
+                    </div>
+                    
+                    <div class="video-card">
+                        <div class="video-placeholder">
+                            <div class="play-icon">▶️</div>
+                            <div class="video-duration">2:00</div>
+                        </div>
+                        <div class="video-info">
+                            <h4>Gallery Moderation</h4>
+                            <p>Best practices for reviewing and approving student work</p>
+                        </div>
+                    </div>
+                    
+                    <div class="video-card">
+                        <div class="video-placeholder">
+                            <div class="play-icon">▶️</div>
+                            <div class="video-duration">2:45</div>
+                        </div>
+                        <div class="video-info">
+                            <h4>Assessment with Rubrics</h4>
+                            <p>Using the data story and design summary rubrics effectively</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Safeguarding Section -->
+            <section id="safety" class="teacher-section safeguarding-section">
+                <div class="section-header">
+                    <h2>🛡️ Safeguarding & Digital Citizenship</h2>
+                    <p>Essential guidance for safe and responsible learning</p>
+                </div>
+                
+                <div class="safeguarding-grid">
+                    <div class="safeguarding-card">
+                        <div class="safeguarding-icon">🔒</div>
+                        <h3>Safety Guidelines</h3>
+                        <div class="safeguarding-content">
+                            <ul>
+                                <li><strong>No personal information:</strong> Students should never share real names, addresses, or personal details</li>
+                                <li><strong>School equipment only:</strong> All activities use school devices and accounts</li>
+                                <li><strong>Teacher supervision:</strong> All online activities require teacher oversight</li>
+                                <li><strong>Safe content:</strong> Pre-approved websites and educational platforms only</li>
+                                <li><strong>Report concerns:</strong> Clear process for students to report uncomfortable situations</li>
+                            </ul>
+                        </div>
+                        <div class="safeguarding-actions">
+                            <button class="btn btn-primary btn-sm" onclick="teacherRoom.downloadGuidelines('safety')">
+                                📥 Download Full Guidelines
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="safeguarding-card" id="permissions">
+                        <div class="safeguarding-icon">📸</div>
+                        <h3>Image Permissions</h3>
+                        <div class="safeguarding-content">
+                            <ul>
+                                <li><strong>Photo consent:</strong> Check permissions before any camera activities</li>
+                                <li><strong>School policy:</strong> Follow your school's image sharing guidelines</li>
+                                <li><strong>Gallery moderation:</strong> All student uploads require teacher approval</li>
+                                <li><strong>No faces:</strong> Encourage focus on work/objects, not people</li>
+                                <li><strong>Copyright respect:</strong> Only use own images or copyright-free resources</li>
+                            </ul>
+                        </div>
+                        <div class="safeguarding-actions">
+                            <button class="btn btn-primary btn-sm" onclick="teacherRoom.downloadPermissionForms()">
+                                📥 Permission Forms
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="safeguarding-card" id="report">
+                        <div class="safeguarding-icon">⚠️</div>
+                        <h3>Report a Concern</h3>
+                        <div class="safeguarding-content">
+                            <p><strong>If a student reports feeling uncomfortable or sees inappropriate content:</strong></p>
+                            <ol>
+                                <li>Take the concern seriously and thank them for reporting</li>
+                                <li>Do not investigate yourself - escalate immediately</li>
+                                <li>Contact your designated safeguarding lead</li>
+                                <li>Document the incident according to school policy</li>
+                                <li>Provide reassurance and support to the student</li>
+                            </ol>
+                        </div>
+                        <div class="safeguarding-actions">
+                            <button class="btn btn-danger btn-sm" onclick="teacherRoom.emergencyContact()">
+                                🚨 Emergency Contact
+                            </button>
+                            <button class="btn btn-secondary btn-sm" onclick="teacherRoom.downloadIncidentForm()">
+                                📋 Incident Form
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gallery Moderation Section -->
+            <section id="gallery-moderation" class="teacher-section">
+                <div class="section-header">
+                    <h2>🖼️ Gallery Moderation</h2>
+                    <p>Review and approve student submissions for the class gallery</p>
+                </div>
+                
+                <div class="moderation-dashboard">
+                    <div class="moderation-stats">
+                        <div class="stat-box">
+                            <div class="stat-number" id="pendingCount">0</div>
+                            <div class="stat-label">Pending Review</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number" id="approvedCount">0</div>
+                            <div class="stat-label">Approved</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number" id="totalCount">0</div>
+                            <div class="stat-label">Total Submissions</div>
+                        </div>
+                    </div>
+                    
+                    <div class="moderation-actions">
+                        <button class="btn btn-primary" onclick="window.location.href='/gallery.html'">
+                            🛡️ Open Gallery Moderation
+                        </button>
+                        <button class="btn btn-ghost" onclick="teacherRoom.refreshModerationStats()">
+                            🔄 Refresh Stats
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-links">
+                    <a href="#safety">Safety Guidelines</a>
+                    <a href="#permissions">Image Permissions</a>
+                    <a href="#report">Report a Concern</a>
+                    <a href="/digital-citizenship.html">Digital Citizenship</a>
+                </div>
+                <div class="footer-info">
+                    <p>&copy; 2024 Nature Power Learning Journey | For Educational Use</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Rubric Modal -->
+    <div id="rubricModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="rubricModalTitle">Rubric Details</h2>
+                <button class="modal-close" id="rubricModalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="rubricModalContent">
+                    <!-- Rubric content will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/progress.js"></script>
+    <script src="js/journal.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/teacher-room.js"></script>
+</body>
+</html>

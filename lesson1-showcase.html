@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 1: Wonder - What is the Power of Nature? | Teacher Showcase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@300;400;500;600;700&family=Google+Sans+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        :root {
+            /* Google Education Color Palette */
+            --google-blue: #4285f4;
+            --google-red: #ea4335;
+            --google-yellow: #fbbc04;
+            --google-green: #34a853;
+            --google-purple: #9c27b0;
+            --google-teal: #00acc1;
+            --google-orange: #ff6d01;
+            --google-pink: #e91e63;
+            
+            /* Gradient Combinations */
+            --gradient-blue: linear-gradient(135deg, #4285f4 0%, #34a853 100%);
+            --gradient-warm: linear-gradient(135deg, #ff6d01 0%, #ea4335 100%);
+            --gradient-cool: linear-gradient(135deg, #00acc1 0%, #9c27b0 100%);
+            --gradient-nature: linear-gradient(135deg, #34a853 0%, #fbbc04 100%);
+            
+            /* Surface Colors */
+            --surface-0: #ffffff;
+            --surface-1: #f8f9fa;
+            --surface-2: #f1f3f4;
+            --surface-elevated: #ffffff;
+            
+            /* Text Colors */
+            --text-primary: #202124;
+            --text-secondary: #5f6368;
+            --text-tertiary: #9aa0a6;
+            
+            /* Shadows */
+            --shadow-1: 0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15);
+            --shadow-2: 0 1px 2px 0 rgba(60,64,67,.3), 0 2px 6px 2px rgba(60,64,67,.15);
+            --shadow-3: 0 4px 8px 3px rgba(60,64,67,.15), 0 1px 3px rgba(60,64,67,.3);
+            --shadow-4: 0 6px 10px 4px rgba(60,64,67,.15), 0 2px 3px rgba(60,64,67,.3);
+            
+            /* Border Radius */
+            --radius-small: 8px;
+            --radius-medium: 12px;
+            --radius-large: 16px;
+            --radius-xl: 20px;
+            
+            /* Spacing */
+            --space-xs: 4px;
+            --space-sm: 8px;
+            --space-md: 16px;
+            --space-lg: 24px;
+            --space-xl: 32px;
+            --space-2xl: 48px;
+            
+            /* Typography */
+            --font-display: 'Google Sans Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-body: 'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, #f8f9fa 0%, #e8f0fe 100%);
+            min-height: 100vh;
+        }
+
+        .page {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-lg);
+        }
+
+        /* Navigation */
+        .lesson-nav {
+            margin-bottom: var(--space-lg);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            color: var(--google-blue);
+            text-decoration: none;
+            font-weight: 500;
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-medium);
+            background: var(--surface-0);
+            box-shadow: var(--shadow-1);
+            transition: all 0.2s ease;
+        }
+
+        .back-link:hover {
+            background: var(--surface-1);
+            box-shadow: var(--shadow-2);
+            transform: translateY(-1px);
+        }
+
+        /* Lesson Page */
+        .lesson-page {
+            background: var(--surface-elevated);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-3);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .lesson-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--gradient-blue);
+        }
+
+        .lesson-header {
+            background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+            padding: var(--space-2xl);
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-lg);
+        }
+
+        .lesson-number {
+            background: var(--gradient-blue);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .lesson-meta h1 {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--space-sm);
+            background: var(--gradient-blue);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .lesson-time {
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+            font-weight: 500;
+        }
+
+        /* Sections */
+        .lesson-section {
+            padding: var(--space-2xl);
+            border-bottom: 1px solid var(--surface-2);
+        }
+
+        .lesson-section:last-child {
+            border-bottom: none;
+        }
+
+        .lesson-section h2 {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--space-lg);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .lesson-section h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--space-md);
+        }
+
+        .lesson-intention {
+            background: var(--gradient-blue);
+            color: white;
+            padding: var(--space-xl);
+            border-radius: var(--radius-large);
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+        }
+
+        .lesson-intention h2 {
+            color: white;
+            margin-bottom: var(--space-md);
+        }
+
+        .lesson-intention p {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        /* Slides */
+        .lesson-slides iframe {
+            width: 100%;
+            height: 569px;
+            border: none;
+            border-radius: var(--radius-large);
+            box-shadow: var(--shadow-3);
+            transition: all 0.3s ease;
+        }
+
+        .lesson-slides iframe:hover {
+            box-shadow: var(--shadow-4);
+            transform: translateY(-2px);
+        }
+
+        /* Videos */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .video-card {
+            background: var(--surface-1);
+            border-radius: var(--radius-large);
+            padding: var(--space-lg);
+            box-shadow: var(--shadow-2);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .video-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-3);
+        }
+
+        .video-card iframe {
+            width: 100%;
+            height: 200px;
+            border: none;
+            border-radius: var(--radius-medium);
+            margin-bottom: var(--space-md);
+        }
+
+        .video-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* Lists */
+        .knowledge-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .knowledge-list li {
+            background: var(--surface-1);
+            padding: var(--space-lg);
+            border-radius: var(--radius-medium);
+            margin-bottom: var(--space-md);
+            border-left: 4px solid var(--google-blue);
+            position: relative;
+            padding-left: var(--space-xl);
+            transition: all 0.2s ease;
+            box-shadow: var(--shadow-1);
+        }
+
+        .knowledge-list li:hover {
+            transform: translateX(4px);
+            box-shadow: var(--shadow-2);
+        }
+
+        .knowledge-list li::before {
+            content: '✓';
+            position: absolute;
+            left: var(--space-md);
+            top: var(--space-md);
+            color: var(--google-blue);
+            font-weight: bold;
+        }
+
+        /* Differentiation */
+        .lesson-differentiation {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+        }
+
+        .support, .extend {
+            background: var(--surface-1);
+            padding: var(--space-xl);
+            border-radius: var(--radius-large);
+            box-shadow: var(--shadow-2);
+            transition: all 0.3s ease;
+        }
+
+        .support:hover, .extend:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-3);
+        }
+
+        .support {
+            border-left: 4px solid var(--google-green);
+        }
+
+        .extend {
+            border-left: 4px solid var(--google-orange);
+        }
+
+        .support h3, .extend h3 {
+            color: var(--text-primary);
+            margin-bottom: var(--space-md);
+        }
+
+        /* Curriculum Links */
+        .lesson-curriculum .knowledge-list li {
+            border-left-color: var(--google-purple);
+        }
+
+        /* Reflection */
+        .lesson-reflection {
+            background: linear-gradient(135deg, #e8f5e8 0%, #e3f2fd 100%);
+        }
+
+        .lesson-reflection .btn {
+            background: var(--gradient-blue);
+            color: white;
+            padding: var(--space-md) var(--space-xl);
+            border: none;
+            border-radius: var(--radius-medium);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: var(--shadow-1);
+        }
+
+        .lesson-reflection .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-2);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .page {
+                padding: var(--space-md);
+            }
+
+            .lesson-header {
+                flex-direction: column;
+                text-align: center;
+                padding: var(--space-xl);
+            }
+
+            .lesson-meta h1 {
+                font-size: 2rem;
+            }
+
+            .video-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-md);
+            }
+
+            .lesson-differentiation {
+                grid-template-columns: 1fr;
+                gap: var(--space-lg);
+            }
+
+            .lesson-slides iframe {
+                height: 300px;
+            }
+
+            .lesson-section {
+                padding: var(--space-xl);
+            }
+
+            .knowledge-list li {
+                padding: var(--space-md);
+                margin-bottom: var(--space-sm);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .lesson-meta h1 {
+                font-size: 1.75rem;
+            }
+
+            .lesson-intention p {
+                font-size: 1.25rem;
+            }
+
+            .lesson-slides iframe {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- Navigation -->
+        <div class="lesson-nav">
+            <a href="/index.html#lessons" class="back-link">
+                <span class="material-icons" style="font-size: 18px;">arrow_back</span>
+                All lessons
+            </a>
+        </div>
+
+        <!-- Lesson Page -->
+        <article class="lesson-page">
+            <header class="lesson-header">
+                <span class="lesson-number">1</span>
+                <div class="lesson-meta">
+                    <h1>Wonder: What is the Power of Nature?</h1>
+                    <p class="lesson-time">Approx. 60 mins</p>
+                </div>
+            </header>
+
+            <section class="lesson-intention">
+                <h2>Learning Question (LQ)</h2>
+                <p>What is the power of nature?</p>
+            </section>
+
+            <section class="lesson-section lesson-slides">
+                <h2>
+                    <span class="material-icons">slideshow</span>
+                    Slides
+                </h2>
+                <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQNgaTnBRnythnzzLfkKf4EogtNZEVMhMEV2kz8uu1KG68-c19B5MI-dMVwuicnEecQOTsIJMSd0blE/pubembed?start=false&loop=false&delayms=30000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+            </section>
+
+            <section class="lesson-section lesson-videos">
+                <h2>
+                    <span class="material-icons">play_circle</span>
+                    Quick Clips
+                </h2>
+                <div class="video-grid">
+                    <div class="video-card">
+                        <iframe src="https://www.youtube.com/embed/j1FxNDw50mc" title="Met Office: What is Climate?"></iframe>
+                        <p>Introductory explanation of climate vs weather.</p>
+                    </div>
+                    <div class="video-card">
+                        <iframe src="https://www.youtube.com/embed/XnQy_aKpMcw" title="SciShow Kids: Extreme Weather"></iframe>
+                        <p>Engaging look at Earth's most extreme weather.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section lesson-moments">
+                <h2>
+                    <span class="material-icons">record_voice_over</span>
+                    Teaching Moments
+                </h2>
+                <ul class="knowledge-list">
+                    <li>Pause on Slide 4: Ask "What is the difference between weather and climate?"</li>
+                    <li>Discuss hazards in Singapore (e.g. flash floods, haze) vs the UK (e.g. storms, flooding).</li>
+                    <li>Encourage prediction: "What hazard do you think affects us the most here?"</li>
+                </ul>
+            </section>
+
+            <section class="lesson-section lesson-resources">
+                <h2>
+                    <span class="material-icons">inventory</span>
+                    Resources & Materials
+                </h2>
+                <ul class="knowledge-list">
+                    <li>Card bases × 8</li>
+                    <li>Straws × 200</li>
+                    <li>Tape (masking + duct)</li>
+                    <li>Scissors × class set</li>
+                    <li>Bin liners (for "rain test" later)</li>
+                </ul>
+            </section>
+
+            <section class="lesson-section lesson-demo">
+                <h2>
+                    <span class="material-icons">science</span>
+                    Demo Task
+                </h2>
+                <p>Teacher models strengthening a paper tower by folding a card into a triangle and reinforcing a corner. Invite predictions: "What will happen in strong wind?"</p>
+            </section>
+
+            <section class="lesson-section lesson-differentiation">
+                <h2>
+                    <span class="material-icons">accessibility</span>
+                    Adaptive Teaching
+                </h2>
+                <div class="support">
+                    <h3>Support (ESL / low confidence)</h3>
+                    <ul>
+                        <li>Sentence stems: "I think the hazard is … because …"</li>
+                        <li>Visual word bank with icons: flood 🌊, wind 💨, storm ⛈.</li>
+                    </ul>
+                </div>
+                <div class="extend">
+                    <h3>Extend (Greater Depth)</h3>
+                    <ul>
+                        <li>Compare climate hazards between Singapore and another country of their choice.</li>
+                        <li>Create a digital sketch of a hazard-resistant building using Google Drawings.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="lesson-section lesson-curriculum">
+                <h2>
+                    <span class="material-icons">school</span>
+                    Curriculum Links
+                </h2>
+                <ul class="knowledge-list">
+                    <li><strong>Geography:</strong> Identify human and physical features; hazard awareness.</li>
+                    <li><strong>Science:</strong> Observe weather changes, use evidence to make predictions.</li>
+                    <li><strong>Design & Technology:</strong> Design purposeful, functional, strong structures.</li>
+                    <li><strong>Computing:</strong> Use digital tools to present ideas clearly.</li>
+                </ul>
+            </section>
+
+            <section class="lesson-section lesson-reflection">
+                <h2>
+                    <span class="material-icons">assignment_turned_in</span>
+                    Reflection & Evidence
+                </h2>
+                <p>Teacher prompts: "What did we learn today about the power of nature?"</p>
+                <p>Class record: take a photo of the towers and upload to SeeSaw. Encourage short voice notes from pupils describing what they built.</p>
+                <button class="btn btn-primary">Download Teacher Pack (PDF)</button>
+            </section>
+        </article>
+    </div>
+</body>
+</html>

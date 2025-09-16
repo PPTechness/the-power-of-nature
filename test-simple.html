@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Navigation Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .nav-item { 
+            display: inline-block; 
+            padding: 10px 20px; 
+            margin: 5px; 
+            background: #007bff; 
+            color: white; 
+            cursor: pointer; 
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .nav-item.active { background: #28a745; }
+        .panel { 
+            display: none; 
+            padding: 20px; 
+            border: 2px solid #ddd; 
+            margin-top: 20px; 
+            border-radius: 5px;
+        }
+        .panel.active { display: block; }
+        .carousel-item {
+            display: none;
+            padding: 20px;
+            background: #f8f9fa;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .carousel-item.active { display: block; }
+        .dot {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            background: #ccc;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        .dot.active { background: #007bff; }
+    </style>
+</head>
+<body>
+    <h1>Simple Navigation Test</h1>
+    
+    <nav>
+        <a href="#panel-see" class="nav-item active" data-tab="see">Present</a>
+        <a href="#panel-think" class="nav-item" data-tab="think">Question</a>
+        <a href="#panel-make" class="nav-item" data-tab="make">Do</a>
+        <a href="#panel-share" class="nav-item" data-tab="share">Wrap</a>
+    </nav>
+    
+    <div id="panel-see" class="panel active">
+        <h2>Present Panel</h2>
+        <p>This is the Present panel content.</p>
+        
+        <h3>Simple Carousel Test</h3>
+        <div class="carousel-item active">🌊 Slide 1: Tsunami Speed</div>
+        <div class="carousel-item">🌋 Slide 2: Volcano Lightning</div>
+        <div class="carousel-item">⚡ Slide 3: Lightning Heat</div>
+        
+        <div>
+            <span class="dot active" data-slide="0"></span>
+            <span class="dot" data-slide="1"></span>
+            <span class="dot" data-slide="2"></span>
+        </div>
+    </div>
+    
+    <div id="panel-think" class="panel">
+        <h2>Question Panel</h2>
+        <p>This is the Question panel content.</p>
+    </div>
+    
+    <div id="panel-make" class="panel">
+        <h2>Do Panel</h2>
+        <p>This is the Do panel content.</p>
+    </div>
+    
+    <div id="panel-share" class="panel">
+        <h2>Wrap Panel</h2>
+        <p>This is the Wrap panel content.</p>
+    </div>
+
+    <script>
+        console.log('🚀 Starting simple test...');
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('📄 DOM loaded');
+            
+            // Get elements
+            const navItems = document.querySelectorAll('.nav-item');
+            const panels = document.querySelectorAll('.panel');
+            const carouselItems = document.querySelectorAll('.carousel-item');
+            const dots = document.querySelectorAll('.dot');
+            
+            console.log('Found:', {
+                navItems: navItems.length,
+                panels: panels.length,
+                carouselItems: carouselItems.length,
+                dots: dots.length
+            });
+            
+            // Panel switching
+            function switchToPanel(panelId) {
+                console.log('Switching to:', panelId);
+                
+                // Hide all panels
+                panels.forEach(panel => {
+                    panel.classList.remove('active');
+                    console.log('Removed active from:', panel.id);
+                });
+                
+                // Show target panel
+                const target = document.getElementById(panelId);
+                if (target) {
+                    target.classList.add('active');
+                    console.log('Added active to:', panelId);
+                }
+                
+                // Update nav
+                navItems.forEach(nav => nav.classList.remove('active'));
+                const targetNav = document.querySelector(`[data-tab="${panelId.replace('panel-', '')}"]`);
+                if (targetNav) {
+                    targetNav.classList.add('active');
+                }
+            }
+            
+            // Set up navigation
+            navItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const tab = this.dataset.tab;
+                    console.log('Nav clicked:', tab);
+                    switchToPanel(`panel-${tab}`);
+                });
+            });
+            
+            // Simple carousel
+            let currentSlide = 0;
+            
+            function showSlide(index) {
+                console.log('Showing slide:', index);
+                carouselItems.forEach((item, i) => {
+                    item.classList.toggle('active', i === index);
+                });
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === index);
+                });
+                currentSlide = index;
+            }
+            
+            // Dot clicks
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', function() {
+                    console.log('Dot clicked:', index);
+                    showSlide(index);
+                });
+            });
+            
+            // Auto-advance carousel
+            setInterval(() => {
+                const next = (currentSlide + 1) % carouselItems.length;
+                showSlide(next);
+            }, 3000);
+            
+            console.log('✅ Simple test initialized');
+        });
+    </script>
+</body>
+</html>

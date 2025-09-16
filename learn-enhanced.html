@@ -1,0 +1,2354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wonder Launch • Nature Power Learning</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <style>
+    :root {
+      /* Revolutionary Color System */
+      --primary-50: #f0f9ff;
+      --primary-100: #e0f2fe;
+      --primary-200: #bae6fd;
+      --primary-500: #0ea5e9;
+      --primary-600: #0284c7;
+      --primary-700: #0369a1;
+      --primary-900: #0c4a6e;
+      
+      --nature-50: #f0fdf4;
+      --nature-100: #dcfce7;
+      --nature-200: #bbf7d0;
+      --nature-500: #22c55e;
+      --nature-600: #16a34a;
+      --nature-700: #15803d;
+      
+      --sunset-50: #fff7ed;
+      --sunset-100: #ffedd5;
+      --sunset-200: #fed7aa;
+      --sunset-500: #f97316;
+      --sunset-600: #ea580c;
+      
+      --purple-50: #faf5ff;
+      --purple-100: #f3e8ff;
+      --purple-200: #e9d5ff;
+      --purple-500: #a855f7;
+      --purple-600: #9333ea;
+      
+      /* Revolutionary Gradients */
+      --gradient-hero: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      --gradient-nature: linear-gradient(135deg, #22c55e 0%, #16a34a 50%, #0ea5e9 100%);
+      --gradient-sunset: linear-gradient(135deg, #f97316 0%, #ea580c 50%, #dc2626 100%);
+      --gradient-ocean: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 50%, #6366f1 100%);
+      --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.1) 100%);
+      
+      /* Surface System */
+      --surface-primary: rgba(255, 255, 255, 0.95);
+      --surface-secondary: rgba(255, 255, 255, 0.8);
+      --surface-glass: rgba(255, 255, 255, 0.15);
+      --surface-elevated: rgba(255, 255, 255, 0.98);
+      
+      /* Advanced Shadows */
+      --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-large: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      --shadow-glow: 0 0 0 1px rgba(255, 255, 255, 0.05), 0 0 50px rgba(59, 130, 246, 0.15);
+      
+      /* Typography Scale */
+      --text-xs: 0.75rem;
+      --text-sm: 0.875rem;
+      --text-base: 1rem;
+      --text-lg: 1.125rem;
+      --text-xl: 1.25rem;
+      --text-2xl: 1.5rem;
+      --text-3xl: 1.875rem;
+      --text-4xl: 2.25rem;
+      --text-5xl: 3rem;
+      
+      /* Advanced Spacing */
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-20: 5rem;
+      
+      /* Border Radius System */
+      --radius-sm: 0.375rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-xl: 1rem;
+      --radius-2xl: 1.5rem;
+      --radius-3xl: 2rem;
+      --radius-full: 9999px;
+      
+      /* Font Families */
+      --font-display: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+      
+      /* Animation Variables */
+      --duration-fast: 150ms;
+      --duration-normal: 300ms;
+      --duration-slow: 500ms;
+      --ease-out: cubic-bezier(0.0, 0.0, 0.2, 1);
+      --ease-in-out: cubic-bezier(0.4, 0.0, 0.2, 1);
+      --ease-spring: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-body);
+      line-height: 1.6;
+      color: #1f2937;
+      background: linear-gradient(135deg, #0f766e 0%, #0369a1 35%, #1e40af 70%, #5b21b6 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Revolutionary Animated Background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(120, 219, 226, 0.2) 0%, transparent 50%);
+      z-index: -2;
+      animation: backgroundShift 20s ease-in-out infinite;
+    }
+
+    @keyframes backgroundShift {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      50% { transform: scale(1.05) rotate(1deg); }
+    }
+
+    /* Floating Orbs */
+    .floating-orbs {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
+      backdrop-filter: blur(20px);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .orb:nth-child(1) { 
+      width: 80px; height: 80px; top: 20%; left: 10%; 
+      animation-delay: 0s; animation-duration: 8s;
+    }
+    .orb:nth-child(2) { 
+      width: 120px; height: 120px; top: 60%; right: 15%; 
+      animation-delay: 2s; animation-duration: 10s;
+    }
+    .orb:nth-child(3) { 
+      width: 60px; height: 60px; bottom: 30%; left: 20%; 
+      animation-delay: 4s; animation-duration: 7s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
+    }
+
+    /* Revolutionary Main Container */
+    .app-container {
+      display: flex;
+      min-height: 100vh;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Spectacular Floating Sidebar */
+    .floating-sidebar {
+      position: fixed;
+      left: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-4);
+      box-shadow: var(--shadow-xl);
+      transition: all var(--duration-normal) var(--ease-out);
+      pointer-events: auto;
+    }
+
+    .floating-sidebar:hover {
+      transform: translateY(-50%) scale(1.02);
+      box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.3);
+    }
+
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .nav-item {
+      width: 60px;
+      height: 60px;
+      border-radius: var(--radius-xl);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      font-size: var(--text-xl);
+      transition: all var(--duration-normal) var(--ease-spring);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .nav-item:hover::before {
+      left: 100%;
+    }
+
+    .nav-item:hover {
+      transform: scale(1.1);
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-item.active {
+      background: rgba(255, 255, 255, 0.25);
+      transform: scale(1.05);
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+    }
+
+    .nav-tooltip {
+      position: absolute;
+      left: 80px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-md);
+      font-size: var(--text-sm);
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: all var(--duration-normal) var(--ease-out);
+    }
+
+    .nav-item:hover .nav-tooltip {
+      opacity: 1;
+      transform: translateY(-50%) translateX(10px);
+    }
+
+    /* Revolutionary Main Content */
+    .main-content {
+      flex: 1;
+      margin-left: 80px;
+      padding: 80px var(--space-6) var(--space-6) var(--space-6);
+      min-height: 100vh;
+      width: calc(100% - 80px);
+      max-width: none;
+    }
+
+    /* Spectacular Hero Section */
+    .lesson-hero {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: var(--radius-3xl);
+      padding: var(--space-12) var(--space-8);
+      margin-bottom: var(--space-10);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-xl);
+      animation: heroEnter 1s var(--ease-out);
+    }
+
+    @keyframes heroEnter {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .lesson-hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 0deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      animation: rotate 20s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-full);
+      color: white;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      margin-bottom: var(--space-6);
+      animation: badgeSlide 0.8s var(--ease-out) 0.3s both;
+    }
+
+    @keyframes badgeSlide {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: var(--text-5xl);
+      font-weight: 800;
+      color: white;
+      margin-bottom: var(--space-4);
+      line-height: 1.2;
+      background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 50%, #e0f2fe 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: titleGlow 0.8s var(--ease-out) 0.5s both;
+    }
+
+    @keyframes titleGlow {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-subtitle {
+      font-size: var(--text-xl);
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: var(--space-8);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      animation: subtitleFade 0.8s var(--ease-out) 0.7s both;
+    }
+
+    @keyframes subtitleFade {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .subject-tags {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      animation: tagsFloat 0.8s var(--ease-out) 0.9s both;
+    }
+
+    @keyframes tagsFloat {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .subject-tag {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: white;
+      padding: var(--space-3) var(--space-5);
+      border-radius: var(--radius-full);
+      font-weight: 600;
+      font-size: var(--text-sm);
+      transition: all var(--duration-normal) var(--ease-out);
+      cursor: pointer;
+    }
+
+    .subject-tag:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Revolutionary Content Panels */
+    .content-section {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: var(--radius-2xl);
+      box-shadow: var(--shadow-large);
+      overflow: hidden;
+      margin-bottom: var(--space-8);
+      animation: sectionSlide 0.6s var(--ease-out) both;
+    }
+
+    @keyframes sectionSlide {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .panel {
+      display: none !important;
+      padding: var(--space-8);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .panel.active {
+      display: block !important;
+      opacity: 1;
+      animation: panelFade 0.4s var(--ease-out);
+    }
+
+    @keyframes panelFade {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Spectacular Cards */
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--space-6);
+      margin-bottom: var(--space-6);
+    }
+
+    .content-card {
+      background: var(--surface-primary);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      box-shadow: var(--shadow-medium);
+      transition: all var(--duration-normal) var(--ease-out);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .content-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient-nature);
+      transform: scaleX(0);
+      transition: transform var(--duration-normal) var(--ease-out);
+    }
+
+    .content-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .content-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-xl);
+      border-color: rgba(34, 197, 94, 0.3);
+    }
+
+    .card-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: var(--radius-xl);
+      background: var(--gradient-nature);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: var(--text-2xl);
+      margin-bottom: var(--space-4);
+      box-shadow: var(--shadow-medium);
+      transition: all var(--duration-normal) var(--ease-spring);
+    }
+
+    .content-card:hover .card-icon {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: var(--shadow-large);
+    }
+
+    .card-title {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: 700;
+      color: #1f2937;
+      margin-bottom: var(--space-3);
+    }
+
+    .card-description {
+      color: #6b7280;
+      margin-bottom: var(--space-4);
+      line-height: 1.6;
+    }
+
+    /* Nature Illustration SVGs */
+    .nature-illustration {
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+      margin: var(--space-4) auto;
+      display: block;
+      opacity: 0.8;
+      transition: all var(--duration-normal) var(--ease-out);
+    }
+
+    .nature-illustration:hover {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+
+    /* Interactive Elements */
+    .interactive-button {
+      background: var(--gradient-ocean);
+      color: white;
+      border: none;
+      padding: var(--space-4) var(--space-8);
+      border-radius: var(--radius-full);
+      font-weight: 600;
+      font-size: var(--text-base);
+      cursor: pointer;
+      transition: all var(--duration-normal) var(--ease-spring);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-medium);
+    }
+
+    .interactive-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.6s;
+    }
+
+    .interactive-button:hover::before {
+      left: 100%;
+    }
+
+    .interactive-button:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-large);
+    }
+
+    .interactive-button:active {
+      transform: translateY(0);
+    }
+
+    /* Leaflet Map Enhancements */
+    .map-container {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-large);
+      height: 300px;
+      position: relative;
+    }
+
+    .map-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--gradient-glass);
+      border-radius: var(--radius-xl);
+      z-index: 1000;
+      pointer-events: none;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    /* Form Elements */
+    .form-input {
+      width: 100%;
+      padding: var(--space-4);
+      border: 2px solid rgba(34, 197, 94, 0.2);
+      border-radius: var(--radius-lg);
+      font-size: var(--text-base);
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      transition: all var(--duration-normal) var(--ease-out);
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--nature-500);
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.1);
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    /* Upload Zone */
+    .upload-zone {
+      border: 2px dashed rgba(34, 197, 94, 0.3);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8);
+      text-align: center;
+      background: rgba(34, 197, 94, 0.05);
+      transition: all var(--duration-normal) var(--ease-out);
+      cursor: pointer;
+    }
+
+    .upload-zone:hover {
+      border-color: var(--nature-500);
+      background: rgba(34, 197, 94, 0.1);
+      transform: scale(1.02);
+    }
+
+    .upload-zone.drag-over {
+      border-color: var(--nature-600);
+      background: rgba(34, 197, 94, 0.15);
+      transform: scale(1.05);
+    }
+
+    /* Teacher Section */
+    .teacher-section {
+      background: var(--gradient-sunset);
+      color: white;
+      border-radius: var(--radius-2xl);
+      padding: var(--space-8);
+      margin-top: var(--space-10);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .teacher-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 180deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      animation: rotate 15s linear infinite reverse;
+      z-index: -1;
+    }
+
+    /* Progress Indicators */
+    .progress-indicator {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: var(--space-3) var(--space-5);
+      border-radius: var(--radius-full);
+      backdrop-filter: blur(10px);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transition: all var(--duration-normal) var(--ease-out);
+    }
+
+    .progress-dot.completed {
+      background: var(--nature-500);
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
+      animation: dotPulse 1s var(--ease-out);
+    }
+
+    @keyframes dotPulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+        /* Navigation Breadcrumb */
+        .breadcrumb-nav {
+          display: flex;
+          align-items: center;
+          gap: var(--space-3);
+          margin-bottom: var(--space-6);
+          padding: var(--space-4) var(--space-6);
+          background: rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(20px);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          border-radius: var(--radius-xl);
+          animation: breadcrumbSlide 0.6s var(--ease-out);
+        }
+
+        @keyframes breadcrumbSlide {
+          from { opacity: 0; transform: translateY(-20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        .nav-link {
+          display: flex;
+          align-items: center;
+          gap: var(--space-2);
+          color: #1f2937;
+          text-decoration: none;
+          padding: var(--space-2) var(--space-3);
+          border-radius: var(--radius-lg);
+          transition: all var(--duration-normal) var(--ease-out);
+          font-weight: 500;
+        }
+
+        .nav-link:hover {
+          color: #3b82f6;
+          background: rgba(255, 255, 255, 0.1);
+          text-decoration: none;
+        }
+
+        .nav-separator {
+          color: rgba(255, 255, 255, 0.5);
+        }
+
+        .nav-current {
+          color: white;
+          font-weight: 600;
+        }
+
+        /* Enhanced Tooltips */
+        .subject-tag {
+          position: relative;
+          cursor: help;
+        }
+
+        .subject-tag[data-tooltip]:hover::after {
+          content: attr(data-tooltip);
+          position: absolute;
+          bottom: 120%;
+          left: 50%;
+          transform: translateX(-50%);
+          background: rgba(0, 0, 0, 0.9);
+          color: white;
+          padding: var(--space-3) var(--space-4);
+          border-radius: var(--radius-lg);
+          font-size: var(--text-sm);
+          white-space: nowrap;
+          z-index: 1000;
+          opacity: 0;
+          animation: tooltipShow 0.3s var(--ease-out) forwards;
+        }
+
+        .nav-item[data-tooltip]:hover .nav-tooltip {
+          opacity: 1;
+          transform: translateY(-50%) translateX(10px);
+        }
+
+        @keyframes tooltipShow {
+          from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+          to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+          .floating-sidebar {
+            display: none;
+          }
+          
+          .main-content {
+            margin-left: 0;
+            padding: var(--space-4);
+          }
+          
+          .lesson-hero {
+            padding: var(--space-8) var(--space-4);
+          }
+          
+          .hero-title {
+            font-size: var(--text-3xl);
+          }
+          
+          .content-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .breadcrumb-nav {
+            flex-wrap: wrap;
+            gap: var(--space-2);
+          }
+        }
+
+        /* Enhanced Phenomena Carousel Styles */
+        .phenomena-carousel {
+          position: relative;
+          height: 280px;
+          margin: var(--space-4) 0;
+          overflow: hidden;
+          border-radius: var(--radius-xl);
+          background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(14, 165, 233, 0.1) 100%);
+          border: 1px solid rgba(34, 197, 94, 0.2);
+        }
+
+        .phenomenon-item {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          padding: var(--space-6);
+          opacity: 0;
+          transform: translateX(100%);
+          transition: all var(--duration-slow) var(--ease-out);
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+        }
+
+        .phenomenon-item.active {
+          opacity: 1;
+          transform: translateX(0);
+        }
+
+        .phenomenon-icon {
+          font-size: 3rem;
+          margin-bottom: var(--space-3);
+          animation: iconBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes iconBounce {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
+        }
+
+        .phenomenon-item h4 {
+          font-size: var(--text-xl);
+          font-weight: 700;
+          color: #1f2937;
+          margin-bottom: var(--space-2);
+        }
+
+        .phenomenon-item p {
+          font-size: var(--text-base);
+          color: #4b5563;
+          margin-bottom: var(--space-3);
+          line-height: 1.6;
+        }
+
+        .phenomenon-fact {
+          font-size: var(--text-sm);
+          color: var(--nature-600);
+          font-weight: 600;
+          background: rgba(34, 197, 94, 0.1);
+          padding: var(--space-2) var(--space-4);
+          border-radius: var(--radius-full);
+          border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .carousel-controls {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-top: var(--space-4);
+        }
+
+        .carousel-btn {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          border: none;
+          background: var(--gradient-nature);
+          color: white;
+          font-size: var(--text-xl);
+          cursor: pointer;
+          transition: all var(--duration-normal) var(--ease-out);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .carousel-btn:hover {
+          transform: scale(1.1);
+          box-shadow: var(--shadow-medium);
+        }
+
+        .carousel-dots {
+          display: flex;
+          gap: var(--space-2);
+        }
+
+        .dot {
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          background: rgba(34, 197, 94, 0.3);
+          cursor: pointer;
+          transition: all var(--duration-normal) var(--ease-out);
+        }
+
+        .dot.active {
+          background: var(--nature-500);
+          transform: scale(1.2);
+        }
+
+        /* Video Tabs */
+        .video-tabs {
+          display: flex;
+          gap: var(--space-2);
+          margin-bottom: var(--space-4);
+        }
+
+        .video-tab {
+          flex: 1;
+          padding: var(--space-2) var(--space-3);
+          border: 1px solid rgba(14, 165, 233, 0.3);
+          background: rgba(14, 165, 233, 0.1);
+          color: var(--primary-600);
+          border-radius: var(--radius-lg);
+          cursor: pointer;
+          transition: all var(--duration-normal) var(--ease-out);
+          font-size: var(--text-sm);
+          font-weight: 500;
+        }
+
+        .video-tab.active {
+          background: var(--primary-500);
+          color: white;
+          border-color: var(--primary-500);
+        }
+
+        /* Vocabulary Grid */
+        .vocab-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: var(--space-3);
+          margin-top: var(--space-4);
+        }
+
+        .vocab-card {
+          background: rgba(168, 85, 247, 0.1);
+          border: 1px solid rgba(168, 85, 247, 0.3);
+          border-radius: var(--radius-lg);
+          padding: var(--space-4);
+          transition: all var(--duration-normal) var(--ease-out);
+          cursor: help;
+        }
+
+        .vocab-card:hover {
+          background: rgba(168, 85, 247, 0.15);
+          transform: translateY(-2px);
+          box-shadow: var(--shadow-medium);
+        }
+
+        .vocab-card h4 {
+          font-size: var(--text-lg);
+          font-weight: 700;
+          color: var(--purple-500);
+          margin-bottom: var(--space-2);
+        }
+
+        .vocab-card p {
+          font-size: var(--text-sm);
+          color: #4b5563;
+          line-height: 1.5;
+        }
+
+        /* Enhanced Icon Tooltips */
+        .card-icon[data-tooltip]:hover::after {
+          content: attr(data-tooltip);
+          position: absolute;
+          bottom: 120%;
+          left: 50%;
+          transform: translateX(-50%);
+          background: rgba(0, 0, 0, 0.9);
+          color: white;
+          padding: var(--space-3) var(--space-4);
+          border-radius: var(--radius-lg);
+          font-size: var(--text-sm);
+          white-space: nowrap;
+          z-index: 1000;
+          opacity: 0;
+          animation: tooltipShow 0.3s var(--ease-out) forwards;
+          max-width: 250px;
+          white-space: normal;
+          text-align: center;
+        }
+
+        /* Talk Moves Styles */
+        .talk-moves {
+          display: flex;
+          flex-direction: column;
+          gap: var(--space-3);
+        }
+
+        .move-item {
+          background: rgba(34, 197, 94, 0.1);
+          border: 1px solid rgba(34, 197, 94, 0.3);
+          border-radius: var(--radius-lg);
+          padding: var(--space-3);
+          font-size: var(--text-sm);
+        }
+
+        .move-item strong {
+          color: var(--nature-600);
+          display: block;
+          margin-bottom: var(--space-1);
+        }
+
+        /* Quick Tallies Styles */
+        .quick-tallies {
+          display: flex;
+          flex-direction: column;
+          gap: var(--space-4);
+        }
+
+        .tally-item {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: var(--space-3);
+          background: rgba(14, 165, 233, 0.1);
+          border: 1px solid rgba(14, 165, 233, 0.3);
+          border-radius: var(--radius-lg);
+        }
+
+        .tally-item label {
+          font-weight: 600;
+          color: #1f2937;
+          flex: 1;
+        }
+
+        .tally-counter {
+          display: flex;
+          align-items: center;
+          gap: var(--space-2);
+        }
+
+        .tally-counter button {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          border: 1px solid var(--primary-500);
+          background: white;
+          color: var(--primary-500);
+          cursor: pointer;
+          transition: all var(--duration-normal) var(--ease-out);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 600;
+        }
+
+        .tally-counter button:hover {
+          background: var(--primary-500);
+          color: white;
+        }
+
+        .tally-counter span {
+          min-width: 24px;
+          text-align: center;
+          font-weight: 700;
+          color: var(--primary-600);
+        }
+
+        /* Map Instructions */
+        .map-instructions {
+          margin-top: var(--space-3);
+          padding: var(--space-3);
+          background: rgba(249, 115, 22, 0.1);
+          border: 1px solid rgba(249, 115, 22, 0.3);
+          border-radius: var(--radius-lg);
+          font-size: var(--text-sm);
+        }
+
+        /* Pre-check Questions */
+        .precheck-questions {
+          display: flex;
+          flex-direction: column;
+          gap: var(--space-4);
+        }
+
+        .question-item {
+          padding: var(--space-4);
+          background: rgba(168, 85, 247, 0.1);
+          border: 1px solid rgba(168, 85, 247, 0.3);
+          border-radius: var(--radius-lg);
+        }
+
+        .question-item h4 {
+          font-size: var(--text-base);
+          font-weight: 600;
+          color: #1f2937;
+          margin-bottom: var(--space-3);
+        }
+
+        .question-options {
+          display: flex;
+          flex-direction: column;
+          gap: var(--space-2);
+        }
+
+        .question-options label {
+          display: flex;
+          align-items: center;
+          gap: var(--space-2);
+          cursor: pointer;
+          font-size: var(--text-sm);
+        }
+
+        .question-options input[type="radio"] {
+          margin: 0;
+        }
+
+        /* Quick Check Explanation */
+        .quick-check-explanation {
+          background: rgba(59, 130, 246, 0.1);
+          border: 1px solid rgba(59, 130, 246, 0.3);
+          border-radius: var(--radius-lg);
+          padding: var(--space-4);
+          margin-bottom: var(--space-4);
+          font-size: var(--text-sm);
+        }
+
+        .quick-check-explanation h4 {
+          color: var(--primary-600);
+          margin-bottom: var(--space-3);
+          font-size: var(--text-base);
+        }
+
+        .quick-check-explanation p {
+          margin-bottom: var(--space-2);
+          line-height: 1.5;
+        }
+
+        .quick-check-explanation ul {
+          margin-left: var(--space-4);
+          margin-top: var(--space-2);
+        }
+
+        .quick-check-explanation li {
+          margin-bottom: var(--space-1);
+          font-style: italic;
+          color: #4b5563;
+        }
+    /* Slides Styling */
+    .slides-container {
+      margin-top: var(--space-4);
+    }
+
+    .slides-embed {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-medium);
+      margin-bottom: var(--space-4);
+      background: var(--surface-secondary);
+    }
+
+    .slides-embed iframe {
+      border-radius: var(--radius-lg);
+      transition: all 0.3s ease;
+    }
+
+    .slides-embed:hover iframe {
+      transform: scale(1.02);
+    }
+
+    .slides-actions {
+      display: flex;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+
+    .slides-actions .btn {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-3) var(--space-4);
+      border-radius: var(--radius-lg);
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .slides-actions .btn-primary {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: white;
+      border: none;
+    }
+
+    .slides-actions .btn-primary:hover {
+      background: linear-gradient(135deg, #16a34a, #15803d);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .slides-actions .btn-secondary {
+      background: var(--surface-secondary);
+      color: var(--text-primary);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .slides-actions .btn-secondary:hover {
+      background: var(--surface-tertiary);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-small);
+    }
+
+    .slides-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: var(--space-3);
+      padding: var(--space-4);
+      background: rgba(34, 197, 94, 0.1);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(34, 197, 94, 0.2);
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .feature-item .material-icons-round {
+      color: #22c55e;
+      font-size: 1.2rem;
+    }
+
+    /* Slides Panel Enhancements */
+    .content-card.full-width {
+      grid-column: 1 / -1;
+    }
+
+    .slides-instructions {
+      margin: var(--space-4) 0;
+      padding: var(--space-4);
+      background: rgba(34, 197, 94, 0.1);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(34, 197, 94, 0.2);
+    }
+
+    .instruction-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--space-3);
+    }
+
+    .instruction-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: 0.9rem;
+      color: var(--text-primary);
+    }
+
+    .instruction-item .material-icons-round {
+      color: #22c55e;
+      font-size: 1.1rem;
+    }
+
+    .slides-embed iframe {
+      height: 600px !important;
+    }
+
+    .slides-actions .btn-tertiary {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-primary);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .slides-actions .btn-tertiary:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .slides-features h4 {
+      margin: var(--space-4) 0 var(--space-3) 0;
+      color: var(--text-primary);
+      font-size: 1.1rem;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--space-3);
+    }
+
+    /* Premium Lesson Navigation */
+    .lesson-navigation {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 0 0 24px 24px;
+      padding: var(--space-3) var(--space-6);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      margin-left: 80px;
+      width: calc(100% - 80px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+
+    .lesson-selector {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-2);
+    }
+
+    .lesson-dot {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #0ea5e9, #3b82f6);
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.85rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 4px 16px rgba(59, 130, 246, 0.2);
+    }
+
+    .lesson-dot:hover {
+      background: linear-gradient(135deg, #3b82f6, #6366f1);
+      transform: scale(1.05) translateY(-2px);
+      box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
+    }
+
+    .lesson-dot.active {
+      background: linear-gradient(135deg, #059669, #0d9488);
+      color: white;
+      border-color: rgba(255, 255, 255, 0.5);
+      box-shadow: 0 8px 24px rgba(5, 150, 105, 0.3);
+    }
+
+
+    .lesson-nav-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #1f2937;
+      gap: var(--space-4);
+    }
+
+    .lesson-nav-left {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+    }
+
+    .home-link {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-3);
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-lg);
+      text-decoration: none;
+      color: var(--text-primary);
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .home-link:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .lesson-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: 0.9rem;
+    }
+
+    .course-title {
+      color: #6b7280;
+      font-size: 0.875rem;
+    }
+
+    .separator {
+      color: var(--text-tertiary);
+    }
+
+    .lesson-title {
+      color: #1f2937;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+
+    .lesson-nav-right {
+      display: flex;
+      gap: var(--space-3);
+    }
+
+    .nav-btn {
+      display: flex;
+      align-items: center;
+      gap: var(--space-1);
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .nav-btn.prev-lesson {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-secondary);
+    }
+
+    .nav-btn.prev-lesson:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .nav-btn.next-lesson {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: white;
+    }
+
+    .nav-btn.next-lesson:hover {
+      background: linear-gradient(135deg, #16a34a, #15803d);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    @media (max-width: 768px) {
+      .lesson-nav-content {
+        flex-direction: column;
+        gap: var(--space-3);
+      }
+
+      .lesson-nav-left {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-2);
+      }
+
+      .lesson-breadcrumb {
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating Orbs Background -->
+  <div class="floating-orbs">
+    <div class="orb"></div>
+    <div class="orb"></div>
+    <div class="orb"></div>
+  </div>
+
+  <div class="app-container">
+    <!-- Premium Lesson Navigation -->
+    <div class="lesson-navigation">
+      <div class="lesson-selector">
+        <a href="/learn-enhanced.html?lesson=L1" class="lesson-dot active" title="Lesson 1">1</a>
+        <a href="/learn-lesson2.html?lesson=L2" class="lesson-dot" title="Lesson 2">2</a>
+        <a href="/learn-lesson3.html?lesson=L3" class="lesson-dot" title="Lesson 3">3</a>
+        <a href="/learn-lesson4.html?lesson=L4" class="lesson-dot" title="Lesson 4">4</a>
+        <a href="/learn-lesson5.html?lesson=L5" class="lesson-dot" title="Lesson 5">5</a>
+        <a href="/learn-lesson6.html?lesson=L6" class="lesson-dot" title="Lesson 6">6</a>
+        <a href="/learn-lesson7.html?lesson=L7" class="lesson-dot" title="Lesson 7">7</a>
+        <a href="/learn-lesson8.html?lesson=L8" class="lesson-dot" title="Lesson 8">8</a>
+        <a href="/learn-lesson9.html?lesson=L9" class="lesson-dot" title="Lesson 9">9</a>
+        <a href="/learn-lesson10.html?lesson=L10" class="lesson-dot" title="Lesson 10">10</a>
+      </div>
+      
+      <div class="lesson-nav-content">
+        <div class="lesson-nav-left">
+          <a href="/" class="nav-link home-link">
+            <span class="material-icons-round">home</span>
+            <span>Course Overview</span>
+          </a>
+          <div class="lesson-breadcrumb">
+            <span class="course-title">Y4 Nature's Power</span>
+            <span class="separator">→</span>
+            <span class="lesson-title">Wonder: What is the Power of Nature?</span>
+          </div>
+        </div>
+        
+        <div class="lesson-nav-right">
+          <a href="/Lesson1.html" class="nav-btn teacher-pack">
+            <span class="material-icons-round">description</span>
+            <span>Teacher Pack</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Revolutionary Floating Sidebar -->
+    <nav class="floating-sidebar">
+      <div class="sidebar-nav">
+        <a href="#panel-see" class="nav-item active" data-tab="see">
+          <span class="material-icons-round">visibility</span>
+          <div class="nav-tooltip">Present</div>
+        </a>
+        <a href="#panel-think" class="nav-item" data-tab="think">
+          <span class="material-icons-round">psychology</span>
+          <div class="nav-tooltip">Question</div>
+        </a>
+        <a href="#panel-make" class="nav-item" data-tab="make">
+          <span class="material-icons-round">construction</span>
+          <div class="nav-tooltip">Do</div>
+        </a>
+        <a href="#panel-share" class="nav-item" data-tab="share">
+          <span class="material-icons-round">forum</span>
+          <div class="nav-tooltip">Wrap</div>
+        </a>
+        <a href="#panel-slides" class="nav-item" data-tab="slides">
+          <span class="material-icons-round">slideshow</span>
+          <div class="nav-tooltip">Slides</div>
+        </a>
+      </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+
+
+      <!-- Spectacular Hero Section -->
+      <div class="lesson-hero">
+        <div class="hero-badge">
+          <span class="material-icons-round">eco</span>
+          <span>Lesson 1 • 45 minutes</span>
+        </div>
+        <h1 class="hero-title">Wonder: What is the Power of Nature?</h1>
+        <p class="hero-subtitle">Explore the incredible forces that shape our world through interactive discovery and hands-on investigation</p>
+        <div class="subject-tags">
+          <div class="subject-tag" data-tooltip="Understanding places, environments, and weather patterns">
+            🌍 Geography
+          </div>
+          <div class="subject-tag" data-tooltip="Investigating natural phenomena and forces">
+            🔬 Science
+          </div>
+          <div class="subject-tag" data-tooltip="Designing and building weather-resistant structures">
+            🛠️ D&T
+          </div>
+          <div class="subject-tag" data-tooltip="Using technology to collect and analyze data">
+            💻 Computing
+          </div>
+        </div>
+      </div>
+
+      <!-- Revolutionary Content Sections -->
+      <div class="content-section">
+        <!-- Present Panel -->
+        <section id="panel-see" class="panel active" role="tabpanel">
+          <div class="content-grid">
+            <div class="content-card">
+              <div class="card-icon" data-tooltip="Amazing natural phenomena that demonstrate nature's incredible power">
+                <span class="material-icons-round">landscape</span>
+              </div>
+              <h3 class="card-title">Nature Phenomena Carousel</h3>
+              <p class="card-description">Discover 6 mind-blowing natural phenomena that showcase nature's incredible power</p>
+              
+              <!-- Enhanced Phenomena Carousel -->
+              <div class="phenomena-carousel">
+                <div class="phenomenon-item active" data-index="0">
+                  <div class="phenomenon-icon">🌊</div>
+                  <h4>Tsunami Speed</h4>
+                  <p>In deep ocean, a tsunami can move as fast as a jet plane - up to 800 km/h!</p>
+                  <div class="phenomenon-fact">That's faster than most cars on a motorway!</div>
+                </div>
+                <div class="phenomenon-item" data-index="1">
+                  <div class="phenomenon-icon">🌋</div>
+                  <h4>Volcano Lightning</h4>
+                  <p>Ash clouds can create spectacular lightning storms above erupting volcanoes!</p>
+                  <div class="phenomenon-fact">The ash particles rub together and create static electricity!</div>
+                </div>
+                <div class="phenomenon-item" data-index="2">
+                  <div class="phenomenon-icon">⚡</div>
+                  <h4>Lightning Heat</h4>
+                  <p>A lightning bolt can be 5 times hotter than the surface of the Sun!</p>
+                  <div class="phenomenon-fact">That's about 30,000°C compared to the Sun's 5,500°C!</div>
+                </div>
+                <div class="phenomenon-item" data-index="3">
+                  <div class="phenomenon-icon">🌈</div>
+                  <h4>Full Circle Rainbow</h4>
+                  <p>From an aircraft, you can see a rainbow as a complete circle!</p>
+                  <div class="phenomenon-fact">We usually only see half because the ground blocks the bottom!</div>
+                </div>
+                <div class="phenomenon-item" data-index="4">
+                  <div class="phenomenon-icon">🌪️</div>
+                  <h4>Tornado Winds</h4>
+                  <p>The strongest tornadoes can have winds over 480 km/h!</p>
+                  <div class="phenomenon-fact">That's strong enough to lift cars and destroy buildings!</div>
+                </div>
+                <div class="phenomenon-item" data-index="5">
+                  <div class="phenomenon-icon">❄️</div>
+                  <h4>Snowflake Uniqueness</h4>
+                  <p>No two snowflakes are exactly the same - each one is unique!</p>
+                  <div class="phenomenon-fact">They form differently depending on temperature and humidity!</div>
+                </div>
+                <div class="phenomenon-item" data-index="6">
+                  <div class="phenomenon-icon">🌊</div>
+                  <h4>Ocean Currents</h4>
+                  <p>Ocean currents can move water thousands of kilometers across the globe!</p>
+                  <div class="phenomenon-fact">The Gulf Stream carries warm water from the Caribbean to Europe!</div>
+                </div>
+                <div class="phenomenon-item" data-index="7">
+                  <div class="phenomenon-icon">🌪️</div>
+                  <h4>Dust Devils</h4>
+                  <p>Small whirlwinds called dust devils can form on hot, dry days!</p>
+                  <div class="phenomenon-fact">They're like mini tornadoes but much weaker and more common!</div>
+                </div>
+              </div>
+              
+              <div class="carousel-controls">
+                <button class="carousel-btn prev" data-direction="-1">‹</button>
+                <div class="carousel-dots">
+                  <span class="dot active" data-index="0"></span>
+                  <span class="dot" data-index="1"></span>
+                  <span class="dot" data-index="2"></span>
+                  <span class="dot" data-index="3"></span>
+                  <span class="dot" data-index="4"></span>
+                  <span class="dot" data-index="5"></span>
+                  <span class="dot" data-index="6"></span>
+                  <span class="dot" data-index="7"></span>
+                </div>
+                <button class="carousel-btn next" data-direction="1">›</button>
+              </div>
+              
+              
+            </div>
+
+            <div class="content-card">
+              <div class="card-icon" data-tooltip="Educational videos to introduce key concepts">
+                <span class="material-icons-round">play_circle</span>
+              </div>
+              <h3 class="card-title">Essential Video Clips</h3>
+              <p class="card-description">Two key videos that explain weather vs climate - essential for understanding!</p>
+              
+              <div class="video-tabs">
+                <button class="video-tab active" onclick="showVideo(0)">Met Office: What is Climate?</button>
+                <button class="video-tab" onclick="showVideo(1)">SciShow Kids: Extreme Weather</button>
+              </div>
+              
+              <div class="video-container">
+                <iframe id="video-frame" width="100%" height="200" style="border-radius: 12px;" 
+                  src="https://www.youtube.com/embed/j1FxNDw50mc" 
+                  title="Met Office: What is climate?"
+                  allowfullscreen>
+                </iframe>
+              </div>
+              
+              <div class="video-notes">
+                <p><strong>Teaching moment:</strong> Pause after each video to ask: "What's the difference between weather and climate?"</p>
+              </div>
+            </div>
+
+            <div class="content-card">
+              <div class="card-icon" data-tooltip="Key vocabulary students must learn">
+                <span class="material-icons-round">library_books</span>
+              </div>
+              <h3 class="card-title">Essential Vocabulary</h3>
+              <p class="card-description">Key terms students must understand - display these prominently!</p>
+              
+              <div class="vocab-grid">
+                <div class="vocab-card" data-term="weather">
+                  <h4>Weather</h4>
+                  <p>What's happening outside right now - sunny, rainy, hot, cold</p>
+                </div>
+                <div class="vocab-card" data-term="climate">
+                  <h4>Climate</h4>
+                  <p>What the weather is usually like in a place over many years</p>
+                </div>
+                <div class="vocab-card" data-term="structure">
+                  <h4>Structure</h4>
+                  <p>Something that's built to be strong and stable</p>
+                </div>
+                <div class="vocab-card" data-term="reinforce">
+                  <h4>Reinforce</h4>
+                  <p>To make something stronger</p>
+                </div>
+                <div class="vocab-card" data-term="hazard">
+                  <h4>Natural Hazard</h4>
+                  <p>A dangerous natural event like storms, floods, or earthquakes</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="content-card">
+              <div class="card-icon" data-tooltip="Your teaching notes for this section">
+                <span class="material-icons-round">edit_note</span>
+              </div>
+              <h3 class="card-title">Teaching Notes</h3>
+              <p class="card-description">Add your observations and adaptations for this class</p>
+              
+              <div class="teaching-notes">
+                <textarea class="form-input" rows="4" 
+                  placeholder="Add your teaching notes here... What worked well? What would you change? Student responses?"
+                  id="present-notes"></textarea>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Question Panel -->
+        <section id="panel-think" class="panel" role="tabpanel">
+          <div class="content-grid">
+            <div class="content-card">
+              <div class="card-icon" data-tooltip="Structured discussion techniques for deeper thinking">
+                <span class="material-icons-round">forum</span>
+              </div>
+              <h3 class="card-title">Talk Moves</h3>
+              <p class="card-description">Guide meaningful classroom discussions with proven techniques</p>
+              
+              <div class="talk-moves">
+                <div class="move-item">
+                  <strong>Turn and Talk:</strong> "Share your thinking with a partner about what you just saw"
+                </div>
+                <div class="move-item">
+                  <strong>Revoice:</strong> "So you're saying that nature's power is..."
+                </div>
+                <div class="move-item">
+                  <strong>Wait Time:</strong> Allow 3-5 seconds for thinking before calling on students
+                </div>
+                <div class="move-item">
+                  <strong>Probe:</strong> "Can you tell me more about that?"
+                </div>
+                <div class="move-item">
+                  <strong>Connect:</strong> "How does that relate to what we learned about weather vs climate?"
+                </div>
+              </div>
+            </div>
+
+            <div class="content-card">
+              <div class="card-icon" data-tooltip="Quick assessment of student understanding">
+                <span class="material-icons-round">analytics</span>
+              </div>
+              <h3 class="card-title">Quick Check - Hands Up</h3>
+              <p class="card-description">Track student understanding with simple tallies</p>
+              
+              <div class="quick-check-explanation">
+                <h4>How to use this tool:</h4>
+                <p><strong>Ask your class a question</strong> (e.g., "Who understands the difference between weather and climate?")</p>
+                <p><strong>Count hands raised</strong> and use the + button to tally the number</p>
+                <p><strong>Track progress</strong> across different topics to see where students need more support</p>
+                <p><strong>Example questions:</strong></p>
+                <ul>
+                  <li>"Raise your hand if you can name a natural hazard"</li>
+                  <li>"Who can explain what makes a structure strong?"</li>
+                  <li>"Show me if you understand weather vs climate"</li>
+                </ul>
+              </div>
+              
+              <div class="quick-tallies">
+                <div class="tally-item">
+                  <label>Weather vs Climate understanding:</label>
+                  <div class="tally-counter">
+                    <button onclick="updateTally('weather', -1)">-</button>
+                    <span id="weather-count">0</span>
+                    <button onclick="updateTally('weather', 1)">+</button>
+                  </div>
+                </div>
+                <div class="tally-item">
+                  <label>Natural hazards knowledge:</label>
+                  <div class="tally-counter">
+                    <button onclick="updateTally('hazards', -1)">-</button>
+                    <span id="hazards-count">0</span>
+                    <button onclick="updateTally('hazards', 1)">+</button>
+                  </div>
+                </div>
+                <div class="tally-item">
+                  <label>Structure design ideas:</label>
+                  <div class="tally-counter">
+                    <button onclick="updateTally('design', -1)">-</button>
+                    <span id="design-count">0</span>
+                    <button onclick="updateTally('design', 1)">+</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="content-card">
+              <div class="card-icon" data-tooltip="Interactive map for identifying local weather hazards">
+                <span class="material-icons-round">map</span>
+              </div>
+              <h3 class="card-title">Singapore Hazards Map</h3>
+              <p class="card-description">Click to add pins showing local weather hazards and their locations</p>
+              
+              <div class="map-container">
+                <div id="hazard-map" style="height: 300px; width: 100%;"></div>
+              </div>
+              
+              <div class="map-instructions">
+                <p><strong>Instructions:</strong> Click on the map to add pins for local weather hazards. Include: storm surge areas, flood zones, high wind areas, or other natural hazards you know about in Singapore.</p>
+              </div>
+            </div>
+
+            <div class="content-card">
+              <div class="card-icon" data-tooltip="Pre-lesson assessment to gauge prior knowledge">
+                <span class="material-icons-round">quiz</span>
+              </div>
+              <h3 class="card-title">Pre-Check Questions</h3>
+              <p class="card-description">Quick assessment of what students already know</p>
+              
+              <div class="precheck-questions">
+                <div class="question-item">
+                  <h4>1. What's the difference between weather and climate?</h4>
+                  <div class="question-options">
+                    <label><input type="radio" name="q1" value="a"> Weather is short-term, climate is long-term</label>
+                    <label><input type="radio" name="q1" value="b"> They're the same thing</label>
+                    <label><input type="radio" name="q1" value="c"> Climate is short-term, weather is long-term</label>
+                  </div>
+                </div>
+                <div class="question-item">
+                  <h4>2. Name one way nature shows its power:</h4>
+                  <input type="text" class="form-input" placeholder="Your answer here...">
+                </div>
+                <div class="question-item">
+                  <h4>3. What makes a structure strong against weather?</h4>
+                  <input type="text" class="form-input" placeholder="Your ideas...">
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Do Panel -->
+        <section id="panel-make" class="panel" role="tabpanel">
+          <div class="content-grid">
+            <div class="content-card">
+              <div class="card-icon">
+                <span class="material-icons-round">engineering</span>
+              </div>
+              <h3 class="card-title">Materials & Setup</h3>
+              <p class="card-description">Everything you need for the build challenge</p>
+              
+              <ul class="materials-list">
+                <li>Paper cups (2 per team)</li>
+                <li>Cardboard squares (A4 size)</li>
+                <li>Tape and scissors</li>
+                <li>Straws (5 per team)</li>
+                <li>Cotton balls (for wind simulation)</li>
+              </ul>
+            </div>
+
+            <div class="content-card">
+              <div class="card-icon">
+                <span class="material-icons-round">checklist</span>
+              </div>
+              <h3 class="card-title">Success Criteria</h3>
+              <p class="card-description">Clear goals for student achievement</p>
+              
+              <div class="success-criteria">
+                <div class="criteria-item">✓ Structure stands independently</div>
+                <div class="criteria-item">✓ Has one weather-resistant feature</div>
+                <div class="criteria-item">✓ Feature is clearly labeled</div>
+                <div class="criteria-item">✓ Can explain design choice</div>
+              </div>
+            </div>
+
+            <div class="content-card">
+              <div class="card-icon">
+                <span class="material-icons-round">timer</span>
+              </div>
+              <h3 class="card-title">Build Timer</h3>
+              <p class="card-description">15-minute focused building session</p>
+              
+              <div class="timer-display">
+                <div class="timer-time" id="timer-display">15:00</div>
+                <div class="timer-controls">
+                  <button class="interactive-button" id="timer-start">Start Building</button>
+                  <button class="interactive-button" id="timer-reset">Reset</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Wrap Panel -->
+        <section id="panel-share" class="panel" role="tabpanel">
+          <div class="content-grid">
+            <div class="content-card">
+              <div class="card-icon">
+                <span class="material-icons-round">groups</span>
+              </div>
+              <h3 class="card-title">Whole-class Wrap</h3>
+              <p class="card-description">Bring the learning together</p>
+              
+              <div class="wrap-activities">
+                <div class="activity-item">
+                  <strong>Gallery Walk:</strong> 2 minutes to view all structures
+                </div>
+                <div class="activity-item">
+                  <strong>Share & Compare:</strong> 3 teams present their features
+                </div>
+                <div class="activity-item">
+                  <strong>Vocabulary Recap:</strong> Quick definitions check
+                </div>
+              </div>
+            </div>
+
+            <div class="content-card">
+              <div class="card-icon">
+                <span class="material-icons-round">psychology</span>
+              </div>
+              <h3 class="card-title">Teacher Reflection</h3>
+              <p class="card-description">Notes for next time</p>
+              
+              <div class="reflection-notes">
+                <textarea class="form-input" rows="4" placeholder="What went well? What would you change?"></textarea>
+              </div>
+            </div>
+
+            <div class="content-card">
+              <div class="card-icon">
+                <span class="material-icons-round">download</span>
+              </div>
+              <h3 class="card-title">Download Teacher Pack</h3>
+              <p class="card-description">Complete lesson documentation</p>
+              
+              <a href="/Lesson1.html" class="interactive-button" target="_blank">
+                <span class="material-icons-round">file_download</span>
+                Open Teacher Pack
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slides Panel -->
+        <section id="panel-slides" class="panel" role="tabpanel">
+          <div class="content-grid">
+            <div class="content-card full-width">
+              <div class="card-icon" data-tooltip="Interactive lesson slides for projector display">
+                <span class="material-icons-round">slideshow</span>
+              </div>
+              <h3 class="card-title">Lesson Slides - Wonder: What is the Power of Nature?</h3>
+              <p class="card-description">Complete lesson presentation optimised for classroom projection</p>
+              
+              <div class="slides-instructions">
+                <div class="instruction-grid">
+                  <div class="instruction-item">
+                    <span class="material-icons-round">play_circle</span>
+                    <span>Click slides below to start presentation</span>
+                  </div>
+                  <div class="instruction-item">
+                    <span class="material-icons-round">fullscreen</span>
+                    <span>Use "Full Screen" for projection</span>
+                  </div>
+                  <div class="instruction-item">
+                    <span class="material-icons-round">edit</span>
+                    <span>Click "Edit" to customise content</span>
+                  </div>
+                  <div class="instruction-item">
+                    <span class="material-icons-round">timer</span>
+                    <span>Built-in timers and polls included</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="slides-container">
+                <div class="slides-embed">
+                  <iframe 
+                    src="https://docs.google.com/presentation/d/e/2PACX-1vQNgaTnBRnythnzzLfkKf4EogtNZEVMhMEV2kz8uu1KG68-c19B5MI-dMVwuicnEecQOTsIJMSd0blE/pubembed?start=false&loop=false&delayms=3000"
+                    width="100%" 
+                    height="600" 
+                    frameborder="0" 
+                    allowfullscreen="true" 
+                    mozallowfullscreen="true" 
+                    webkitallowfullscreen="true">
+                  </iframe>
+                </div>
+                
+                <div class="slides-actions">
+                  <a href="https://docs.google.com/presentation/d/1AqJg_yFXlZ3wJMkVioi--bqGr2rAgBrgEO9CDUGhIG0/present" 
+                     target="_blank" 
+                     rel="noopener noreferrer"
+                     class="btn btn-primary">
+                    <span class="material-icons-round">open_in_new</span>
+                    Open in Full Screen
+                  </a>
+                  <a href="https://docs.google.com/presentation/d/1AqJg_yFXlZ3wJMkVioi--bqGr2rAgBrgEO9CDUGhIG0/edit" 
+                     target="_blank" 
+                     rel="noopener noreferrer"
+                     class="btn btn-secondary">
+                    <span class="material-icons-round">edit</span>
+                    Edit Slides
+                  </a>
+                  <a href="#panel-see" 
+                     class="btn btn-tertiary"
+                     onclick="switchPanel('panel-see')">
+                    <span class="material-icons-round">arrow_back</span>
+                    Back to Present
+                  </a>
+                </div>
+              </div>
+
+              <div class="slides-features">
+                <h4>What's Included in These Slides:</h4>
+                <div class="feature-grid">
+                  <div class="feature-item">
+                    <span class="material-icons-round">timer</span>
+                    <span><strong>Embedded Timers:</strong> 15-minute building timer, 5-minute reflection</span>
+                  </div>
+                  <div class="feature-item">
+                    <span class="material-icons-round">poll</span>
+                    <span><strong>Interactive Polls:</strong> Quick thumbs up/down, multiple choice questions</span>
+                  </div>
+                  <div class="feature-item">
+                    <span class="material-icons-round">image</span>
+                    <span><strong>High-Quality Visuals:</strong> Phenomena images, diagrams, real examples</span>
+                  </div>
+                  <div class="feature-item">
+                    <span class="material-icons-round">accessibility</span>
+                    <span><strong>Accessibility:</strong> Large fonts, high contrast, screen reader friendly</span>
+                  </div>
+                  <div class="feature-item">
+                    <span class="material-icons-round">psychology</span>
+                    <span><strong>Talk Moves:</strong> Built-in discussion prompts and sentence starters</span>
+                  </div>
+                  <div class="feature-item">
+                    <span class="material-icons-round">school</span>
+                    <span><strong>Differentiation:</strong> Support slides and extension activities included</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Teacher Banner -->
+      <div class="teacher-section">
+        <h2>🎯 Teacher Mode Active</h2>
+        <p>This lesson is optimized for teacher presentation and classroom management. All pupil data is stored locally on your device.</p>
+      </div>
+    </main>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    console.log('🚀 NATURE LEARNING - WORKING VERSION');
+    
+    // Add visible indicator
+    setTimeout(() => {
+      const indicator = document.createElement('div');
+      indicator.style.cssText = 'position: fixed; top: 10px; right: 10px; background: #00ff00; color: black; padding: 10px 15px; border-radius: 5px; z-index: 9999; font-weight: bold; box-shadow: 0 4px 8px rgba(0,0,0,0.3);';
+      indicator.textContent = '✅ LESSON PAGE FIXED';
+      document.body.appendChild(indicator);
+      setTimeout(() => indicator.remove(), 4000);
+    }, 100);
+    
+    // Global variables
+    let currentPanel = 'panel-see';
+    let map = null;
+    let carouselTimer;
+    
+    // Simple panel switching (proven to work)
+    function switchPanel(panelId) {
+      console.log('🎯 Switching to:', panelId);
+      
+      // Hide all panels
+      document.querySelectorAll('.panel').forEach(panel => {
+        panel.classList.remove('active');
+        panel.style.display = 'none';
+      });
+      
+      // Show target panel
+      const target = document.getElementById(panelId);
+      if (target) {
+        target.classList.add('active');
+        target.style.display = 'block';
+        currentPanel = panelId;
+        console.log('✅ Panel shown:', panelId);
+      } else {
+        console.log('❌ Panel not found:', panelId);
+        return;
+      }
+      
+      // Update navigation
+      document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+      const activeNav = document.querySelector(`[data-tab="${panelId.replace('panel-', '')}"]`);
+      if (activeNav) {
+        activeNav.classList.add('active');
+      }
+      
+      // Initialize map for Question panel
+      if (panelId === 'panel-think' && !map) {
+        setTimeout(initMap, 100);
+      }
+    }
+    
+    // Simple carousel (proven to work)
+    function initCarousel() {
+      console.log('🎠 Initializing carousel...');
+      
+      const items = document.querySelectorAll('.phenomenon-item');
+      const dots = document.querySelectorAll('.dot');
+      const prevBtn = document.querySelector('.carousel-btn.prev');
+      const nextBtn = document.querySelector('.carousel-btn.next');
+      
+      console.log('Found:', items.length, 'items,', dots.length, 'dots');
+      
+      if (items.length === 0) return;
+      
+      let currentSlide = 0;
+      
+      function showSlide(index) {
+        // Hide all items
+        items.forEach((item, i) => {
+          if (i === index) {
+            item.style.opacity = '1';
+            item.style.transform = 'translateX(0)';
+            item.classList.add('active');
+          } else {
+            item.style.opacity = '0';
+            item.style.transform = 'translateX(100%)';
+            item.classList.remove('active');
+          }
+        });
+        
+        // Update dots
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === index);
+        });
+        
+        currentSlide = index;
+        console.log('📺 Showing slide:', index);
+      }
+      
+      // Dot clicks
+      dots.forEach((dot, index) => {
+        dot.onclick = function() {
+          showSlide(index);
+          restartTimer();
+        };
+      });
+      
+      // Button clicks
+      if (prevBtn) {
+        prevBtn.onclick = function() {
+          const prev = (currentSlide - 1 + items.length) % items.length;
+          showSlide(prev);
+          restartTimer();
+        };
+      }
+      
+      if (nextBtn) {
+        nextBtn.onclick = function() {
+          const next = (currentSlide + 1) % items.length;
+          showSlide(next);
+          restartTimer();
+        };
+      }
+      
+      // Auto-advance timer
+      function startTimer() {
+        carouselTimer = setInterval(() => {
+          const next = (currentSlide + 1) % items.length;
+          showSlide(next);
+        }, 4000);
+      }
+      
+      function restartTimer() {
+        clearInterval(carouselTimer);
+        setTimeout(startTimer, 2000);
+      }
+      
+      // Initialize
+      showSlide(0);
+      setTimeout(startTimer, 1000);
+      console.log('✅ Carousel initialized');
+    }
+    
+    // Initialize everything when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('📄 DOM Ready - Setting up navigation');
+      
+      // Set up navigation clicks
+      document.querySelectorAll('.nav-item').forEach(item => {
+        item.addEventListener('click', function(e) {
+          e.preventDefault();
+          const tab = this.dataset.tab;
+          if (tab) {
+            console.log('🖱️ Nav clicked:', tab);
+            switchPanel(`panel-${tab}`);
+            window.location.hash = `panel-${tab}`;
+          }
+        });
+      });
+      
+      // Handle hash changes for direct URLs
+      window.addEventListener('hashchange', function() {
+        const hash = window.location.hash;
+        if (hash.startsWith('#panel-')) {
+          switchPanel(hash.substring(1));
+        }
+      });
+      
+      // Initialize with hash or default
+      const hash = window.location.hash;
+      if (hash.startsWith('#panel-')) {
+        switchPanel(hash.substring(1));
+      } else {
+        switchPanel('panel-see');
+      }
+      
+      // Initialize carousel
+      setTimeout(initCarousel, 100);
+      
+      console.log('✅ System initialized');
+    });
+    
+    // Initialize Leaflet Map
+    function initMap() {
+      console.log('🗺️ Initializing map...');
+      if (map) return;
+      
+      const mapContainer = document.getElementById('hazard-map');
+      if (!mapContainer) return;
+      
+      try {
+        map = L.map('hazard-map').setView([1.3521, 103.8198], 11);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+        
+        // Add Singapore landmarks
+        L.marker([1.3521, 103.8198]).addTo(map)
+          .bindPopup('Singapore City Centre');
+          
+        // Add click handler for adding hazard pins
+        map.on('click', function(e) {
+          const lat = e.latlng.lat.toFixed(4);
+          const lng = e.latlng.lng.toFixed(4);
+          
+          L.marker([lat, lng]).addTo(map)
+            .bindPopup(`Hazard at ${lat}, ${lng}`)
+            .openPopup();
+        });
+        
+        console.log('✅ Map initialized');
+      } catch (error) {
+        console.error('❌ Map failed:', error);
+      }
+    }
+    
+    // Additional utilities
+    document.addEventListener('DOMContentLoaded', function() {
+      // Timer functionality
+      const timerDisplay = document.getElementById('timer-display');
+      const startBtn = document.getElementById('timer-start');
+      const resetBtn = document.getElementById('timer-reset');
+      
+      if (timerDisplay && startBtn && resetBtn) {
+        let timeLeft = 15 * 60;
+        let timerInterval;
+        
+        function updateTimerDisplay() {
+          const minutes = Math.floor(timeLeft / 60);
+          const seconds = timeLeft % 60;
+          timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+        
+        startBtn.onclick = function() {
+          if (!timerInterval) {
+            timerInterval = setInterval(() => {
+              timeLeft--;
+              updateTimerDisplay();
+              
+              if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+                alert('🎉 Building time complete!');
+                timeLeft = 15 * 60;
+                updateTimerDisplay();
+              }
+            }, 1000);
+            
+            startBtn.textContent = 'Timer Running...';
+            startBtn.disabled = true;
+          }
+        };
+        
+        resetBtn.onclick = function() {
+          clearInterval(timerInterval);
+          timerInterval = null;
+          timeLeft = 15 * 60;
+          updateTimerDisplay();
+          startBtn.textContent = 'Start Building';
+          startBtn.disabled = false;
+        };
+        
+        updateTimerDisplay();
+      }
+      
+      // Quick Tallies System
+      window.updateTally = function(type, change) {
+        const tallies = { weather: 0, hazards: 0, design: 0 };
+        tallies[type] = Math.max(0, tallies[type] + change);
+        const element = document.getElementById(`${type}-count`);
+        if (element) {
+          element.textContent = tallies[type];
+        }
+      };
+      
+      // Video switching
+      const videoUrls = [
+        'https://www.youtube.com/embed/j1FxNDw50mc',
+        'https://www.youtube.com/embed/XnQy_aKpMcw'
+      ];
+
+      window.showVideo = function(index) {
+        const videoFrame = document.getElementById('video-frame');
+        const videoTabs = document.querySelectorAll('.video-tab');
+        
+        if (videoFrame && videoUrls[index]) {
+          videoTabs.forEach(tab => tab.classList.remove('active'));
+          if (videoTabs[index]) {
+            videoTabs[index].classList.add('active');
+          }
+          videoFrame.src = videoUrls[index];
+        }
+      };
+    });
+    
+    // Make functions globally accessible
+    window.switchPanel = switchPanel;
+  </script>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Citizenship - Be Safe, Be Kind, Be Smart | Harness the Power of Nature</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/digital-citizenship.css">
+    <link rel="stylesheet" href="css/google-style.css">
+    <link rel="stylesheet" href="css/visual-enhancements.css">
+    <link rel="stylesheet" href="css/layout-perfection.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="nav-header">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="/" class="logo">
+                    <div class="logo-icon">🌱</div>
+                    <span>Nature Power</span>
+                </a>
+                <nav class="nav-links">
+                    <a href="/learn.html">Learn</a>
+                    <a href="/digital-citizenship.html" class="active">Digital Citizenship</a>
+                    <a href="/build.html">Build</a>
+                    <a href="/gallery.html">Gallery</a>
+                    <a href="/teacher.html">Teacher Room</a>
+                </nav>
+            </div>
+            <div class="nav-right">
+                <div class="search-container">
+                    <button class="search-toggle" aria-label="Search">🔍</button>
+                    <input type="search" class="search-input" placeholder="Search..." aria-label="Search">
+                </div>
+                <div class="mode-toggle">
+                    <button id="modeToggle" class="mode-btn">
+                        <span class="mode-text">Student</span>
+                        <div class="toggle-indicator"></div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="dc-hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Be safe. Be kind. Be smart online.</h1>
+                    <p class="hero-subtitle">Let's practise choices you might face online.</p>
+                    <div class="hero-icon">🛡️❤️🧠</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scenario Cards Section -->
+        <section class="scenarios-section">
+            <div class="container">
+                <h2 class="section-title">Practice Real Situations</h2>
+                <div class="scenarios-grid">
+                    
+                    <!-- Scenario 1: Respect & Photos -->
+                    <div class="scenario-card" data-scenario="photos">
+                        <div class="scenario-icon">📸</div>
+                        <h3 class="scenario-title">Respect & Photos</h3>
+                        <p class="scenario-description">A friend posts your picture without asking. What's a respectful choice?</p>
+                        <button class="btn btn-primary scenario-btn">Practice this scenario</button>
+                    </div>
+
+                    <!-- Scenario 2: Strangers in Chats -->
+                    <div class="scenario-card" data-scenario="strangers">
+                        <div class="scenario-icon">💬</div>
+                        <h3 class="scenario-title">Strangers in Chats</h3>
+                        <p class="scenario-description">Someone asks your name and address. What do you do?</p>
+                        <button class="btn btn-primary scenario-btn">Practice this scenario</button>
+                    </div>
+
+                    <!-- Scenario 3: Truth or Trick -->
+                    <div class="scenario-card" data-scenario="truth">
+                        <div class="scenario-icon">🔍</div>
+                        <h3 class="scenario-title">Truth or Trick?</h3>
+                        <p class="scenario-description">A post says '25 chocolate bars make you smarter.' True or false?</p>
+                        <button class="btn btn-primary scenario-btn">Practice this scenario</button>
+                    </div>
+
+                    <!-- Scenario 4: Screen Balance -->
+                    <div class="scenario-card" data-scenario="balance">
+                        <div class="scenario-icon">⏰</div>
+                        <h3 class="scenario-title">Screen Balance</h3>
+                        <p class="scenario-description">It's been '10 minutes' for an hour. What helps you stop?</p>
+                        <button class="btn btn-primary scenario-btn">Practice this scenario</button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Golden Rules Section -->
+        <section class="golden-rules-section">
+            <div class="container">
+                <div class="golden-rules-card">
+                    <h2 class="golden-rules-title">Our Top 3 Golden Rules</h2>
+                    <p class="golden-rules-subtitle">Create your class rules for safe and kind online behaviour.</p>
+                    
+                    <div class="rules-builder">
+                        <div class="rule-input-group">
+                            <label for="rule1">Golden Rule 1:</label>
+                            <input type="text" id="rule1" placeholder="Think before you share." maxlength="60">
+                        </div>
+                        <div class="rule-input-group">
+                            <label for="rule2">Golden Rule 2:</label>
+                            <input type="text" id="rule2" placeholder="Ask before posting photos." maxlength="60">
+                        </div>
+                        <div class="rule-input-group">
+                            <label for="rule3">Golden Rule 3:</label>
+                            <input type="text" id="rule3" placeholder="Balance screens and real life." maxlength="60">
+                        </div>
+                    </div>
+
+                    <div class="poster-preview" id="posterPreview">
+                        <div class="preview-header">
+                            <h3>Digital Citizenship Rules</h3>
+                            <div class="class-info">Class: <span id="classNameDisplay">Demo Class</span></div>
+                        </div>
+                        <div class="preview-rules">
+                            <div class="preview-rule" id="previewRule1">1. Think before you share.</div>
+                            <div class="preview-rule" id="previewRule2">2. Ask before posting photos.</div>
+                            <div class="preview-rule" id="previewRule3">3. Balance screens and real life.</div>
+                        </div>
+                        <div class="preview-footer">
+                            <div class="school-logo">🌱 Nature Power Learning</div>
+                        </div>
+                    </div>
+
+                    <div class="poster-actions">
+                        <button class="btn btn-secondary" id="previewPosterBtn">Preview Poster</button>
+                        <button class="btn btn-accent teacher-only" id="approvePosterBtn">Approve & Download Poster</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Scenario Modal -->
+    <div id="scenarioModal" class="modal">
+        <div class="modal-content scenario-modal">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <div class="scenario-content">
+                <div class="scenario-header">
+                    <div class="scenario-modal-icon" id="modalIcon">📸</div>
+                    <h3 class="scenario-modal-title" id="modalTitle">Scenario Title</h3>
+                </div>
+                <div class="scenario-situation" id="modalSituation">
+                    Scenario description goes here...
+                </div>
+                <div class="scenario-choices" id="modalChoices">
+                    <!-- Choices will be populated by JavaScript -->
+                </div>
+                <div class="scenario-feedback" id="modalFeedback" style="display: none;">
+                    <!-- Feedback will be shown after choice -->
+                </div>
+                <div class="scenario-actions">
+                    <button class="btn btn-accent" id="addToRulesBtn" style="display: none;">Add to Golden Rules</button>
+                    <button class="btn btn-secondary" id="nextScenarioBtn" style="display: none;">Try Another Scenario</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="#safety">Safety & Privacy</a>
+                <a href="#permissions">Image Permissions</a>
+                <a href="#report" class="teacher-only">Report a Concern</a>
+                <a href="#credits">Credits</a>
+            </div>
+            <div class="language-toggle">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="zh">简</button>
+                <button class="lang-btn" data-lang="ms">BM</button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notifications -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+    <script src="js/widgets/digital-citizenship.js"></script>
+    <script src="js/utils/journal.js"></script>
+    <script src="js/utils/toast.js"></script>
+</body>
+</html>

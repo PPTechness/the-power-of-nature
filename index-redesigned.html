@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harness the Power of Nature - Learning Journey</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    
+    <!-- Clean Design System -->
+    <link rel="stylesheet" href="css/tokens.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/accessibility.css">
+    
+    <style>
+        /* Clean Home Page Design - Inspired by Panopto Tool */
+        .home-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            font-family: var(--font-body);
+        }
+
+        /* Hero Section - Clean & Clear */
+        .hero-section {
+            text-align: center;
+            padding: 60px 0 80px;
+            background: linear-gradient(135deg, var(--bg) 0%, var(--bg-soft) 100%);
+            border-radius: 0 0 32px 32px;
+            margin-bottom: 60px;
+        }
+
+        .hero-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 40px;
+            box-shadow: 0 8px 24px rgba(58, 134, 255, 0.2);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--ink);
+            margin: 0 0 16px 0;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: var(--muted);
+            margin: 0 0 40px 0;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.5;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Main Navigation Cards - Wide & Clean */
+        .main-nav-section {
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--ink);
+            text-align: center;
+            margin: 0 0 40px 0;
+        }
+
+        .nav-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .nav-card {
+            background: var(--bg);
+            border: 2px solid #E5E7EB;
+            border-radius: 20px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(17, 24, 39, 0.1);
+            border-color: var(--primary);
+        }
+
+        .nav-card:focus {
+            outline: 3px solid var(--focus);
+            outline-offset: 2px;
+        }
+
+        .nav-card-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 32px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-card.investigate .nav-card-icon {
+            background: linear-gradient(135deg, #3B82F6, #1D4ED8);
+            color: white;
+        }
+
+        .nav-card.design .nav-card-icon {
+            background: linear-gradient(135deg, #F59E0B, #D97706);
+            color: white;
+        }
+
+        .nav-card.communicate .nav-card-icon {
+            background: linear-gradient(135deg, #10B981, #059669);
+            color: white;
+        }
+
+        .nav-card-title {
+            font-family: var(--font-display);
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--ink);
+            margin: 0 0 12px 0;
+        }
+
+        .nav-card-description {
+            font-size: 16px;
+            color: var(--muted);
+            margin: 0 0 20px 0;
+            line-height: 1.5;
+        }
+
+        .nav-card-arrow {
+            font-size: 20px;
+            color: var(--primary);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-card:hover .nav-card-arrow {
+            transform: translateX(4px);
+        }
+
+        /* Wonder Tool Section - Clean Integration */
+        .wonder-section {
+            background: var(--bg-soft);
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 60px;
+            border: 1px solid #E5E7EB;
+        }
+
+        .wonder-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .wonder-title {
+            font-family: var(--font-display);
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--ink);
+            margin: 0 0 8px 0;
+        }
+
+        .wonder-subtitle {
+            font-size: 16px;
+            color: var(--muted);
+            margin: 0;
+        }
+
+        .wonder-widget {
+            background: var(--bg);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid #E5E7EB;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Quick Access Section */
+        .quick-access-section {
+            margin-bottom: 60px;
+        }
+
+        .quick-access-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .quick-access-card {
+            background: var(--bg);
+            border: 1px solid #E5E7EB;
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .quick-access-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+        }
+
+        .quick-access-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .quick-access-title {
+            font-family: var(--font-display);
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--ink);
+            margin: 0 0 8px 0;
+        }
+
+        .quick-access-description {
+            font-size: 14px;
+            color: var(--muted);
+            margin: 0;
+        }
+
+        /* Progress Overview */
+        .progress-overview {
+            background: linear-gradient(135deg, var(--primary), #1D4ED8);
+            color: white;
+            border-radius: 20px;
+            padding: 32px;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .progress-title {
+            font-family: var(--font-display);
+            font-size: 24px;
+            font-weight: 600;
+            margin: 0 0 16px 0;
+        }
+
+        .progress-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .progress-stat {
+            text-align: center;
+        }
+
+        .progress-stat-number {
+            font-size: 32px;
+            font-weight: 700;
+            margin: 0 0 4px 0;
+        }
+
+        .progress-stat-label {
+            font-size: 14px;
+            opacity: 0.9;
+            margin: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 36px;
+            }
+            
+            .hero-subtitle {
+                font-size: 18px;
+            }
+            
+            .nav-cards-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-card {
+                padding: 24px;
+            }
+            
+            .wonder-section {
+                padding: 24px;
+            }
+            
+            .progress-stats {
+                gap: 24px;
+            }
+        }
+
+        /* Accessibility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Focus styles */
+        .nav-card:focus,
+        .quick-access-card:focus {
+            outline: 3px solid var(--focus);
+            outline-offset: 2px;
+        }
+
+        /* Animation for engagement */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .nav-card,
+        .quick-access-card {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .nav-card:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .nav-card:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip Link for Accessibility -->
+    <a href="#main" class="skip-link sr-only">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-container">
+                <div class="header-left">
+                    <a href="/" class="logo">
+                        <div class="logo-icon">🌱</div>
+                        <span>Nature Power</span>
+                    </a>
+                </div>
+                <div class="header-right">
+                    <nav>
+                        <ul class="nav-links">
+                            <li><a href="/learn-enhanced.html">Learn</a></li>
+                            <li><a href="/profile.html">My Progress</a></li>
+                            <li><a href="/teacher.html">Teacher Room</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main" class="home-container">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-icon">🌱</div>
+            <h1 class="hero-title">Harness the Power of Nature</h1>
+            <p class="hero-subtitle">Your 10-week learning journey to become a nature detective, architect, and science communicator!</p>
+            <div class="hero-actions">
+                <a href="/learn-enhanced.html" class="btn btn-primary">Start Learning Journey</a>
+                <a href="/profile.html" class="btn btn-outline">View My Progress</a>
+            </div>
+        </section>
+
+        <!-- Main Navigation Cards -->
+        <section class="main-nav-section">
+            <h2 class="section-title">Your Learning Adventure</h2>
+            <div class="nav-cards-grid">
+                <div class="nav-card investigate" onclick="window.location.href='/learn-enhanced.html#L1'" tabindex="0" role="button" aria-label="Start investigating nature">
+                    <div class="nav-card-icon">🔍</div>
+                    <h3 class="nav-card-title">Investigate</h3>
+                    <p class="nav-card-description">Become a data detective! Compare places, spot weather patterns, and ask amazing questions about how nature works.</p>
+                    <div class="nav-card-arrow">→</div>
+                </div>
+
+                <div class="nav-card design" onclick="window.location.href='/learn-enhanced.html#L9'" tabindex="0" role="button" aria-label="Start designing solutions">
+                    <div class="nav-card-icon">🏗️</div>
+                    <h3 class="nav-card-title">Design</h3>
+                    <p class="nav-card-description">Become an architect & engineer! Create, build, and test amazing homes that work with nature, not against it.</p>
+                    <div class="nav-card-arrow">→</div>
+                </div>
+
+                <div class="nav-card communicate" onclick="window.location.href='/learn-enhanced.html#L10'" tabindex="0" role="button" aria-label="Start communicating findings">
+                    <div class="nav-card-icon">📢</div>
+                    <h3 class="nav-card-title">Communicate</h3>
+                    <p class="nav-card-description">Become a science communicator! Share your brilliant ideas and inspire others with your discoveries.</p>
+                    <div class="nav-card-arrow">→</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Wonder Tool Section -->
+        <section class="wonder-section">
+            <div class="wonder-header">
+                <h2 class="wonder-title">Today's Wonder</h2>
+                <p class="wonder-subtitle">What will you discover today?</p>
+            </div>
+            <div class="wonder-widget">
+                <div id="wonder-slider-widget">
+                    <div style="text-align: center; padding: 20px;">
+                        <div style="font-size: 48px; margin-bottom: 16px;">🤔</div>
+                        <h3 style="color: var(--ink); margin: 0 0 12px 0;">Loading your wonder...</h3>
+                        <p style="color: var(--muted); margin: 0;">Get ready to explore amazing nature questions!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Access Section -->
+        <section class="quick-access-section">
+            <h2 class="section-title">Quick Access</h2>
+            <div class="quick-access-grid">
+                <div class="quick-access-card" onclick="window.location.href='/learn-enhanced.html'" tabindex="0" role="button">
+                    <div class="quick-access-icon">📚</div>
+                    <h3 class="quick-access-title">All Lessons</h3>
+                    <p class="quick-access-description">Continue your learning journey</p>
+                </div>
+
+                <div class="quick-access-card" onclick="window.location.href='/profile.html'" tabindex="0" role="button">
+                    <div class="quick-access-icon">🏆</div>
+                    <h3 class="quick-access-title">My Badges</h3>
+                    <p class="quick-access-description">View your achievements</p>
+                </div>
+
+                <div class="quick-access-card" onclick="window.location.href='/teacher.html'" tabindex="0" role="button">
+                    <div class="quick-access-icon">👨‍🏫</div>
+                    <h3 class="quick-access-title">Teacher Room</h3>
+                    <p class="quick-access-description">Resources for teachers</p>
+                </div>
+
+                <div class="quick-access-card" onclick="window.location.href='/gallery.html'" tabindex="0" role="button">
+                    <div class="quick-access-icon">🖼️</div>
+                    <h3 class="quick-access-title">Gallery</h3>
+                    <p class="quick-access-description">See class creations</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progress Overview -->
+        <section class="progress-overview">
+            <h2 class="progress-title">Your Learning Progress</h2>
+            <div class="progress-stats">
+                <div class="progress-stat">
+                    <div class="progress-stat-number" id="lessons-completed">0</div>
+                    <div class="progress-stat-label">Lessons Completed</div>
+                </div>
+                <div class="progress-stat">
+                    <div class="progress-stat-number" id="badges-earned">0</div>
+                    <div class="progress-stat-label">Badges Earned</div>
+                </div>
+                <div class="progress-stat">
+                    <div class="progress-stat-number" id="xp-points">0</div>
+                    <div class="progress-stat-label">XP Points</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-links">
+                    <a href="/teacher.html#safety">Safety & Privacy</a>
+                    <a href="/teacher.html#permissions">Image Permissions</a>
+                    <a href="/teacher.html#report">Report a Concern</a>
+                </div>
+                <div class="footer-info">
+                    <p>&copy; 2024 Nature Power Learning Journey | Clean Design for Young Learners</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/progress.js"></script>
+    <script src="js/badges.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/i18n.js"></script>
+
+    <script>
+        // Load progress data and update display
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                const progress = JSON.parse(localStorage.getItem('np_progress')) || {
+                    lessonStatus: {},
+                    xp: 0,
+                    badges: {}
+                };
+
+                // Update progress stats
+                const completedLessons = Object.values(progress.lessonStatus).filter(status => status === 'complete').length;
+                const earnedBadges = Object.keys(progress.badges).length;
+
+                document.getElementById('lessons-completed').textContent = completedLessons;
+                document.getElementById('badges-earned').textContent = earnedBadges;
+                document.getElementById('xp-points').textContent = progress.xp || 0;
+
+                // Add keyboard navigation for cards
+                document.querySelectorAll('.nav-card, .quick-access-card').forEach(card => {
+                    card.addEventListener('keydown', function(e) {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            this.click();
+                        }
+                    });
+                });
+
+                // Load wonder widget if available
+                if (typeof window.loadWonderWidget === 'function') {
+                    window.loadWonderWidget('wonder-slider-widget');
+                }
+
+            } catch (error) {
+                console.error('Error loading progress data:', error);
+            }
+        });
+
+        // Track page interactions
+        if (window.learningAnalytics) {
+            window.learningAnalytics.trackInteraction('homepage_visit', null, {
+                page: 'home_redesigned',
+                timestamp: Date.now()
+            });
+        }
+    </script>
+</body>
+</html>

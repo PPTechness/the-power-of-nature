@@ -1,0 +1,30 @@
+{
+  "data_story": [
+    {
+      "criterion": "Evidence used",
+      "levels": ["Starting", "Secure", "Strong"]
+    },
+    {
+      "criterion": "Reasoning",
+      "levels": ["Starting", "Secure", "Strong"]
+    },
+    {
+      "criterion": "Clarity for audience",
+      "levels": ["Starting", "Secure", "Strong"]
+    }
+  ],
+  "design_summary": [
+    {
+      "criterion": "Change tested",
+      "levels": ["Stated", "Explained", "Justified"]
+    },
+    {
+      "criterion": "Impact explained",
+      "levels": ["Guessed", "Observed", "Explained with cause"]
+    },
+    {
+      "criterion": "Safety & ethics",
+      "levels": ["Mentioned", "Considered", "Applied"]
+    }
+  ]
+}

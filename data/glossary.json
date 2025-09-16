@@ -1,0 +1,22 @@
+{
+  "terms": {
+    "weather": "What it's like today (sun, rain, wind, temperature).",
+    "climate": "What it's usually like over time in a place.",
+    "precipitation": "Water that falls from the sky — rain, snow, hail.",
+    "renewable": "Energy from sources that don't run out (sun, wind, water).",
+    "sustainability": "Using resources in ways that don't harm future generations.",
+    "adaptation": "Changes made to cope with different conditions or challenges.",
+    "circuit": "A complete path that electricity can flow around.",
+    "current": "The flow of electricity through a circuit.",
+    "insulation": "Materials that keep heat in or out of buildings.",
+    "ventilation": "Air movement that helps cool buildings naturally.",
+    "earthquake": "When the ground shakes because of movement in the Earth's crust.",
+    "plate": "Large pieces of the Earth's crust that move very slowly.",
+    "fossil fuel": "Energy from coal, oil, or gas that formed millions of years ago.",
+    "solar": "Using energy from the sun.",
+    "turbine": "A machine that spins to make electricity from wind or water.",
+    "evidence": "Facts or observations that support what you're saying.",
+    "variable": "Something you can change in an experiment.",
+    "prototype": "An early model of something you're designing to test ideas."
+  }
+}

@@ -1,0 +1,391 @@
+{
+  "course": "Y4 Harness the Power of Nature",
+  "bigQuestion": "How can we harness the power of nature?",
+  "lessons": [
+    {
+      "id": "L1",
+      "title": "Wonder launch: What is the power of nature?",
+      "time_minutes": 45,
+      "subjects": ["Geography","Science","Computing"],
+      "student": {
+        "learning_objective": "I can say what "power of nature" means and spot the difference between weather and climate.",
+        "success_check": [
+          "I can tell one difference between weather and climate.",
+          "I can compare two places and share two facts.",
+          "I can save my ideas in my Journal."
+        ],
+        "flow": [
+          "Recap & recall — Tell your partner today's weather; what is Singapore's usual climate?",
+          "Attention grabber — Short clips of sun, wind, rain; quick vote: which changes fastest?",
+          "Main (online) — Weather Explorer: pick 2 places, note one similarity and one difference; save two facts to Journal.",
+          "Main (offline) — Mini field log: stand in shade vs sun; how do you feel?",
+          "Wrap-up & share — Share your similarity + difference; add to Journal."
+        ],
+        "check_in": "One similarity and one difference between your places?"
+      },
+      "teacher": {
+        "learning_objective_formal": "Understand the term power of nature and distinguish weather (daily) from climate (long-term patterns).",
+        "success_criteria": [
+          "States an accurate weather/climate difference and example.",
+          "Compares two locations with two correct facts.",
+          "Records learning in Journal."
+        ],
+        "nc_alignment": [
+          "Geography KS2: weather & climate; use data to describe places.",
+          "Science (Working scientifically): make observations; record simple data.",
+          "Computing KS2: create/organise/store digital content; safe/respectful use."
+        ],
+        "before_lesson": [
+          "Slides/video clips of weather.",
+          "Printed Journal cards.",
+          "Device per pair.",
+          "Mini field-log sheet (shade vs sun)."
+        ],
+        "adaptive_teaching": {
+          "support": "Provide 2 pre-selected places with sentence starters.",
+          "greater_depth": "Compare 3 places and suggest one new enquiry question."
+        },
+        "assessing_progress": "Secure if child states one correct difference + example; two accurate facts saved.",
+        "vocabulary": {
+          "weather":"what it's like today",
+          "climate":"what it's usually like over time",
+          "precipitation":"water that falls from the sky — rain/snow/hail"
+        }
+      }
+    },
+    {
+      "id": "L2",
+      "title": "Homes fit their climates",
+      "time_minutes": 45,
+      "subjects": ["Geography","Design & Technology","Computing"],
+      "student": {
+        "learning_objective": "I can explain how a home's design fits its climate.",
+        "success_check": [
+          "I can match a feature to a reason.",
+          "I can use a because sentence.",
+          "I can save one match to my Journal."
+        ],
+        "flow": [
+          "Recap — "Weather or Climate?" quick quiz (4 examples).",
+          "Attention — Photos: stilt house, adobe, Swedish cabin. Why does it look like that?",
+          "Main (online) — House Gallery: drag thick walls/vents/solar/stilts onto images → reveal why. Save one match.",
+          "Main (offline) — Sketch your home; circle one climate-fit feature.",
+          "Wrap-up — I chose [feature] because [reason]. Save to Journal."
+        ],
+        "check_in": "Which feature helps and why?"
+      },
+      "teacher": {
+        "learning_objective_formal": "Explain relationships between building features and local climate; apply vocabulary accurately.",
+        "success_criteria": [
+          "Links a feature to climate correctly.",
+          "Gives one clear explanation using because.",
+          "Records one match in Journal."
+        ],
+        "nc_alignment": [
+          "Geography: human responses to climate; vocabulary to describe places.",
+          "D&T: select materials; evaluate designs.",
+          "Computing: present information to an audience."
+        ],
+        "before_lesson": ["Photo set","Feature chips","Pencils","Sentence-starter cards"],
+        "adaptive_teaching": {
+          "support":"Limit to two features with pictorial prompts.",
+          "greater_depth":"Compare city vs rural examples; justify alternatives."
+        },
+        "assessing_progress":"Secure = one accurate feature–reason explanation in Journal.",
+        "vocabulary":{"adaptation":"change to suit a place","ventilation":"moving air","insulation":"keeps heat in/out","stilts":"posts that lift a house"}
+      }
+    },
+    {
+      "id": "L3",
+      "title": "Electricity: Make a simple circuit",
+      "time_minutes": 40,
+      "subjects": ["Science","Design & Technology","Computing"],
+      "student": {
+        "learning_objective": "I can make a simple series circuit and use a switch.",
+        "success_check": [
+          "My loop lights the lamp.",
+          "I can show where the switch goes.",
+          "I saved a screenshot to my Journal."
+        ],
+        "flow": [
+          "Recap — Battery vs mains: which is safer in class?",
+          "Attention — "Will this light?" Vote on 4 diagrams (3 wrong, 1 right).",
+          "Main (online) — Circuits Builder: drag cell, wires, lamp, switch; snap; lamp glows; screenshot → Journal.",
+          "Main (offline) — Build the same circuit with kit (adult-supervised).",
+          "Wrap-up — What's the minimum needed to light the lamp? Explain your switch."
+        ],
+        "check_in":"What is the minimum to light the lamp?"
+      },
+      "teacher": {
+        "learning_objective_formal":"Construct a simple series circuit; understand that a switch opens/closes the circuit.",
+        "success_criteria":[
+          "Places components to complete circuit.",
+          "Correctly positions a switch and explains its function.",
+          "Captures evidence in Journal."
+        ],
+        "nc_alignment":[
+          "Science: series circuit; switches; conductors/insulators.",
+          "D&T: make and evaluate; safe tool use.",
+          "Computing: capture/store digital content."
+        ],
+        "before_lesson":["Cells","Lamps","Wires","Switches","Safety briefing","Screenshot instructions"],
+        "adaptive_teaching":{"support":"Pre-wired boards; guided diagram.","greater_depth":"Add buzzer; test conductor vs insulator."},
+        "assessing_progress":"Secure = working series loop with switch + explanation.",
+        "vocabulary":{"circuit":"path for electricity","component":"part of a circuit","switch":"turns circuit on/off","conductor":"lets electricity flow","insulator":"stops electricity flowing"}
+      }
+    },
+    {
+      "id": "L4",
+      "title": "Singapore case study: Harnessing nature",
+      "time_minutes": 45,
+      "subjects": ["Geography","Design & Technology","Computing"],
+      "student": {
+        "learning_objective": "I can spot a sustainability feature in a local building and explain its benefit.",
+        "success_check": [
+          "I can name one feature and one benefit.",
+          "I saved it to my Journal."
+        ],
+        "flow": [
+          "Recap — List features from L2 (shade/green roof/vents/rain tanks).",
+          "Attention — Photo reveal (Centenary, Lyf, Wilmar): guess the feature.",
+          "Main (online) — Hotspot Photo Tour: tap dots → feature + benefit; save your favourite.",
+          "Main (offline) — Walk-and-spot: find one real example (with permissions).",
+          "Wrap-up — Share your feature + benefit."
+        ],
+        "check_in":"One local feature + its benefit?"
+      },
+      "teacher": {
+        "learning_objective_formal":"Identify and evaluate local sustainability design features and their purposes.",
+        "success_criteria":[
+          "Identifies a feature and explains benefit.",
+          "Links to Singapore's climate.",
+          "Records finding."
+        ],
+        "nc_alignment":[
+          "Geography: fieldwork in the local area; human responses to climate.",
+          "D&T: evaluate existing products.",
+          "Computing: organise findings; images with captions."
+        ],
+        "before_lesson":["Building photos","Permissions list","Clipboards","Tablets/cameras"],
+        "adaptive_teaching":{"support":"Assign one building; provide word bank.","greater_depth":"Compare two buildings; consider trade-offs."},
+        "assessing_progress":"Secure = accurate feature + plausible benefit.",
+        "vocabulary":{"shade":"blocks sun","ventilation":"lets air move","rainwater harvesting":"collects rain","green roof":"plants on roof","façade":"front/outside face"}
+      }
+    },
+    {
+      "id": "L5",
+      "title": "Renewable energy",
+      "time_minutes": 45,
+      "subjects": ["Geography","Science","Design & Technology"],
+      "student": {
+        "learning_objective": "I can name solar, wind and hydro and say when each works best.",
+        "success_check": [
+          "I reached the energy score target in one mini-game.",
+          "I wrote one observation for each source.",
+          "I saved to my Journal."
+        ],
+        "flow": [
+          "Recap — Fossil vs renewable: what's the difference?",
+          "Attention — Props: torch (sun), fan (wind), jug + wheel (water).",
+          "Main (online) — Renewables Arcade: rotate solar; adjust turbine; place gate. Save best score + observation.",
+          "Main (offline) — Make a pinwheel; test which wind works best.",
+          "Wrap-up — Which source worked best and why?"
+        ],
+        "check_in":"Which energy worked best? Why?"
+      },
+      "teacher": {
+        "learning_objective_formal":"Describe common renewable sources and the conditions they need.",
+        "success_criteria":["Names each source; gives one correct condition.","Records observation with cause/effect language."],
+        "nc_alignment":[
+          "Geography: distribution of natural resources.",
+          "Science: energy transfer; fair test language.",
+          "D&T: choose suitable materials for a function."
+        ],
+        "before_lesson":["Pinwheel template","Split pins","Straws/pencils","Desk fan"],
+        "adaptive_teaching":{"support":"Focus on one source with sentence frames.","greater_depth":"Compare efficiency at different angles/speeds."},
+        "assessing_progress":"Secure = explains one source with a correct condition.",
+        "vocabulary":{"renewable":"naturally replaced","turbine":"spinning machine","photovoltaic":"turns light into electricity","flow rate":"how fast water moves"}
+      }
+    },
+    {
+      "id": "L6",
+      "title": "Consolidation & speaking for an audience",
+      "time_minutes": 35,
+      "subjects": ["English","Computing"],
+      "student": {
+        "learning_objective": "I can explain a reason using evidence.",
+        "success_check": [
+          "I improved one Journal card with a clearer because sentence.",
+          "I presented to a partner."
+        ],
+        "flow": [
+          "Recap — Pick one earlier Journal card.",
+          "Attention — Listen to a strong example (teacher model).",
+          "Main (online) — Poster/Voice-over tool: restate your idea for an audience.",
+          "Main (offline) — 60-sec talk with partner; 2 stars & a wish feedback.",
+          "Wrap-up — Edit your sentence and resave."
+        ],
+        "check_in":"Give a reason using evidence."
+      },
+      "teacher": {
+        "learning_objective_formal":"Communicate scientific/design reasoning clearly for a chosen audience.",
+        "success_criteria":["Clear claim + evidence statement.","Improved clarity after feedback."],
+        "nc_alignment":[
+          "English (spoken language): articulate and justify answers.",
+          "Computing: create content for an audience.",
+          "Science: use evidence to support ideas."
+        ],
+        "before_lesson":["Sentence-starter cards","Timer","Optional mic/headphones"],
+        "adaptive_teaching":{"support":"Cloze sentence frames; rehearse in small group.","greater_depth":"Add a counter-argument and response."},
+        "assessing_progress":"Secure = claim + evidence, audible and clear.",
+        "vocabulary":{"audience":"who will see it","evidence":"proof or data","reason":"why something makes sense","conclusion":"final idea based on evidence"}
+      }
+    },
+    {
+      "id": "L7",
+      "title": "Earthquakes: Where and why?",
+      "time_minutes": 45,
+      "subjects": ["Geography","Science"],
+      "student": {
+        "learning_objective": "I can show where earthquakes happen and say why.",
+        "success_check": [
+          "I can locate the Ring of Fire.",
+          "I wrote one cause note; saved to Journal."
+        ],
+        "flow": [
+          "Recap — Tremor clip; what do you notice?",
+          "Attention — Which Pacific coast shakes more? Vote.",
+          "Main (online) — Plates Map: toggle Ring of Fire; magnitude slider (reduced-motion safe); save one fact.",
+          "Main (offline) — Straw tower shake test (gentle vs strong).",
+          "Wrap-up — Where is the Ring of Fire? What happens at plate edges?"
+        ],
+        "check_in":"Where is the Ring of Fire?"
+      },
+      "teacher": {
+        "learning_objective_formal":"Describe global earthquake distribution and relate to plate boundaries.",
+        "success_criteria":["Identifies Ring of Fire; gives simple boundary idea.","Records a correct locational fact."],
+        "nc_alignment":[
+          "Geography: physical processes; locational knowledge.",
+          "Science: observe and describe patterns."
+        ],
+        "before_lesson":["World map printouts","Straws/tape","Simple shake table"],
+        "adaptive_teaching":{"support":"Labelled map; drag-and-drop city tags.","greater_depth":"Compare two boundary types."},
+        "assessing_progress":"Secure = points to Ring of Fire and states a boundary idea.",
+        "vocabulary":{"tectonic plates":"large pieces of the crust","boundary":"where plates meet","magnitude":"size of quake","epicentre":"point on surface above the quake"}
+      }
+    },
+    {
+      "id": "L8",
+      "title": "Adapting to earthquakes",
+      "time_minutes": 45,
+      "subjects": ["Geography","Design & Technology"],
+      "student": {
+        "learning_objective": "I can name one adaptation (Tokyo or Christchurch) and explain how it helps.",
+        "success_check": [
+          "I chose one adaptation and gave a clear because.",
+          "I tested stronger bracing on my model."
+        ],
+        "flow": [
+          "Recap — Map from L7.",
+          "Attention — Two gifs: with/without base isolation.",
+          "Main (online) — Plates Map case cards: choose adaptation (base isolation, cross-bracing, flexible joints); save note.",
+          "Main (offline) — Add bracing to straw tower; retest.",
+          "Wrap-up — Which adaptation worked? Why?"
+        ],
+        "check_in":"One adaptation and why?"
+      },
+      "teacher": {
+        "learning_objective_formal":"Explain how structural adaptations reduce earthquake risk.",
+        "success_criteria":["Links adaptation → effect using cause/effect language.","Tests and comments on model improvement."],
+        "nc_alignment":[
+          "Geography: human responses to hazards.",
+          "D&T: strengthen/reinforce structures."
+        ],
+        "before_lesson":["Extra straws","Elastic bands","Card triangles","Tape","Timer"],
+        "adaptive_teaching":{"support":"Choose from two adaptations with images.","greater_depth":"Combine two adaptations and justify."},
+        "assessing_progress":"Secure = one accurate adaptation + effect explanation.",
+        "vocabulary":{"base isolation":"building rests on flexible pads","bracing":"diagonal supports","retrofitting":"adding strength later","flexible joint":"moves a little without breaking"}
+      }
+    },
+    {
+      "id": "L9",
+      "title": "Design a future-ready home (Plan & Prototype)",
+      "time_minutes": 60,
+      "subjects": ["Design & Technology","Geography","Science","Computing"],
+      "student": {
+        "learning_objective": "I can change one feature and predict the impact.",
+        "success_check": [
+          "I chose one feature to test.",
+          "I wrote a because sentence before building.",
+          "I saved my plan in the Journal."
+        ],
+        "flow": [
+          "Recap — Feature list (shade/vents/insulation/raised floor/rain tank/solar).",
+          "Attention — Draw a Design Challenge Card (heat | flood | airflow).",
+          "Main (online) — Design Tester: toggle one variable; note predicted change on meters; save plan.",
+          "Main (offline) — Materials collection + plan cladding texture (cut/fold/weave/scrunch/tear).",
+          "Wrap-up — Share prediction with partner."
+        ],
+        "check_in":"Which one change will you test first? Why?"
+      },
+      "teacher": {
+        "learning_objective_formal":"Plan a fair design change and justify predicted impact using prior knowledge.",
+        "success_criteria":["Single variable identified; clear prediction linked to challenge.","Appropriate materials selected and recorded."],
+        "nc_alignment":[
+          "D&T: generate, model and communicate ideas; choose materials.",
+          "Science: predictions; fair testing.",
+          "Geography: local climate considerations."
+        ],
+        "before_lesson":["Paper, card, fabric, ribbons, string/wool","PVA, scissors, tape","Design sheets"],
+        "adaptive_teaching":{"support":"Restrict choice to two features with visual cues.","greater_depth":"Plan sequence of two tests; justify order."},
+        "assessing_progress":"Secure = prediction ties feature to meter change plausibly.",
+        "vocabulary":{"prototype":"first model","variable":"the one thing you change","cladding":"outer layer","reinforce":"make stronger","texture":"how it feels"}
+      }
+    },
+    {
+      "id": "L10",
+      "title": "Design a future-ready home (Make & Present)",
+      "time_minutes": 60,
+      "subjects": ["Design & Technology","English","Computing"],
+      "student": {
+        "learning_objective": "I can build, test, and present my design with evidence.",
+        "success_check": [
+          "My cladding matches my plan.",
+          "I tested one change and saw the impact.",
+          "I shared one reason using evidence."
+        ],
+        "flow": [
+          "Recap — Safety + plan check from L9.",
+          "Attention — 60-sec talk demo (teacher).",
+          "Main (offline) — Make: apply cladding; strengthen joints; test against challenge.",
+          "Main (online) — Design Tester → Export design summary (meters + features + 'My reason') and Poster maker.",
+          "Wrap-up — Class Expo (invite Y5); badges + certificates."
+        ],
+        "check_in":"Which change made the biggest impact?"
+      },
+      "teacher": {
+        "learning_objective_formal":"Add cladding to a frame structure; evaluate and communicate design choices with evidence.",
+        "success_criteria":[
+          "Selects appropriate materials and attachment method.",
+          "Uses a texture technique (cut/fold/weave/scrunch/tear).",
+          "Presents one justified improvement with evidence."
+        ],
+        "nc_alignment":[
+          "D&T: strengthen/reinforce; make and evaluate.",
+          "English: speaking for an audience.",
+          "Computing: present and export digital outcomes."
+        ],
+        "before_lesson":["PVA/glue sticks","Scissors/safe cutters","Range of papers/fabrics","Expo labels","Poster template"],
+        "adaptive_teaching":{"support":"Paper-only cladding; practise fold/scrunch first.","greater_depth":"Combine materials; design surrounding landscape (Expo City)."},
+        "assessing_progress":"Secure = materials suit purpose; cladding reflects design; clear evidence-based explanation.",
+        "vocabulary":{
+          "cladding":"material added to protect/improve appearance",
+          "evaluation":"judge good/bad points and how to improve",
+          "reinforce":"make stronger",
+          "texture":"how something feels",
+          "structure":"a made thing that stands by itself"
+        }
+      }
+    }
+  ]
+}

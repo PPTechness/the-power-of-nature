@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal Test - Nature Learning</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            padding: 20px; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        
+        .debug-banner {
+            background: #ff0000;
+            color: white;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        
+        .nav-container {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .nav-item { 
+            display: inline-block; 
+            padding: 12px 25px; 
+            margin: 5px; 
+            background: #007bff; 
+            color: white; 
+            cursor: pointer; 
+            border-radius: 25px;
+            text-decoration: none;
+            border: none;
+            font-size: 16px;
+        }
+        .nav-item.active { 
+            background: #28a745; 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        
+        .panel { 
+            display: none; 
+            padding: 30px; 
+            background: rgba(255,255,255,0.1);
+            margin: 20px 0; 
+            border-radius: 15px;
+            min-height: 200px;
+        }
+        .panel.active { 
+            display: block; 
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .carousel-container {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+            height: 200px;
+        }
+        
+        .carousel-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 40px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(14, 165, 233, 0.2));
+            border-radius: 10px;
+        }
+        
+        .carousel-item.active { 
+            opacity: 1; 
+        }
+        
+        .carousel-item h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .carousel-controls {
+            text-align: center;
+            margin-top: 15px;
+        }
+        
+        .dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: rgba(255,255,255,0.5);
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .dot.active { 
+            background: #ffffff; 
+        }
+        
+        .status {
+            background: rgba(0,0,0,0.3);
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="debug-banner">
+        🚨 MINIMAL TEST VERSION - JavaScript Status: <span id="js-status">Loading...</span>
+    </div>
+
+    <h1>🌱 Nature Learning - Minimal Test</h1>
+    
+    <div class="status" id="status">System starting...</div>
+
+    <div class="nav-container">
+        <h3>Navigation Test</h3>
+        <button class="nav-item active" data-panel="panel-see">👁️ Present</button>
+        <button class="nav-item" data-panel="panel-think">🧠 Question</button>
+        <button class="nav-item" data-panel="panel-make">🔨 Do</button>
+        <button class="nav-item" data-panel="panel-share">💬 Wrap</button>
+    </div>
+
+    <div id="panel-see" class="panel active">
+        <h2>Present Panel</h2>
+        <p>This is the Present panel with content that should be visible by default.</p>
+        
+        <div class="carousel-container">
+            <div class="carousel-item active">
+                <h3>🌊 Tsunami Speed</h3>
+                <p>In deep ocean, a tsunami can move as fast as a jet plane - up to 800 km/h!</p>
+            </div>
+            <div class="carousel-item">
+                <h3>🌋 Volcano Lightning</h3>
+                <p>Ash clouds can create spectacular lightning storms above erupting volcanoes!</p>
+            </div>
+            <div class="carousel-item">
+                <h3>⚡ Lightning Heat</h3>
+                <p>A lightning bolt can be 5 times hotter than the surface of the Sun!</p>
+            </div>
+            <div class="carousel-controls">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+            </div>
+        </div>
+    </div>
+
+    <div id="panel-think" class="panel">
+        <h2>Question Panel</h2>
+        <p>This is the Question panel content. It should appear when you click the brain icon.</p>
+        <div class="status">Panel loaded successfully!</div>
+    </div>
+
+    <div id="panel-make" class="panel">
+        <h2>Do Panel</h2>
+        <p>This is the Do panel content. It should appear when you click the hammer icon.</p>
+        <div class="status">Panel loaded successfully!</div>
+    </div>
+
+    <div id="panel-share" class="panel">
+        <h2>Wrap Panel</h2>
+        <p>This is the Wrap panel content. It should appear when you click the chat icon.</p>
+        <div class="status">Panel loaded successfully!</div>
+    </div>
+
+    <script>
+        console.log('🚀 MINIMAL TEST STARTING');
+        
+        // Update status immediately
+        document.getElementById('js-status').textContent = 'LOADED ✅';
+        document.getElementById('status').textContent = 'JavaScript loaded successfully!';
+        
+        // Simple panel switching
+        function switchToPanel(panelId) {
+            console.log('🎯 Switching to:', panelId);
+            
+            // Hide all panels
+            document.querySelectorAll('.panel').forEach(panel => {
+                panel.classList.remove('active');
+                panel.style.display = 'none';
+                console.log('Hidden:', panel.id);
+            });
+            
+            // Show target panel
+            const target = document.getElementById(panelId);
+            if (target) {
+                target.classList.add('active');
+                target.style.display = 'block';
+                console.log('✅ Shown:', panelId);
+                
+                // Update status
+                document.getElementById('status').textContent = `Switched to: ${panelId}`;
+            } else {
+                console.log('❌ Panel not found:', panelId);
+                document.getElementById('status').textContent = `ERROR: Panel ${panelId} not found`;
+            }
+            
+            // Update navigation
+            document.querySelectorAll('.nav-item').forEach(nav => {
+                nav.classList.remove('active');
+            });
+            
+            const activeNav = document.querySelector(`[data-panel="${panelId}"]`);
+            if (activeNav) {
+                activeNav.classList.add('active');
+            }
+        }
+        
+        // Simple carousel
+        function showCarouselSlide(index) {
+            console.log('📺 Showing slide:', index);
+            
+            const items = document.querySelectorAll('.carousel-item');
+            const dots = document.querySelectorAll('.dot');
+            
+            items.forEach((item, i) => {
+                item.classList.toggle('active', i === index);
+            });
+            
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+            
+            document.getElementById('status').textContent = `Carousel slide: ${index + 1}`;
+        }
+        
+        // Set up everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('📄 DOM Ready');
+            
+            // Navigation clicks
+            document.querySelectorAll('.nav-item').forEach(button => {
+                button.addEventListener('click', function() {
+                    const panelId = this.dataset.panel;
+                    console.log('🖱️ Button clicked:', panelId);
+                    switchToPanel(panelId);
+                });
+            });
+            
+            // Carousel dots
+            document.querySelectorAll('.dot').forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const slideIndex = parseInt(this.dataset.slide);
+                    console.log('🖱️ Dot clicked:', slideIndex);
+                    showCarouselSlide(slideIndex);
+                });
+            });
+            
+            // Auto-advance carousel
+            let currentSlide = 0;
+            setInterval(() => {
+                const items = document.querySelectorAll('.carousel-item');
+                currentSlide = (currentSlide + 1) % items.length;
+                showCarouselSlide(currentSlide);
+            }, 3000);
+            
+            console.log('✅ All systems ready');
+            document.getElementById('status').textContent = 'All systems ready! Try clicking navigation or carousel dots.';
+        });
+        
+        // Global test functions
+        window.testSystem = function() {
+            console.log('🧪 Testing all panels...');
+            
+            const panels = ['panel-see', 'panel-think', 'panel-make', 'panel-share'];
+            panels.forEach((panel, index) => {
+                setTimeout(() => {
+                    switchToPanel(panel);
+                }, index * 1000);
+            });
+        };
+        
+        console.log('📋 Available commands: testSystem()');
+    </script>
+</body>
+</html>

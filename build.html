@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build - Create Your Future-Ready Home | Harness the Power of Nature</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/google-style.css">
+    <link rel="stylesheet" href="css/widgets.css">
+    <link rel="stylesheet" href="css/visual-enhancements.css">
+    <link rel="stylesheet" href="css/layout-perfection.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="nav-header">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="/" class="logo">
+                    <div class="logo-icon">🌱</div>
+                    <span>Nature Power</span>
+                </a>
+                <nav class="nav-links">
+                    <a href="/learn.html">Learn</a>
+                    <a href="/digital-citizenship.html">Digital Citizenship</a>
+                    <a href="/build.html" class="active">Build</a>
+                    <a href="/gallery.html">Gallery</a>
+                    <a href="/teacher.html">Teacher Room</a>
+                </nav>
+            </div>
+            <div class="nav-right">
+                <div class="search-container">
+                    <button class="search-toggle" aria-label="Search">🔍</button>
+                    <input type="search" class="search-input" placeholder="Search..." aria-label="Search">
+                </div>
+                <div class="mode-toggle">
+                    <button id="modeToggle" class="mode-btn">
+                        <span class="mode-text">Student</span>
+                        <div class="toggle-indicator"></div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <!-- Page Header -->
+            <section class="page-header">
+                <h1>Build your future-ready home</h1>
+                <p class="page-subtitle">Choose a tool. Use a starter template. Test one change at a time.</p>
+            </section>
+
+            <!-- Build Tools Section -->
+            <section class="build-tools">
+                <div class="tools-grid">
+                    
+                    <!-- 3D Building Tools -->
+                    <div class="tool-section">
+                        <h2>3D Building Tools</h2>
+                        <div class="tool-cards">
+                            <div class="tool-card">
+                                <div class="tool-icon">🏗️</div>
+                                <h3>CoSpaces / Tinkercad Starters</h3>
+                                <p>Build your future-ready home in 3D. Start with our climate-adapted templates.</p>
+                                <div class="tool-actions">
+                                    <a href="https://cospaces.io" target="_blank" class="btn btn-primary" rel="noopener">
+                                        Open CoSpaces Starter
+                                        <span class="external-icon">↗</span>
+                                    </a>
+                                    <a href="https://tinkercad.com" target="_blank" class="btn btn-secondary" rel="noopener">
+                                        Open Tinkercad Starter
+                                        <span class="external-icon">↗</span>
+                                    </a>
+                                </div>
+                                <div class="tool-note">
+                                    💾 Remember to save to your class folder
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Web Design Tester -->
+                    <div class="tool-section">
+                        <h2>Interactive Design Tester</h2>
+                        <div class="tool-card embedded">
+                            <div class="tool-header">
+                                <div class="tool-icon">⚙️</div>
+                                <h3>Web Design Tester</h3>
+                                <p>Test different house features and see immediate feedback on heat and flood safety.</p>
+                            </div>
+                            
+                            <!-- Embedded Design Tester Widget -->
+                            <div class="embedded-widget" id="designTester">
+                                <div class="design-controls">
+                                    <h4>House Features</h4>
+                                    <div class="feature-toggles">
+                                        <div class="toggle-group">
+                                            <label class="toggle-label">
+                                                <input type="checkbox" class="feature-toggle" data-feature="shade">
+                                                <span class="toggle-slider"></span>
+                                                <span class="toggle-text">🌳 Shade (trees/awnings)</span>
+                                            </label>
+                                        </div>
+                                        <div class="toggle-group">
+                                            <label class="toggle-label">
+                                                <input type="checkbox" class="feature-toggle" data-feature="ventilation">
+                                                <span class="toggle-slider"></span>
+                                                <span class="toggle-text">💨 Ventilation</span>
+                                            </label>
+                                        </div>
+                                        <div class="toggle-group">
+                                            <label class="toggle-label">
+                                                <input type="checkbox" class="feature-toggle" data-feature="insulation">
+                                                <span class="toggle-slider"></span>
+                                                <span class="toggle-text">🧥 Insulation</span>
+                                            </label>
+                                        </div>
+                                        <div class="toggle-group">
+                                            <label class="toggle-label">
+                                                <input type="checkbox" class="feature-toggle" data-feature="raised-floor">
+                                                <span class="toggle-slider"></span>
+                                                <span class="toggle-text">🏠 Raised floor</span>
+                                            </label>
+                                        </div>
+                                        <div class="toggle-group">
+                                            <label class="toggle-label">
+                                                <input type="checkbox" class="feature-toggle" data-feature="rainwater">
+                                                <span class="toggle-slider"></span>
+                                                <span class="toggle-text">🌧️ Rainwater tank</span>
+                                            </label>
+                                        </div>
+                                        <div class="toggle-group">
+                                            <label class="toggle-label">
+                                                <input type="checkbox" class="feature-toggle" data-feature="solar">
+                                                <span class="toggle-slider"></span>
+                                                <span class="toggle-text">☀️ Solar panels</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="design-feedback">
+                                    <div class="feedback-meters">
+                                        <div class="meter">
+                                            <h5>Heat Level</h5>
+                                            <div class="meter-bar">
+                                                <div class="meter-fill heat-meter" style="width: 50%"></div>
+                                            </div>
+                                            <div class="meter-labels">
+                                                <span>Cooler</span>
+                                                <span>Hotter</span>
+                                            </div>
+                                        </div>
+                                        <div class="meter">
+                                            <h5>Water Safety</h5>
+                                            <div class="meter-bar">
+                                                <div class="meter-fill water-meter" style="width: 50%"></div>
+                                            </div>
+                                            <div class="meter-labels">
+                                                <span>Drier</span>
+                                                <span>Flood-safe</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="feedback-text" id="designFeedback">
+                                        Select features to see how they affect your home.
+                                    </div>
+                                </div>
+
+                                <div class="design-export">
+                                    <h4>My Design Summary</h4>
+                                    <textarea id="designReason" placeholder="Explain why you chose these features..." rows="3"></textarea>
+                                    <button class="btn btn-accent" id="exportDesignBtn">Export design summary</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Year 5 Scratch Extension -->
+                    <div class="tool-section student-only">
+                        <h2>Year 5 Scratch: Cloning a Space Game</h2>
+                        <div class="tool-card scratch-card">
+                            <div class="tool-icon">🎮</div>
+                            <h3>Build on Last Week's Lesson</h3>
+                            <p>Continue your space game by adding cloning effects and power-ups.</p>
+                            
+                            <div class="scratch-tips">
+                                <h4>Key Concepts:</h4>
+                                <ul class="tips-list">
+                                    <li>🔄 <strong>Sprite clones on event:</strong> When spacebar pressed → create clone</li>
+                                    <li>📊 <strong>Limit clones with variable:</strong> If clone count < 10 then clone</li>
+                                    <li>🗑️ <strong>Destroy clones when off-screen:</strong> If y position > 180 then delete</li>
+                                    <li>⚡ <strong>Clone behaviours:</strong> When I start as clone → move and spin</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="tool-actions">
+                                <a href="https://scratch.mit.edu" target="_blank" class="btn btn-primary" rel="noopener">
+                                    Open Starter Project
+                                    <span class="external-icon">↗</span>
+                                </a>
+                                <button class="btn btn-secondary" id="scratchTipsBtn">View Code Tips</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Tips Section -->
+            <section class="build-tips">
+                <div class="tips-card">
+                    <h2>💡 Building Tips</h2>
+                    <div class="tips-grid">
+                        <div class="tip-item">
+                            <div class="tip-icon">🎯</div>
+                            <h3>Start Simple</h3>
+                            <p>Begin with basic shapes and add details gradually.</p>
+                        </div>
+                        <div class="tip-item">
+                            <div class="tip-icon">🔄</div>
+                            <h3>Test & Iterate</h3>
+                            <p>Make one change at a time and observe the effects.</p>
+                        </div>
+                        <div class="tip-item">
+                            <div class="tip-icon">🌍</div>
+                            <h3>Think Climate</h3>
+                            <p>Consider how your design works in different weather.</p>
+                        </div>
+                        <div class="tip-item">
+                            <div class="tip-icon">💾</div>
+                            <h3>Save Often</h3>
+                            <p>Save your work regularly and export when complete.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Scratch Tips Modal -->
+    <div id="scratchModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <h3>Scratch Code Blocks for Cloning</h3>
+            <div class="code-blocks">
+                <div class="code-block">
+                    <h4>🎮 Main Sprite (Player):</h4>
+                    <div class="block-code">
+                        <div class="block">When [space] key pressed</div>
+                        <div class="block indent">create clone of [laser]</div>
+                        <div class="block indent">change [clone count] by (1)</div>
+                    </div>
+                </div>
+                <div class="code-block">
+                    <h4>⚡ Clone Behaviour:</h4>
+                    <div class="block-code">
+                        <div class="block">When I start as a clone</div>
+                        <div class="block indent">repeat until [y position] > (180)</div>
+                        <div class="block indent2">change y by (5)</div>
+                        <div class="block indent2">turn right (10) degrees</div>
+                        <div class="block indent">delete this clone</div>
+                        <div class="block indent">change [clone count] by (-1)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="#safety">Safety & Privacy</a>
+                <a href="#permissions">Image Permissions</a>
+                <a href="#report" class="teacher-only">Report a Concern</a>
+                <a href="#credits">Credits</a>
+            </div>
+            <div class="language-toggle">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="zh">简</button>
+                <button class="lang-btn" data-lang="ms">BM</button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notifications -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+    <script src="js/widgets/design-tester.js"></script>
+    <script src="js/utils/journal.js"></script>
+    <script src="js/utils/toast.js"></script>
+    <script src="js/utils/accessibility.js"></script>
+    <script>
+        // Build page specific functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            // Setup Scratch tips modal
+            const scratchTipsBtn = document.getElementById('scratchTipsBtn');
+            const scratchModal = document.getElementById('scratchModal');
+            const modalClose = scratchModal.querySelector('.modal-close');
+
+            if (scratchTipsBtn) {
+                scratchTipsBtn.addEventListener('click', () => {
+                    scratchModal.classList.add('active');
+                });
+            }
+
+            if (modalClose) {
+                modalClose.addEventListener('click', () => {
+                    scratchModal.classList.remove('active');
+                });
+            }
+
+            scratchModal.addEventListener('click', (e) => {
+                if (e.target === scratchModal) {
+                    scratchModal.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

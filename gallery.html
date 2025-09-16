@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Class Showcase | Harness the Power of Nature</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/gallery.css">
+    <link rel="stylesheet" href="css/google-style.css">
+    <link rel="stylesheet" href="css/visual-enhancements.css">
+    <link rel="stylesheet" href="css/layout-perfection.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="nav-header">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="/" class="logo">
+                    <div class="logo-icon">🌱</div>
+                    <span>Nature Power</span>
+                </a>
+                <nav class="nav-links">
+                    <a href="/learn.html">Learn</a>
+                    <a href="/digital-citizenship.html">Digital Citizenship</a>
+                    <a href="/build.html">Build</a>
+                    <a href="/gallery.html" class="active">Gallery</a>
+                    <a href="/teacher.html">Teacher Room</a>
+                </nav>
+            </div>
+            <div class="nav-right">
+                <div class="search-container">
+                    <button class="search-toggle" aria-label="Search">🔍</button>
+                    <input type="search" class="search-input" placeholder="Search..." aria-label="Search">
+                </div>
+                <div class="mode-toggle">
+                    <button id="modeToggle" class="mode-btn">
+                        <span class="mode-text">Student</span>
+                        <div class="toggle-indicator"></div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <!-- Page Header -->
+            <section class="page-header">
+                <h1>Class Gallery</h1>
+                <p class="page-subtitle">See what your class has made. Share your amazing designs!</p>
+                
+                <!-- Teacher Controls -->
+                <div class="teacher-controls teacher-only">
+                    <div class="moderation-toggle">
+                        <label class="toggle-label">
+                            <input type="checkbox" id="moderationToggle" checked>
+                            <span class="toggle-slider"></span>
+                            <span class="toggle-text">Moderation: On</span>
+                        </label>
+                    </div>
+                    <div class="gallery-stats">
+                        <span class="stat-item">
+                            <span class="stat-number" id="totalSubmissions">0</span>
+                            <span class="stat-label">Total Submissions</span>
+                        </span>
+                        <span class="stat-item">
+                            <span class="stat-number" id="approvedItems">0</span>
+                            <span class="stat-label">Approved</span>
+                        </span>
+                        <span class="stat-item">
+                            <span class="stat-number" id="pendingItems">0</span>
+                            <span class="stat-label">Pending</span>
+                        </span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Filter Controls -->
+            <section class="filter-controls">
+                <div class="filter-group">
+                    <label for="categoryFilter">Filter by:</label>
+                    <select id="categoryFilter" class="filter-select">
+                        <option value="all">All Designs</option>
+                        <option value="design">Design Summaries</option>
+                        <option value="circuit">Circuit Screenshots</option>
+                        <option value="poster">Digital Citizenship Posters</option>
+                        <option value="weather">Weather Comparisons</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="sortFilter">Sort by:</label>
+                    <select id="sortFilter" class="filter-select">
+                        <option value="newest">Newest First</option>
+                        <option value="oldest">Oldest First</option>
+                        <option value="popular">Most Liked</option>
+                        <option value="alphabetical">A-Z</option>
+                    </select>
+                </div>
+
+                <div class="search-gallery">
+                    <input type="search" id="gallerySearch" placeholder="Search designs..." class="gallery-search">
+                </div>
+            </section>
+
+            <!-- Gallery Grid -->
+            <section class="gallery-section">
+                <div class="gallery-grid" id="galleryGrid">
+                    <!-- Gallery items will be populated by JavaScript -->
+                    
+                    <!-- Sample items for demonstration -->
+                    <div class="gallery-item" data-category="design" data-date="2024-09-13">
+                        <div class="item-image">
+                            <div class="design-preview">
+                                <div class="preview-house">
+                                    <div class="house-roof"></div>
+                                    <div class="house-wall"></div>
+                                    <div class="house-features">
+                                        <span class="feature-tag">🌳 Shade</span>
+                                        <span class="feature-tag">☀️ Solar</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item-overlay">
+                                <button class="like-btn" aria-label="Like this design">
+                                    <span class="like-icon">❤️</span>
+                                    <span class="like-count">12</span>
+                                </button>
+                                <button class="view-btn" aria-label="View full design">👁️</button>
+                            </div>
+                        </div>
+                        <div class="item-content">
+                            <h3 class="item-title">Future-Ready Home Design</h3>
+                            <div class="item-meta">
+                                <span class="item-class">Class 5A</span>
+                                <span class="item-date">2 days ago</span>
+                            </div>
+                            <div class="item-tags">
+                                <span class="tag">#Solar</span>
+                                <span class="tag">#Shade</span>
+                                <span class="tag">#Ventilation</span>
+                            </div>
+                            <p class="item-description">A sustainable home design with solar panels, natural shading, and excellent ventilation for tropical climate.</p>
+                        </div>
+                        <div class="teacher-actions teacher-only">
+                            <button class="btn btn-success btn-sm" onclick="approveItem(this)">✓ Approve</button>
+                            <button class="btn btn-secondary btn-sm" onclick="hideItem(this)">👁️ Hide</button>
+                            <button class="btn btn-accent btn-sm" onclick="downloadItem(this)">📥 Download</button>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="circuit" data-date="2024-09-12">
+                        <div class="item-image">
+                            <div class="circuit-preview">
+                                <div class="circuit-components">
+                                    <div class="component battery">🔋</div>
+                                    <div class="component wire">➖</div>
+                                    <div class="component lamp lit">💡</div>
+                                    <div class="component switch">🔘</div>
+                                </div>
+                            </div>
+                            <div class="item-overlay">
+                                <button class="like-btn" aria-label="Like this circuit">
+                                    <span class="like-icon">❤️</span>
+                                    <span class="like-count">8</span>
+                                </button>
+                                <button class="view-btn" aria-label="View full circuit">👁️</button>
+                            </div>
+                        </div>
+                        <div class="item-content">
+                            <h3 class="item-title">Working Circuit Design</h3>
+                            <div class="item-meta">
+                                <span class="item-class">Class 5B</span>
+                                <span class="item-date">3 days ago</span>
+                            </div>
+                            <div class="item-tags">
+                                <span class="tag">#Electronics</span>
+                                <span class="tag">#Circuits</span>
+                            </div>
+                            <p class="item-description">Successfully built a complete circuit with battery, switch, and lamp. The lamp lights up when the switch is closed!</p>
+                        </div>
+                        <div class="teacher-actions teacher-only">
+                            <button class="btn btn-success btn-sm" onclick="approveItem(this)">✓ Approve</button>
+                            <button class="btn btn-secondary btn-sm" onclick="hideItem(this)">👁️ Hide</button>
+                            <button class="btn btn-accent btn-sm" onclick="downloadItem(this)">📥 Download</button>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="poster" data-date="2024-09-11">
+                        <div class="item-image">
+                            <div class="poster-preview">
+                                <div class="poster-header">Digital Citizenship Rules</div>
+                                <div class="poster-rules">
+                                    <div class="rule">1. Think before you share</div>
+                                    <div class="rule">2. Ask before posting photos</div>
+                                    <div class="rule">3. Balance screens and real life</div>
+                                </div>
+                            </div>
+                            <div class="item-overlay">
+                                <button class="like-btn" aria-label="Like this poster">
+                                    <span class="like-icon">❤️</span>
+                                    <span class="like-count">15</span>
+                                </button>
+                                <button class="view-btn" aria-label="View full poster">👁️</button>
+                            </div>
+                        </div>
+                        <div class="item-content">
+                            <h3 class="item-title">Our Golden Rules Poster</h3>
+                            <div class="item-meta">
+                                <span class="item-class">Class 5C</span>
+                                <span class="item-date">4 days ago</span>
+                            </div>
+                            <div class="item-tags">
+                                <span class="tag">#DigitalCitizenship</span>
+                                <span class="tag">#Safety</span>
+                            </div>
+                            <p class="item-description">Class-created digital citizenship rules poster ready for classroom display.</p>
+                        </div>
+                        <div class="teacher-actions teacher-only">
+                            <button class="btn btn-success btn-sm" onclick="approveItem(this)">✓ Approve</button>
+                            <button class="btn btn-secondary btn-sm" onclick="hideItem(this)">👁️ Hide</button>
+                            <button class="btn btn-accent btn-sm" onclick="downloadItem(this)">📥 Download</button>
+                        </div>
+                    </div>
+
+                    <!-- Empty state for when no items -->
+                    <div class="empty-gallery" id="emptyGallery" style="display: none;">
+                        <div class="empty-icon">🎨</div>
+                        <h3>No designs yet</h3>
+                        <p>Be the first to share your amazing work! Complete the learning activities and export your designs.</p>
+                        <a href="/learn.html" class="btn btn-primary">Start Learning</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Lightbox Modal -->
+    <div id="lightboxModal" class="modal lightbox-modal">
+        <div class="modal-content lightbox-content">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <div class="lightbox-image" id="lightboxImage">
+                <!-- Image will be loaded here -->
+            </div>
+            <div class="lightbox-info">
+                <h3 id="lightboxTitle"></h3>
+                <p id="lightboxDescription"></p>
+                <div class="lightbox-meta">
+                    <span id="lightboxClass"></span>
+                    <span id="lightboxDate"></span>
+                </div>
+                <div class="lightbox-tags" id="lightboxTags"></div>
+                <div class="lightbox-reasoning" id="lightboxReasoning" style="display: none;">
+                    <h4>Student's Reasoning:</h4>
+                    <p id="reasoningText"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="#safety">Safety & Privacy</a>
+                <a href="#permissions">Image Permissions</a>
+                <a href="#report" class="teacher-only">Report a Concern</a>
+                <a href="#credits">Credits</a>
+            </div>
+            <div class="language-toggle">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="zh">简</button>
+                <button class="lang-btn" data-lang="ms">BM</button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notifications -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+    <script src="js/widgets/gallery.js"></script>
+    <script src="js/utils/journal.js"></script>
+    <script src="js/utils/toast.js"></script>
+    <script src="js/utils/accessibility.js"></script>
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | Nature Power Learning Journey</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/tokens.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/accessibility.css">
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-container">
+                <div class="header-left">
+                    <a href="/" class="logo">
+                        <div class="logo-icon">🌱</div>
+                        <span>Nature Power</span>
+                    </a>
+                    <nav>
+                        <ul class="nav-links">
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/learn.html">Learn</a></li>
+                            <li><a href="/digital-citizenship.html">Digital Citizenship</a></li>
+                            <li><a href="/build.html">Build</a></li>
+                            <li><a href="/gallery.html">Gallery</a></li>
+                            <li><a href="/teacher.html">Teacher Room</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="header-right">
+                    <button class="btn btn-ghost" onclick="window.location.href='/learn.html'">
+                        Back to Learn
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main" class="main-content">
+        <div class="container">
+            <!-- Profile Header -->
+            <div class="profile-header">
+                <div class="profile-avatar">
+                    <div class="avatar-icon">🌱</div>
+                </div>
+                <div class="profile-info">
+                    <h1 class="profile-name">Young Scientist</h1>
+                    <p class="profile-course">Y4 Harness the Power of Nature</p>
+                    <div class="profile-stats">
+                        <div class="stat-item">
+                            <span class="stat-value" id="profileXP">0</span>
+                            <span class="stat-label">Total XP</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value" id="profileStreak">0</span>
+                            <span class="stat-label">Week Streak</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value" id="profileCompletion">0%</span>
+                            <span class="stat-label">Complete</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-actions">
+                    <button class="btn btn-primary" id="downloadCertificateBtn" style="display: none;">
+                        🏆 Download Certificate
+                    </button>
+                    <button class="btn btn-ghost" onclick="profilePage.exportData()">
+                        📤 Export Data
+                    </button>
+                </div>
+            </div>
+
+            <!-- Progress Overview -->
+            <div class="progress-overview">
+                <h2>Learning Journey Progress</h2>
+                <div class="progress-visual">
+                    <div class="progress-circle" id="progressCircle">
+                        <div class="progress-inner">
+                            <span class="progress-percentage" id="progressPercentage">0%</span>
+                            <span class="progress-text">Complete</span>
+                        </div>
+                    </div>
+                    <div class="progress-details">
+                        <div class="progress-item">
+                            <span class="progress-icon">📚</span>
+                            <span class="progress-label">Lessons Complete</span>
+                            <span class="progress-count" id="lessonsComplete">0/10</span>
+                        </div>
+                        <div class="progress-item">
+                            <span class="progress-icon">🏆</span>
+                            <span class="progress-label">Badges Earned</span>
+                            <span class="progress-count" id="badgesEarned">0/10</span>
+                        </div>
+                        <div class="progress-item">
+                            <span class="progress-icon">📝</span>
+                            <span class="progress-label">Journal Entries</span>
+                            <span class="progress-count" id="journalCount">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Badges Section -->
+            <div class="badges-section">
+                <h2>Achievement Badges</h2>
+                <p class="section-subtitle">Earn badges by completing lessons and demonstrating your learning.</p>
+                <div id="badgeGrid">
+                    <!-- Badges will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Journal Timeline -->
+            <div class="journal-section">
+                <div class="section-header">
+                    <h2>Learning Journal</h2>
+                    <div class="section-actions">
+                        <button class="btn btn-ghost" onclick="profilePage.exportJournal()">
+                            📄 Export Journal
+                        </button>
+                        <button class="btn btn-ghost" onclick="profilePage.clearJournal()" style="color: var(--danger);">
+                            🗑️ Clear All
+                        </button>
+                    </div>
+                </div>
+                <div class="journal-timeline" id="journalTimeline">
+                    <!-- Journal entries will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Achievement Stats -->
+            <div class="stats-section">
+                <h2>Learning Statistics</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">⭐</div>
+                        <div class="stat-value" id="totalXP">0</div>
+                        <div class="stat-label">Experience Points</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🔥</div>
+                        <div class="stat-value" id="currentStreak">0</div>
+                        <div class="stat-label">Current Streak</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🎯</div>
+                        <div class="stat-value" id="lessonsCompleted">0</div>
+                        <div class="stat-label">Lessons Completed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-value" id="averageScore">--</div>
+                        <div class="stat-label">Engagement Level</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Certificate Modal -->
+    <div id="certificateModal" class="modal">
+        <div class="modal-content certificate-modal">
+            <div class="modal-header">
+                <h2>🏆 Congratulations!</h2>
+                <button class="modal-close" id="certificateClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="certificate" id="certificate">
+                    <div class="certificate-border">
+                        <div class="certificate-header">
+                            <h1>Certificate of Achievement</h1>
+                            <div class="certificate-subtitle">Nature Power Learning Journey</div>
+                        </div>
+                        <div class="certificate-body">
+                            <p class="certificate-text">This certifies that</p>
+                            <h2 class="certificate-name">Young Scientist</h2>
+                            <p class="certificate-text">has successfully completed</p>
+                            <h3 class="certificate-course">Y4 Harness the Power of Nature</h3>
+                            <p class="certificate-achievement">
+                                Demonstrating understanding of weather, climate, renewable energy, 
+                                earthquake safety, and sustainable design through 10 interactive lessons.
+                            </p>
+                            <div class="certificate-badges">
+                                <div class="badge-showcase" id="certificateBadges">
+                                    <!-- Earned badges will be displayed here -->
+                                </div>
+                            </div>
+                            <div class="certificate-footer">
+                                <div class="certificate-date" id="certificateDate"></div>
+                                <div class="certificate-signature">
+                                    <div class="signature-line"></div>
+                                    <div class="signature-title">Teacher</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="certificate-actions">
+                    <button class="btn btn-primary" onclick="profilePage.downloadCertificateImage()">
+                        📸 Download as Image
+                    </button>
+                    <button class="btn btn-secondary" onclick="profilePage.printCertificate()">
+                        🖨️ Print Certificate
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-links">
+                    <a href="/teacher.html#safety">Safety & Privacy</a>
+                    <a href="/teacher.html#permissions">Image Permissions</a>
+                    <a href="/teacher.html#report">Report a Concern</a>
+                    <a href="#credits">Credits</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/progress.js"></script>
+    <script src="js/journal.js"></script>
+    <script src="js/badges.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/profile-page.js"></script>
+</body>
+</html>

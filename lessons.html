@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your 10-Lesson Journey - Harness the Power of Nature</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    
+    <!-- Clean Design System -->
+    <link rel="stylesheet" href="css/tokens.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/accessibility.css">
+    
+    <style>
+        /* Lessons Page Design */
+        .lessons-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            font-family: var(--font-body);
+        }
+
+        .lessons-header {
+            text-align: center;
+            padding: 40px 0 60px;
+            background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 50%, #BAE6FD 100%);
+            border-radius: 0 0 32px 32px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lessons-header::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .lessons-header::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .lessons-title {
+            font-family: var(--font-display);
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--ink);
+            margin: 0 0 16px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .lessons-subtitle {
+            font-size: 20px;
+            color: var(--muted);
+            margin: 0 0 24px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .progress-overview {
+            background: var(--bg);
+            border: 2px solid #E5E7EB;
+            border-radius: 20px;
+            padding: 24px;
+            margin: 0 auto 40px;
+            max-width: 600px;
+            box-shadow: 0 8px 24px rgba(17, 24, 39, 0.08);
+            position: relative;
+            z-index: 1;
+        }
+
+        .progress-title {
+            font-family: var(--font-display);
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--ink);
+            text-align: center;
+            margin: 0 0 20px 0;
+        }
+
+        .progress-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+
+        .progress-stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .progress-stat-number {
+            font-family: var(--font-display);
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0 0 8px 0;
+        }
+
+        .progress-stat-label {
+            font-size: 14px;
+            color: var(--muted);
+            margin: 0;
+        }
+
+        /* Lesson Cards Grid */
+        .lessons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        .lesson-card {
+            background: var(--bg);
+            border: 2px solid #E5E7EB;
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: 0 8px 24px rgba(17, 24, 39, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lesson-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(17, 24, 39, 0.12);
+            border-color: var(--primary);
+        }
+
+        .lesson-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--success));
+        }
+
+        .lesson-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .lesson-number {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), #1D4ED8);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 20px;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .lesson-title-section {
+            flex: 1;
+        }
+
+        .lesson-title {
+            font-family: var(--font-display);
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--ink);
+            margin: 0 0 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .lesson-emoji {
+            font-size: 28px;
+        }
+
+        .lesson-time {
+            font-size: 14px;
+            color: var(--muted);
+            margin: 0;
+        }
+
+        .lesson-objective {
+            font-size: 16px;
+            color: var(--ink);
+            margin: 0 0 16px 0;
+            line-height: 1.5;
+            font-style: italic;
+        }
+
+        .lesson-subjects {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .subject-chip {
+            background: #F3F4F6;
+            color: var(--ink);
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 12px;
+            font-weight: 500;
+            border: 1px solid #E5E7EB;
+        }
+
+        .lesson-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .progress-ring {
+            --p: 0;
+            --c: #2EC4B6;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: conic-gradient(var(--c) calc(var(--p) * 1%), #E5E7EB 0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .progress-ring span {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--ink);
+            background: var(--bg);
+            border-radius: 50%;
+            padding: 4px 6px;
+            min-width: 24px;
+            text-align: center;
+        }
+
+        .lesson-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            align-items: flex-end;
+        }
+
+        .lesson-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 12px 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .lesson-btn:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .lesson-btn:focus {
+            outline: 3px solid var(--focus);
+            outline-offset: 2px;
+        }
+
+        .lesson-btn.completed {
+            background: var(--success);
+        }
+
+        .lesson-btn.in-progress {
+            background: var(--accent);
+        }
+
+        .help-link {
+            font-size: 12px;
+            color: var(--primary);
+            text-decoration: underline;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .help-link:hover {
+            color: var(--accent);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .lessons-title {
+                font-size: 36px;
+            }
+            
+            .lessons-subtitle {
+                font-size: 18px;
+            }
+            
+            .lessons-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .progress-stats {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+        }
+
+        /* Navigation */
+        .back-to-home {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--bg);
+            color: var(--ink);
+            border: 2px solid #E5E7EB;
+            border-radius: 12px;
+            padding: 12px 20px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(17, 24, 39, 0.08);
+        }
+
+        .back-to-home:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <a href="/" class="back-to-home">← Back to Home</a>
+    
+    <div class="lessons-container">
+        <header class="lessons-header">
+            <h1 class="lessons-title">Your 10-Lesson Journey</h1>
+            <p class="lessons-subtitle">Become a nature detective, architect, and science communicator!</p>
+            
+            <div class="progress-overview">
+                <h2 class="progress-title">Your Progress</h2>
+                <div class="progress-stats">
+                    <div class="progress-stat">
+                        <div class="progress-stat-number" id="lessons-completed">0</div>
+                        <p class="progress-stat-label">Lessons Completed</p>
+                    </div>
+                    <div class="progress-stat">
+                        <div class="progress-stat-number" id="badges-earned">0</div>
+                        <p class="progress-stat-label">Badges Earned</p>
+                    </div>
+                    <div class="progress-stat">
+                        <div class="progress-stat-number" id="xp-points">0</div>
+                        <p class="progress-stat-label">XP Points</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="lessons-grid" id="lessonsGrid">
+                <!-- Lesson cards will be dynamically generated -->
+            </div>
+        </main>
+    </div>
+
+    <script src="js/progress.js"></script>
+    <script src="js/badges.js"></script>
+    <script src="js/i18n.js"></script>
+
+    <script>
+        // Lesson data and icons
+        const LESSON_ICONS = {
+            L1: "🔍", L2: "🏠", L3: "🔌", L4: "🏙️", L5: "⚡", 
+            L6: "🗣️", L7: "🌋", L8: "🛡️", L9: "📐", L10: "🏗️"
+        };
+
+        const LESSON_LINK = '/learn-enhanced.html'; // Link to enhanced learn page
+
+        // Lesson data (fallback if JSON not available)
+        const FALLBACK_LESSONS = [
+            {
+                id: "L1",
+                title: "Wonder Launch: What is the power of nature?",
+                time_minutes: 45,
+                subjects: ["Geography", "Science", "Computing"],
+                student: { learning_objective: "What is the power of nature?" }
+            },
+            {
+                id: "L2", 
+                title: "Homes fit their climates",
+                time_minutes: 45,
+                subjects: ["Geography", "Design & Technology", "Computing"],
+                student: { learning_objective: "Match features to climates." }
+            },
+            {
+                id: "L3",
+                title: "Electricity: Make a simple circuit", 
+                time_minutes: 40,
+                subjects: ["Science", "D&T", "Computing"],
+                student: { learning_objective: "Build a loop with a switch." }
+            },
+            {
+                id: "L4",
+                title: "Singapore case study: Harnessing nature",
+                time_minutes: 45,
+                subjects: ["Geography", "D&T", "Computing"],
+                student: { learning_objective: "Spot a feature + benefit." }
+            },
+            {
+                id: "L5",
+                title: "Renewable energy",
+                time_minutes: 45,
+                subjects: ["Geography", "Science", "D&T"],
+                student: { learning_objective: "When do solar/wind/hydro work best?" }
+            },
+            {
+                id: "L6",
+                title: "Consolidation & speaking for an audience",
+                time_minutes: 35,
+                subjects: ["English", "Computing"],
+                student: { learning_objective: "Explain with evidence." }
+            },
+            {
+                id: "L7",
+                title: "Earthquakes: Where and why?",
+                time_minutes: 45,
+                subjects: ["Geography", "Science"],
+                student: { learning_objective: "Find the Ring of Fire." }
+            },
+            {
+                id: "L8",
+                title: "Adapting to earthquakes",
+                time_minutes: 45,
+                subjects: ["Geography", "D&T"],
+                student: { learning_objective: "Pick one adaptation + why." }
+            },
+            {
+                id: "L9",
+                title: "Design a future-ready home (Plan & Prototype)",
+                time_minutes: 60,
+                subjects: ["D&T", "Geography", "Science", "Computing"],
+                student: { learning_objective: "Change one feature; predict impact." }
+            },
+            {
+                id: "L10",
+                title: "Design a future-ready home (Make & Present)",
+                time_minutes: 60,
+                subjects: ["D&T", "English", "Computing"],
+                student: { learning_objective: "Build, test and present with evidence." }
+            }
+        ];
+
+        async function loadLessons() {
+            try {
+                const response = await fetch('/data/lessons.json');
+                const data = await response.json();
+                return data.lessons;
+            } catch (error) {
+                console.log('Using fallback lesson data');
+                return FALLBACK_LESSONS;
+            }
+        }
+
+        function getProgressStatus(lessonId) {
+            const progress = JSON.parse(localStorage.getItem('np_progress')) || {
+                lessonStatus: {},
+                xp: 0,
+                badges: {}
+            };
+            return progress.lessonStatus[lessonId] || 'notstarted';
+        }
+
+        function getProgressPercentage(lessonId) {
+            const status = getProgressStatus(lessonId);
+            return status === 'complete' ? 100 : status === 'inprogress' ? 50 : 0;
+        }
+
+        function createLessonCard(lesson, index) {
+            const status = getProgressStatus(lesson.id);
+            const progress = getProgressPercentage(lesson.id);
+            const emoji = LESSON_ICONS[lesson.id] || '📘';
+            const objective = lesson.student?.learning_objective || '';
+            const subjects = (lesson.subjects || []).slice(0, 3);
+            
+            let buttonText = 'Start';
+            let buttonClass = 'lesson-btn';
+            
+            if (status === 'complete') {
+                buttonText = 'Review';
+                buttonClass += ' completed';
+            } else if (status === 'inprogress') {
+                buttonText = 'Continue';
+                buttonClass += ' in-progress';
+            }
+
+            return `
+                <div class="lesson-card" data-lesson="${lesson.id}">
+                    <div class="lesson-header">
+                        <div class="lesson-number">${index + 1}</div>
+                        <div class="lesson-title-section">
+                            <h3 class="lesson-title">
+                                <span class="lesson-emoji">${emoji}</span>
+                                ${lesson.title}
+                            </h3>
+                            <p class="lesson-time">⏱️ ${lesson.time_minutes} minutes</p>
+                        </div>
+                    </div>
+                    
+                    <p class="lesson-objective">"${objective}"</p>
+                    
+                    <div class="lesson-subjects">
+                        ${subjects.map(subject => `<span class="subject-chip">${subject}</span>`).join('')}
+                    </div>
+                    
+                    <div class="lesson-footer">
+                        <div class="progress-ring" style="--p: ${progress};">
+                            <span>${progress === 100 ? '✓' : progress === 50 ? '½' : '○'}</span>
+                        </div>
+                        
+                        <div class="lesson-actions">
+                            <button class="${buttonClass}" onclick="openLesson('${lesson.id}')">
+                                ${buttonText}
+                            </button>
+                            <button class="help-link" onclick="showHelp('${lesson.id}')">
+                                Need a hand?
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function openLesson(lessonId) {
+            window.location.href = `${LESSON_LINK}?lesson=${lessonId}`;
+        }
+
+        function showHelp(lessonId) {
+            alert(`Help for ${lessonId}: This will open a helpful tip or guide for this lesson!`);
+        }
+
+        async function renderLessons() {
+            const lessons = await loadLessons();
+            const grid = document.getElementById('lessonsGrid');
+            
+            if (grid) {
+                grid.innerHTML = lessons.map((lesson, index) => 
+                    createLessonCard(lesson, index)
+                ).join('');
+            }
+        }
+
+        function updateProgressStats() {
+            const progress = JSON.parse(localStorage.getItem('np_progress')) || {
+                lessonStatus: {},
+                xp: 0,
+                badges: {}
+            };
+
+            const completedLessons = Object.values(progress.lessonStatus).filter(status => status === 'complete').length;
+            const earnedBadges = Object.keys(progress.badges).length;
+
+            document.getElementById('lessons-completed').textContent = completedLessons;
+            document.getElementById('badges-earned').textContent = earnedBadges;
+            document.getElementById('xp-points').textContent = progress.xp || 0;
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', async function() {
+            await renderLessons();
+            updateProgressStats();
+        });
+    </script>
+</body>
+</html>

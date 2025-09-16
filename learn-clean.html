@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wonder Launch • Nature Power Learning</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <style>
+    /* Copy all the CSS from the original file */
+    :root {
+      /* Revolutionary Color System */
+      --primary-50: #f0f9ff;
+      --primary-100: #e0f2fe;
+      --primary-200: #bae6fd;
+      --primary-500: #0ea5e9;
+      --primary-600: #0284c7;
+      --primary-700: #0369a1;
+      --primary-900: #0c4a6e;
+      
+      --nature-50: #f0fdf4;
+      --nature-100: #dcfce7;
+      --nature-200: #bbf7d0;
+      --nature-500: #22c55e;
+      --nature-600: #16a34a;
+      --nature-700: #15803d;
+      
+      --sunset-50: #fff7ed;
+      --sunset-100: #ffedd5;
+      --sunset-200: #fed7aa;
+      --sunset-500: #f97316;
+      --sunset-600: #ea580c;
+      
+      --purple-50: #faf5ff;
+      --purple-100: #f3e8ff;
+      --purple-200: #e9d5ff;
+      --purple-500: #a855f7;
+      --purple-600: #9333ea;
+      
+      /* Revolutionary Gradients */
+      --gradient-hero: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      --gradient-nature: linear-gradient(135deg, #22c55e 0%, #16a34a 50%, #0ea5e9 100%);
+      --gradient-sunset: linear-gradient(135deg, #f97316 0%, #ea580c 50%, #dc2626 100%);
+      --gradient-ocean: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 50%, #6366f1 100%);
+      --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.1) 100%);
+      
+      /* Surface System */
+      --surface-primary: rgba(255, 255, 255, 0.95);
+      --surface-secondary: rgba(255, 255, 255, 0.8);
+      --surface-glass: rgba(255, 255, 255, 0.15);
+      --surface-elevated: rgba(255, 255, 255, 0.98);
+      
+      /* Advanced Shadows */
+      --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-large: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      --shadow-glow: 0 0 0 1px rgba(255, 255, 255, 0.05), 0 0 50px rgba(59, 130, 246, 0.15);
+      
+      /* Typography Scale */
+      --text-xs: 0.75rem;
+      --text-sm: 0.875rem;
+      --text-base: 1rem;
+      --text-lg: 1.125rem;
+      --text-xl: 1.25rem;
+      --text-2xl: 1.5rem;
+      --text-3xl: 1.875rem;
+      --text-4xl: 2.25rem;
+      --text-5xl: 3rem;
+      
+      /* Advanced Spacing */
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-20: 5rem;
+      
+      /* Border Radius System */
+      --radius-sm: 0.375rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-xl: 1rem;
+      --radius-2xl: 1.5rem;
+      --radius-3xl: 2rem;
+      --radius-full: 9999px;
+      
+      /* Font Families */
+      --font-display: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+      
+      /* Animation Variables */
+      --duration-fast: 150ms;
+      --duration-normal: 300ms;
+      --duration-slow: 500ms;
+      --ease-out: cubic-bezier(0.0, 0.0, 0.2, 1);
+      --ease-in-out: cubic-bezier(0.4, 0.0, 0.2, 1);
+      --ease-spring: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-body);
+      line-height: 1.6;
+      color: #1f2937;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Revolutionary Animated Background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(120, 219, 226, 0.2) 0%, transparent 50%);
+      z-index: -2;
+      animation: backgroundShift 20s ease-in-out infinite;
+    }
+
+    @keyframes backgroundShift {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      50% { transform: scale(1.05) rotate(1deg); }
+    }
+
+    /* Floating Orbs */
+    .floating-orbs {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
+      backdrop-filter: blur(20px);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .orb:nth-child(1) { 
+      width: 80px; height: 80px; top: 20%; left: 10%; 
+      animation-delay: 0s; animation-duration: 8s;
+    }
+    .orb:nth-child(2) { 
+      width: 120px; height: 120px; top: 60%; right: 15%; 
+      animation-delay: 2s; animation-duration: 10s;
+    }
+    .orb:nth-child(3) { 
+      width: 60px; height: 60px; bottom: 30%; left: 20%; 
+      animation-delay: 4s; animation-duration: 7s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
+    }
+
+    /* Revolutionary Main Container */
+    .app-container {
+      display: flex;
+      min-height: 100vh;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Spectacular Floating Sidebar */
+    .floating-sidebar {
+      position: fixed;
+      left: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-4);
+      box-shadow: var(--shadow-xl);
+      transition: all var(--duration-normal) var(--ease-out);
+      pointer-events: auto;
+    }
+
+    .floating-sidebar:hover {
+      transform: translateY(-50%) scale(1.02);
+      box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.3);
+    }
+
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .nav-item {
+      width: 60px;
+      height: 60px;
+      border-radius: var(--radius-xl);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      font-size: var(--text-xl);
+      transition: all var(--duration-normal) var(--ease-spring);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .nav-item:hover::before {
+      left: 100%;
+    }
+
+    .nav-item:hover {
+      transform: scale(1.1);
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-item.active {
+      background: rgba(255, 255, 255, 0.25);
+      transform: scale(1.05);
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+    }
+
+    .nav-tooltip {
+      position: absolute;
+      left: 80px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-md);
+      font-size: var(--text-sm);
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: all var(--duration-normal) var(--ease-out);
+    }
+
+    .nav-item:hover .nav-tooltip {
+      opacity: 1;
+      transform: translateY(-50%) translateX(10px);
+    }
+
+    /* Revolutionary Main Content */
+    .main-content {
+      flex: 1;
+      margin-left: 120px;
+      padding: var(--space-8) var(--space-6);
+      min-height: 100vh;
+    }
+
+    /* Revolutionary Content Panels */
+    .content-section {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: var(--radius-2xl);
+      box-shadow: var(--shadow-large);
+      overflow: hidden;
+      margin-bottom: var(--space-8);
+      animation: sectionSlide 0.6s var(--ease-out) both;
+    }
+
+    @keyframes sectionSlide {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .panel {
+      display: none !important;
+      padding: var(--space-8);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .panel.active {
+      display: block !important;
+      opacity: 1;
+      animation: panelFade 0.4s var(--ease-out);
+    }
+
+    @keyframes panelFade {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Spectacular Cards */
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--space-6);
+      margin-bottom: var(--space-6);
+    }
+
+    .content-card {
+      background: var(--surface-primary);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      box-shadow: var(--shadow-medium);
+      transition: all var(--duration-normal) var(--ease-out);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Carousel styles */
+    .phenomena-carousel {
+      position: relative;
+      height: 280px;
+      margin: var(--space-4) 0;
+      overflow: hidden;
+      border-radius: var(--radius-xl);
+      background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(14, 165, 233, 0.1) 100%);
+      border: 1px solid rgba(34, 197, 94, 0.2);
+    }
+
+    .phenomenon-item {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: var(--space-6);
+      opacity: 0;
+      transform: translateX(100%);
+      transition: all var(--duration-slow) var(--ease-out);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .phenomenon-item.active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .phenomenon-icon {
+      font-size: 3rem;
+      margin-bottom: var(--space-3);
+      animation: iconBounce 2s ease-in-out infinite;
+    }
+
+    @keyframes iconBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .phenomenon-item h4 {
+      font-size: var(--text-xl);
+      font-weight: 700;
+      color: #1f2937;
+      margin-bottom: var(--space-2);
+    }
+
+    .phenomenon-item p {
+      font-size: var(--text-base);
+      color: #4b5563;
+      margin-bottom: var(--space-3);
+      line-height: 1.6;
+    }
+
+    .phenomenon-fact {
+      font-size: var(--text-sm);
+      color: var(--nature-600);
+      font-weight: 600;
+      background: rgba(34, 197, 94, 0.1);
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+    }
+
+    .carousel-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: var(--space-4);
+    }
+
+    .carousel-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      background: var(--gradient-nature);
+      color: white;
+      font-size: var(--text-xl);
+      cursor: pointer;
+      transition: all var(--duration-normal) var(--ease-out);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .carousel-btn:hover {
+      transform: scale(1.1);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .carousel-dots {
+      display: flex;
+      gap: var(--space-2);
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(34, 197, 94, 0.3);
+      cursor: pointer;
+      transition: all var(--duration-normal) var(--ease-out);
+    }
+
+    .dot.active {
+      background: var(--nature-500);
+      transform: scale(1.2);
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating Orbs Background -->
+  <div class="floating-orbs">
+    <div class="orb"></div>
+    <div class="orb"></div>
+    <div class="orb"></div>
+  </div>
+
+  <div class="app-container">
+    <!-- Revolutionary Floating Sidebar -->
+    <nav class="floating-sidebar">
+      <div class="sidebar-nav">
+        <a href="#panel-see" class="nav-item active" data-tab="see">
+          <span class="material-icons-round">visibility</span>
+          <div class="nav-tooltip">Present</div>
+        </a>
+        <a href="#panel-think" class="nav-item" data-tab="think">
+          <span class="material-icons-round">psychology</span>
+          <div class="nav-tooltip">Question</div>
+        </a>
+        <a href="#panel-make" class="nav-item" data-tab="make">
+          <span class="material-icons-round">construction</span>
+          <div class="nav-tooltip">Do</div>
+        </a>
+        <a href="#panel-share" class="nav-item" data-tab="share">
+          <span class="material-icons-round">forum</span>
+          <div class="nav-tooltip">Wrap</div>
+        </a>
+      </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- Revolutionary Content Sections -->
+      <div class="content-section">
+        <!-- Present Panel -->
+        <section id="panel-see" class="panel active" role="tabpanel">
+          <div class="content-grid">
+            <div class="content-card">
+              <h3>Nature Phenomena Carousel</h3>
+              <p>Discover mind-blowing natural phenomena that showcase nature's incredible power</p>
+              
+              <!-- Enhanced Phenomena Carousel -->
+              <div class="phenomena-carousel">
+                <div class="phenomenon-item active" data-index="0">
+                  <div class="phenomenon-icon">🌊</div>
+                  <h4>Tsunami Speed</h4>
+                  <p>In deep ocean, a tsunami can move as fast as a jet plane - up to 800 km/h!</p>
+                  <div class="phenomenon-fact">That's faster than most cars on a motorway!</div>
+                </div>
+                <div class="phenomenon-item" data-index="1">
+                  <div class="phenomenon-icon">🌋</div>
+                  <h4>Volcano Lightning</h4>
+                  <p>Ash clouds can create spectacular lightning storms above erupting volcanoes!</p>
+                  <div class="phenomenon-fact">The ash particles rub together and create static electricity!</div>
+                </div>
+                <div class="phenomenon-item" data-index="2">
+                  <div class="phenomenon-icon">⚡</div>
+                  <h4>Lightning Heat</h4>
+                  <p>A lightning bolt can be 5 times hotter than the surface of the Sun!</p>
+                  <div class="phenomenon-fact">That's about 30,000°C compared to the Sun's 5,500°C!</div>
+                </div>
+              </div>
+              
+              <div class="carousel-controls">
+                <button class="carousel-btn prev" data-direction="-1">‹</button>
+                <div class="carousel-dots">
+                  <span class="dot active" data-index="0"></span>
+                  <span class="dot" data-index="1"></span>
+                  <span class="dot" data-index="2"></span>
+                </div>
+                <button class="carousel-btn next" data-direction="1">›</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Question Panel -->
+        <section id="panel-think" class="panel" role="tabpanel">
+          <div class="content-grid">
+            <div class="content-card">
+              <h3>Question Panel</h3>
+              <p>This is the Question panel content.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Do Panel -->
+        <section id="panel-make" class="panel" role="tabpanel">
+          <div class="content-grid">
+            <div class="content-card">
+              <h3>Do Panel</h3>
+              <p>This is the Do panel content.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Wrap Panel -->
+        <section id="panel-share" class="panel" role="tabpanel">
+          <div class="content-grid">
+            <div class="content-card">
+              <h3>Wrap Panel</h3>
+              <p>This is the Wrap panel content.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    console.log('🚀 CLEAN VERSION STARTING');
+    
+    // Add visible indicator
+    setTimeout(() => {
+      const indicator = document.createElement('div');
+      indicator.style.cssText = 'position: fixed; top: 10px; right: 10px; background: #00ff00; color: black; padding: 10px 15px; border-radius: 5px; z-index: 9999; font-weight: bold; box-shadow: 0 4px 8px rgba(0,0,0,0.3);';
+      indicator.textContent = '✅ CLEAN VERSION LOADED';
+      document.body.appendChild(indicator);
+      setTimeout(() => indicator.remove(), 4000);
+    }, 100);
+    
+    // Global variables
+    let currentPanel = 'panel-see';
+    let carouselTimer;
+    
+    // Simple panel switching
+    function switchPanel(panelId) {
+      console.log('🎯 Switching to:', panelId);
+      
+      // Hide all panels
+      document.querySelectorAll('.panel').forEach(panel => {
+        panel.classList.remove('active');
+        panel.style.display = 'none';
+      });
+      
+      // Show target panel
+      const target = document.getElementById(panelId);
+      if (target) {
+        target.classList.add('active');
+        target.style.display = 'block';
+        currentPanel = panelId;
+        console.log('✅ Panel shown:', panelId);
+      }
+      
+      // Update navigation
+      document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+      const activeNav = document.querySelector(`[data-tab="${panelId.replace('panel-', '')}"]`);
+      if (activeNav) {
+        activeNav.classList.add('active');
+      }
+    }
+    
+    // Simple carousel
+    function initCarousel() {
+      console.log('🎠 Initializing carousel...');
+      
+      const items = document.querySelectorAll('.phenomenon-item');
+      const dots = document.querySelectorAll('.dot');
+      const prevBtn = document.querySelector('.carousel-btn.prev');
+      const nextBtn = document.querySelector('.carousel-btn.next');
+      
+      console.log('Found:', items.length, 'items,', dots.length, 'dots');
+      
+      if (items.length === 0) return;
+      
+      let currentSlide = 0;
+      
+      function showSlide(index) {
+        // Hide all items
+        items.forEach((item, i) => {
+          if (i === index) {
+            item.style.opacity = '1';
+            item.style.transform = 'translateX(0)';
+            item.classList.add('active');
+          } else {
+            item.style.opacity = '0';
+            item.style.transform = 'translateX(100%)';
+            item.classList.remove('active');
+          }
+        });
+        
+        // Update dots
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === index);
+        });
+        
+        currentSlide = index;
+        console.log('📺 Showing slide:', index);
+      }
+      
+      // Dot clicks
+      dots.forEach((dot, index) => {
+        dot.onclick = function() {
+          showSlide(index);
+          restartTimer();
+        };
+      });
+      
+      // Button clicks
+      if (prevBtn) {
+        prevBtn.onclick = function() {
+          const prev = (currentSlide - 1 + items.length) % items.length;
+          showSlide(prev);
+          restartTimer();
+        };
+      }
+      
+      if (nextBtn) {
+        nextBtn.onclick = function() {
+          const next = (currentSlide + 1) % items.length;
+          showSlide(next);
+          restartTimer();
+        };
+      }
+      
+      // Auto-advance timer
+      function startTimer() {
+        carouselTimer = setInterval(() => {
+          const next = (currentSlide + 1) % items.length;
+          showSlide(next);
+        }, 4000);
+      }
+      
+      function restartTimer() {
+        clearInterval(carouselTimer);
+        setTimeout(startTimer, 2000);
+      }
+      
+      // Initialize
+      showSlide(0);
+      setTimeout(startTimer, 1000);
+      console.log('✅ Carousel initialized');
+    }
+    
+    // Initialize everything
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('📄 DOM Ready');
+      
+      // Set up navigation clicks
+      document.querySelectorAll('.nav-item').forEach(item => {
+        item.addEventListener('click', function(e) {
+          e.preventDefault();
+          const tab = this.dataset.tab;
+          if (tab) {
+            console.log('🖱️ Nav clicked:', tab);
+            switchPanel(`panel-${tab}`);
+            window.location.hash = `panel-${tab}`;
+          }
+        });
+      });
+      
+      // Handle hash changes
+      window.addEventListener('hashchange', function() {
+        const hash = window.location.hash;
+        if (hash.startsWith('#panel-')) {
+          switchPanel(hash.substring(1));
+        }
+      });
+      
+      // Initialize with hash or default
+      const hash = window.location.hash;
+      if (hash.startsWith('#panel-')) {
+        switchPanel(hash.substring(1));
+      } else {
+        switchPanel('panel-see');
+      }
+      
+      // Initialize carousel
+      setTimeout(initCarousel, 100);
+      
+      console.log('✅ System ready');
+    });
+    
+    // Make functions global for debugging
+    window.switchPanel = switchPanel;
+  </script>
+</body>
+</html>
