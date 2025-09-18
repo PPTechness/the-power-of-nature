@@ -311,9 +311,30 @@
 
         .info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--space-8);
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-6);
             margin-top: var(--space-12);
+        }
+
+        /* Responsive info grid - maintain row consistency */
+        @media (max-width: 1200px) {
+            .info-grid {
+                gap: var(--space-4);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .info-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--space-4);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-4);
+            }
         }
 
         .info-tile {
