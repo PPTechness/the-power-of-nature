@@ -996,15 +996,16 @@
 
       .overview-grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(5, 1fr);
         gap: var(--space-3);
         margin-bottom: var(--space-6);
       }
 
+      @media (max-width: 1200px) {
+        .overview-grid { grid-template-columns: repeat(4, 1fr); }
+      }
       @media (max-width: 1024px) {
-        .overview-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
+        .overview-grid { grid-template-columns: repeat(2, 1fr); }
       }
 
       @media (max-width: 640px) {

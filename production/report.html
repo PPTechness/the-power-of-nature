@@ -113,6 +113,26 @@
       backdrop-filter: blur(16px);
     }
 
+    /* Feature tiles (top) */
+    .features{
+      display:grid; gap:12px; grid-template-columns: repeat(4,1fr);
+      margin: 12px 0 6px;
+    }
+    @media (max-width: 980px){ .features{ grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 640px){ .features{ grid-template-columns: 1fr; } }
+    .feature{
+      position: relative; overflow:hidden; border-radius: 16px; padding:14px; background: rgba(255,255,255,.6);
+      border:1px solid rgba(0,0,0,.08); backdrop-filter: blur(12px);
+      box-shadow: 0 10px 30px rgba(0,0,0,.06);
+      display:flex; align-items:flex-start; gap:10px;
+    }
+    .feature .icon{ width:40px; height:40px; border-radius:12px; display:flex; align-items:center; justify-content:center;
+      background: linear-gradient(135deg, rgba(14,165,233,.2), rgba(34,197,94,.15));
+      border:1px solid rgba(255,255,255,.5);
+    }
+    .feature h4{ margin:0; font-size:1rem }
+    .feature p{ margin:2px 0 0; color:var(--muted); font-size:.9rem }
+
     .panel{ background:#fff; border:1px solid #e5e7eb; border-radius:16px; padding:12px }
     .panel h3{ margin:0 0 8px; font-size:1rem }
     .panel p, .panel li{ font-size:.95rem; line-height:1.5 }
@@ -149,6 +169,10 @@
     .tool{ border:1px solid #e5e7eb; border-radius:12px; background:#fff; padding:10px 12px }
     .tool small{ color:#64748b; display:block; margin-top:2px }
 
+    /* Right column reflow to two-column grid to reduce scrolling */
+    .side-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:12px }
+    @media (max-width: 980px){ .side-grid{ grid-template-columns:1fr } }
+
     /* Print */
     @media print{
       .appbar{ display:none }
@@ -179,6 +203,37 @@
         <span class="chip"><span class="material-icons-round">collections_bookmark</span> Seesaw portfolios</span>
         <span class="chip"><span class="material-icons-round">balance</span> Digital wellbeing</span>
       </div>
+      <!-- Feature tiles -->
+      <div class="features">
+        <div class="feature">
+          <div class="icon"><span class="material-icons-round">picture_as_pdf</span></div>
+          <div>
+            <h4>Open PDF</h4>
+            <p>Best for quick read-through and printing</p>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="icon"><span class="material-icons-round">description</span></div>
+          <div>
+            <h4>Download DOCX</h4>
+            <p>Editable copy for colleagues</p>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="icon"><span class="material-icons-round">insights</span></div>
+          <div>
+            <h4>Key insights</h4>
+            <p>Bespoke curriculum • Evidence-light • Wellbeing-first</p>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="icon"><span class="material-icons-round">hub</span></div>
+          <div>
+            <h4>Tech at a glance</h4>
+            <p>Open tools quickly during planning</p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- CONTENT -->
@@ -199,8 +254,8 @@
       </div>
 
       <!-- Right: Quick controls + summaries -->
-      <div class="glass">
-        <div class="panel">
+      <div class="glass side-grid">
+        <div class="panel" style="grid-column: span 2">
           <h3>Open or download</h3>
           <div class="actions">
             <a class="action primary" href="./assets/report/Tanglin_Tech_Integration_Report.pdf" target="_blank" rel="noopener">
