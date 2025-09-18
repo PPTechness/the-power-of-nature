@@ -996,22 +996,14 @@
 
       .overview-grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(5, 1fr);
         gap: var(--space-3);
         margin-bottom: var(--space-6);
       }
 
-      @media (max-width: 1024px) {
-        .overview-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-
-      @media (max-width: 640px) {
-        .overview-grid {
-          grid-template-columns: 1fr;
-        }
-      }
+      @media (max-width: 1200px) { .overview-grid { grid-template-columns: repeat(4, 1fr); } }
+      @media (max-width: 1024px) { .overview-grid { grid-template-columns: repeat(2, 1fr); } }
+      @media (max-width: 640px)  { .overview-grid { grid-template-columns: 1fr; } }
 
       .overview-card {
         background: rgba(255, 255, 255, 0.95);
@@ -1381,6 +1373,10 @@
                         <span>Explore Lessons</span>
                         <span class="material-icons-round">arrow_forward</span>
                     </a>
+                    <a href="./report.html" class="btn btn-outline" title="Open the strategic technology report">
+                        <span>Strategic Tech Report</span>
+                        <span class="material-icons-round">description</span>
+                    </a>
                     <a href="/learn-enhanced.html?lesson=L1" class="btn btn-outline">
                         <span>Start Teaching</span>
                         <span class="material-icons-round">play_arrow</span>
@@ -1516,6 +1512,13 @@
                             <li>Create renewable energy solutions</li>
                             <li>Present findings with evidence</li>
                         </ul>
+                    </div>
+                    
+                    <div class="overview-card report">
+                        <div class="card-icon">📄</div>
+                        <h3>Report</h3>
+                        <p>Strategic Technology Integration Report with detailed lesson plans, learning outcomes, and digital wellbeing guidance.</p>
+                        <a class="teacher-link" href="./report.html" title="Open the report">Open Report</a>
                     </div>
                 </div>
                 
