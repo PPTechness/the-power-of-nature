@@ -1549,6 +1549,10 @@
           <span class="material-icons-round">slideshow</span>
           <div class="nav-tooltip">Slides</div>
         </a>
+        <a href="/production/teacher-pack-L1.html" class="nav-item" target="_blank" rel="noopener">
+          <span class="material-icons-round">menu_book</span>
+          <div class="nav-tooltip">Teacher Pack</div>
+        </a>
       </div>
     </nav>
 
@@ -1560,10 +1564,10 @@
       <div class="lesson-hero">
         <div class="hero-badge">
           <span class="material-icons-round">eco</span>
-          <span>Lesson 1 • 45 minutes</span>
+          <span>Lesson 1 • 60 minutes</span>
         </div>
         <h1 class="hero-title">Wonder: What is the Power of Nature?</h1>
-        <p class="hero-subtitle">Explore the incredible forces that shape our world through interactive discovery and hands-on investigation</p>
+        <p class="hero-subtitle">See • Think • Make • Share: explore the forces that shape our world, then build and explain a structure that tackles a real hazard.</p>
         <div class="subject-tags">
           <div class="subject-tag" data-tooltip="Understanding places, environments, and weather patterns">
             🌍 Geography
@@ -1577,6 +1581,12 @@
           <div class="subject-tag" data-tooltip="Using technology to collect and analyze data">
             💻 Computing
           </div>
+        </div>
+        <div class="subject-tags">
+          <div class="subject-tag" data-tooltip="Tanglin bespoke curriculum drivers">🌟 Curiosity</div>
+          <div class="subject-tag" data-tooltip="Work together with roles and routines">🤝 Collaboration</div>
+          <div class="subject-tag" data-tooltip="Design, test, improve">🎨 Creativity</div>
+          <div class="subject-tag" data-tooltip="Use evidence and explain with reasons">📌 Evidence</div>
         </div>
       </div>
 
@@ -1670,14 +1680,14 @@
               <p class="card-description">Two key videos that explain weather vs climate - essential for understanding!</p>
               
               <div class="video-tabs">
-                <button class="video-tab active" onclick="showVideo(0)">Met Office: What is Climate?</button>
+                <button class="video-tab active" onclick="showVideo(0)">NASA Climate Kids: Weather vs Climate</button>
                 <button class="video-tab" onclick="showVideo(1)">SciShow Kids: Extreme Weather</button>
               </div>
               
               <div class="video-container">
                 <iframe id="video-frame" width="100%" height="200" style="border-radius: 12px;" 
-                  src="https://www.youtube.com/embed/j1FxNDw50mc" 
-                  title="Met Office: What is climate?"
+                  src="https://www.youtube.com/embed/vH298zSCQzY" 
+                  title="NASA Climate Kids: Weather vs Climate"
                   allowfullscreen>
                 </iframe>
               </div>
@@ -1685,6 +1695,19 @@
               <div class="video-notes">
                 <p><strong>Teaching moment:</strong> Pause after each video to ask: "What's the difference between weather and climate?"</p>
               </div>
+            </div>
+
+            <div class="content-card">
+              <div class="card-icon" data-tooltip="Tech moments called out for pupils and teachers">
+                <span class="material-icons-round">bolt</span>
+              </div>
+              <h3 class="card-title">Technology today</h3>
+              <ul class="card-description" style="margin-left:1rem">
+                <li>Projector slides with built‑in timers and polls</li>
+                <li>Two short clips: NASA &amp; SciShow Kids (pause to discuss)</li>
+                <li>Optional: <a href="https://earth.nullschool.net/" target="_blank" rel="noopener">live wind view</a> — 60 seconds of wonder</li>
+                <li>Evidence in Seesaw: photo + 20‑sec voice note</li>
+              </ul>
             </div>
 
             <div class="content-card">
@@ -1697,23 +1720,35 @@
               <div class="vocab-grid">
                 <div class="vocab-card" data-term="weather">
                   <h4>Weather</h4>
-                  <p>What's happening outside right now - sunny, rainy, hot, cold</p>
+                  <p>What the air is like <strong>today</strong> (sunny, rainy, hot, cold).</p>
                 </div>
                 <div class="vocab-card" data-term="climate">
                   <h4>Climate</h4>
-                  <p>What the weather is usually like in a place over many years</p>
+                  <p>The <strong>usual pattern</strong> in a place over many years.</p>
                 </div>
                 <div class="vocab-card" data-term="structure">
                   <h4>Structure</h4>
-                  <p>Something that's built to be strong and stable</p>
+                  <p>Something built.</p>
                 </div>
-                <div class="vocab-card" data-term="reinforce">
-                  <h4>Reinforce</h4>
-                  <p>To make something stronger</p>
+                <div class="vocab-card" data-term="brace">
+                  <h4>Brace</h4>
+                  <p>A triangle piece that makes it stronger.</p>
+                </div>
+                <div class="vocab-card" data-term="feature">
+                  <h4>Feature</h4>
+                  <p>A part of the model.</p>
                 </div>
                 <div class="vocab-card" data-term="hazard">
-                  <h4>Natural Hazard</h4>
-                  <p>A dangerous natural event like storms, floods, or earthquakes</p>
+                  <h4>Hazard</h4>
+                  <p>Something in nature that can cause harm (e.g., flood, wind, storm).</p>
+                </div>
+                <div class="vocab-card" data-term="wind">
+                  <h4>Wind</h4>
+                  <p>Moving air that can push things over.</p>
+                </div>
+                <div class="vocab-card" data-term="storm">
+                  <h4>Storm</h4>
+                  <p>Heavy rain with strong wind.</p>
                 </div>
               </div>
             </div>
@@ -1816,15 +1851,15 @@
               <div class="card-icon" data-tooltip="Interactive map for identifying local weather hazards">
                 <span class="material-icons-round">map</span>
               </div>
-              <h3 class="card-title">Singapore Hazards Map</h3>
-              <p class="card-description">Click to add pins showing local weather hazards and their locations</p>
+              <h3 class="card-title">Optional: Local hazards map (extension)</h3>
+              <p class="card-description">Add a few pins to discuss where hazards might affect people locally. Keep this short so we stay focused on today’s big ideas.</p>
               
               <div class="map-container">
                 <div id="hazard-map" style="height: 300px; width: 100%;"></div>
               </div>
               
               <div class="map-instructions">
-                <p><strong>Instructions:</strong> Click on the map to add pins for local weather hazards. Include: storm surge areas, flood zones, high wind areas, or other natural hazards you know about in Singapore.</p>
+                <p><strong>Try this if time:</strong> Click the map to drop a pin and name the hazard (flood, wind, storm). One idea per table.</p>
               </div>
             </div>
 
@@ -1868,11 +1903,10 @@
               <p class="card-description">Everything you need for the build challenge</p>
               
               <ul class="materials-list">
-                <li>Paper cups (2 per team)</li>
-                <li>Cardboard squares (A4 size)</li>
-                <li>Tape and scissors</li>
-                <li>Straws (5 per team)</li>
-                <li>Cotton balls (for wind simulation)</li>
+                <li><strong>Team kit:</strong> 20 paper straws; 1 × A5 card base; 30 cm masking tape; a small piece of Blu‑Tack</li>
+                <li><strong>Shared:</strong> scissors; ruler; felt pen for labels</li>
+                <li><strong>Class set (visible):</strong> extra straws; bin liners for quick wind/rain tests</li>
+                <li>Write team name &amp; class on the base before building</li>
               </ul>
             </div>
 
@@ -1884,10 +1918,10 @@
               <p class="card-description">Clear goals for student achievement</p>
               
               <div class="success-criteria">
-                <div class="criteria-item">✓ Structure stands independently</div>
-                <div class="criteria-item">✓ Has one weather-resistant feature</div>
-                <div class="criteria-item">✓ Feature is clearly labeled</div>
-                <div class="criteria-item">✓ Can explain design choice</div>
+                <div class="criteria-item">✓ Model stands without wobbling</div>
+                <div class="criteria-item">✓ One strong feature linked to a real hazard</div>
+                <div class="criteria-item">✓ Label shows <em>feature</em> + <em>hazard</em></div>
+                <div class="criteria-item">✓ Team name &amp; class on base</div>
               </div>
             </div>
 
@@ -1899,11 +1933,12 @@
               <p class="card-description">15-minute focused building session</p>
               
               <div class="timer-display">
-                <div class="timer-time" id="timer-display">15:00</div>
+                <div class="timer-time" id="timer-display">24:00</div>
                 <div class="timer-controls">
                   <button class="interactive-button" id="timer-start">Start Building</button>
                   <button class="interactive-button" id="timer-reset">Reset</button>
                 </div>
+                <p style="font-size:0.9rem;color:#6b7280;margin-top:8px">Pause at 12:00 for a class tip.</p>
               </div>
             </div>
           </div>
@@ -1920,6 +1955,7 @@
               <p class="card-description">Bring the learning together</p>
               
               <div class="wrap-activities">
+                <div class="activity-item"><strong>Seesaw Capture:</strong> Photo + 20‑sec voice — “Our strongest feature is… because…” (labels: Feature/Hazard)</div>
                 <div class="activity-item">
                   <strong>Gallery Walk:</strong> 2 minutes to view all structures
                 </div>
@@ -2064,7 +2100,7 @@
       <!-- Teacher Banner -->
       <div class="teacher-section">
         <h2>🎯 Teacher Mode Active</h2>
-        <p>This lesson is optimized for teacher presentation and classroom management. All pupil data is stored locally on your device.</p>
+        <p>This page does not collect data. Capture evidence in Seesaw (photo + short voice notes).</p>
       </div>
     </main>
   </div>
@@ -2087,6 +2123,7 @@
     let currentPanel = 'panel-see';
     let map = null;
     let carouselTimer;
+    const tallies = { weather: 0, hazards: 0, design: 0 };
     
     // Simple panel switching (proven to work)
     function switchPanel(panelId) {
@@ -2284,7 +2321,7 @@
       const resetBtn = document.getElementById('timer-reset');
       
       if (timerDisplay && startBtn && resetBtn) {
-        let timeLeft = 15 * 60;
+        let timeLeft = 24 * 60;
         let timerInterval;
         
         function updateTimerDisplay() {
@@ -2302,8 +2339,8 @@
               if (timeLeft <= 0) {
                 clearInterval(timerInterval);
                 timerInterval = null;
-                alert('🎉 Building time complete!');
-                timeLeft = 15 * 60;
+                alert('🎉 Build time complete!');
+                timeLeft = 24 * 60;
                 updateTimerDisplay();
               }
             }, 1000);
@@ -2316,7 +2353,7 @@
         resetBtn.onclick = function() {
           clearInterval(timerInterval);
           timerInterval = null;
-          timeLeft = 15 * 60;
+          timeLeft = 24 * 60;
           updateTimerDisplay();
           startBtn.textContent = 'Start Building';
           startBtn.disabled = false;
@@ -2327,17 +2364,15 @@
       
       // Quick Tallies System
       window.updateTally = function(type, change) {
-        const tallies = { weather: 0, hazards: 0, design: 0 };
+        if (!tallies[type] && tallies[type] !== 0) return;
         tallies[type] = Math.max(0, tallies[type] + change);
-        const element = document.getElementById(`${type}-count`);
-        if (element) {
-          element.textContent = tallies[type];
-        }
+        const el = document.getElementById(`${type}-count`);
+        if (el) el.textContent = tallies[type];
       };
       
       // Video switching
       const videoUrls = [
-        'https://www.youtube.com/embed/j1FxNDw50mc',
+        'https://www.youtube.com/embed/vH298zSCQzY',
         'https://www.youtube.com/embed/XnQy_aKpMcw'
       ];
 
