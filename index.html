@@ -86,12 +86,12 @@
             font-family: var(--font-body);
             line-height: 1.6;
             color: #1f2937;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 25%, #f1f5f9 75%, #e2e8f0 100%);
             min-height: 100vh;
             overflow-x: hidden;
         }
 
-        /* Revolutionary Animated Background */
+        /* Subtle Animated Background */
         body::before {
             content: '';
             position: fixed;
@@ -100,16 +100,16 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(120, 219, 226, 0.2) 0%, transparent 50%);
+                radial-gradient(circle at 20% 80%, rgba(14, 165, 233, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(34, 197, 94, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(168, 85, 247, 0.02) 0%, transparent 50%);
             z-index: -1;
-            animation: backgroundShift 20s ease-in-out infinite;
+            animation: backgroundShift 30s ease-in-out infinite;
         }
 
         @keyframes backgroundShift {
             0%, 100% { transform: scale(1) rotate(0deg); }
-            50% { transform: scale(1.05) rotate(1deg); }
+            50% { transform: scale(1.02) rotate(0.5deg); }
         }
 
         /* Container */
@@ -131,12 +131,12 @@
         }
 
         .hero-content {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(30px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: var(--radius-3xl);
             padding: var(--space-16) var(--space-8);
-            box-shadow: var(--shadow-xl);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
             position: relative;
             animation: heroEnter 1s var(--ease-out);
             max-width: 800px;
@@ -145,6 +145,145 @@
         @keyframes heroEnter {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Info Tiles Section */
+        .info-section {
+            padding: var(--space-16) 0;
+            position: relative;
+        }
+
+        .info-header {
+            text-align: center;
+            margin-bottom: var(--space-12);
+        }
+
+        .info-title {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: var(--space-4);
+            background: linear-gradient(135deg, #0f766e 0%, #0369a1 50%, #5b21b6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .info-subtitle {
+            font-size: 1.1rem;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-8);
+            margin-top: var(--space-12);
+        }
+
+        .info-tile {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: var(--radius-2xl);
+            padding: var(--space-8);
+            position: relative;
+            overflow: hidden;
+            transition: all var(--duration-normal) var(--ease-out);
+            animation: tileFloat 6s ease-in-out infinite;
+        }
+
+        .info-tile:nth-child(1) {
+            background: rgba(14, 165, 233, 0.1);
+            border-color: rgba(14, 165, 233, 0.2);
+            animation-delay: 0s;
+        }
+
+        .info-tile:nth-child(2) {
+            background: rgba(34, 197, 94, 0.1);
+            border-color: rgba(34, 197, 94, 0.2);
+            animation-delay: 2s;
+        }
+
+        .info-tile:nth-child(3) {
+            background: rgba(168, 85, 247, 0.1);
+            border-color: rgba(168, 85, 247, 0.2);
+            animation-delay: 4s;
+        }
+
+        .info-tile:nth-child(4) {
+            background: rgba(245, 101, 101, 0.1);
+            border-color: rgba(245, 101, 101, 0.2);
+            animation-delay: 1s;
+        }
+
+        .info-tile:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        }
+
+        @keyframes tileFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-3px) rotate(0.5deg); }
+        }
+
+        .info-tile-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--radius-xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--space-4);
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .info-tile-title {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: var(--space-2);
+        }
+
+        .info-tile-description {
+            color: #64748b;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .info-tile-stats {
+            display: flex;
+            gap: var(--space-4);
+            margin-top: var(--space-4);
+        }
+
+        .info-stat {
+            flex: 1;
+            text-align: center;
+            padding: var(--space-3);
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .info-stat-number {
+            display: block;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #1e293b;
+        }
+
+        .info-stat-label {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-top: 2px;
         }
 
         .hero-nature-svg {
@@ -344,18 +483,70 @@
         }
 
         .lesson-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: var(--radius-lg);
-            padding: var(--space-4);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            border-radius: var(--radius-2xl);
+            padding: var(--space-6);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             min-height: 320px;
+            animation: cardSlide 0.8s var(--ease-out) forwards;
+            opacity: 0;
+        }
+
+        .lesson-card:nth-child(1) {
+            background: rgba(14, 165, 233, 0.12);
+            border-color: rgba(14, 165, 233, 0.25);
+        }
+
+        .lesson-card:nth-child(2) {
+            background: rgba(34, 197, 94, 0.12);
+            border-color: rgba(34, 197, 94, 0.25);
+        }
+
+        .lesson-card:nth-child(3) {
+            background: rgba(168, 85, 247, 0.12);
+            border-color: rgba(168, 85, 247, 0.25);
+        }
+
+        .lesson-card:nth-child(4) {
+            background: rgba(245, 101, 101, 0.12);
+            border-color: rgba(245, 101, 101, 0.25);
+        }
+
+        .lesson-card:nth-child(5) {
+            background: rgba(251, 146, 60, 0.12);
+            border-color: rgba(251, 146, 60, 0.25);
+        }
+
+        .lesson-card:nth-child(6) {
+            background: rgba(20, 184, 166, 0.12);
+            border-color: rgba(20, 184, 166, 0.25);
+        }
+
+        .lesson-card:nth-child(7) {
+            background: rgba(139, 92, 246, 0.12);
+            border-color: rgba(139, 92, 246, 0.25);
+        }
+
+        .lesson-card:nth-child(8) {
+            background: rgba(236, 72, 153, 0.12);
+            border-color: rgba(236, 72, 153, 0.25);
+        }
+
+        .lesson-card:nth-child(9) {
+            background: rgba(99, 102, 241, 0.12);
+            border-color: rgba(99, 102, 241, 0.25);
+        }
+
+        .lesson-card:nth-child(10) {
+            background: rgba(16, 185, 129, 0.12);
+            border-color: rgba(16, 185, 129, 0.25);
         }
 
         .lesson-card:nth-child(odd) { animation-delay: 0.1s; }
@@ -1023,6 +1214,82 @@
                         <span>Start Teaching</span>
                         <span class="material-icons-round">play_arrow</span>
                     </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Tiles Section -->
+    <section class="info-section">
+        <div class="container">
+            <div class="info-header">
+                <h2 class="info-title">Learning Journey Overview</h2>
+                <p class="info-subtitle">Discover the comprehensive approach that makes this educational experience exceptional</p>
+            </div>
+            
+            <div class="info-grid">
+                <div class="info-tile">
+                    <div class="info-tile-icon">🌍</div>
+                    <h3 class="info-tile-title">Interdisciplinary Learning</h3>
+                    <p class="info-tile-description">Seamlessly integrates Geography, Science, Design & Technology, and Computing through real-world challenges and hands-on activities.</p>
+                    <div class="info-tile-stats">
+                        <div class="info-stat">
+                            <span class="info-stat-number">4</span>
+                            <span class="info-stat-label">Subjects</span>
+                        </div>
+                        <div class="info-stat">
+                            <span class="info-stat-number">15+</span>
+                            <span class="info-stat-label">Activities</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-tile">
+                    <div class="info-tile-icon">🎯</div>
+                    <h3 class="info-tile-title">Standards Aligned</h3>
+                    <p class="info-tile-description">Carefully crafted to meet Year 4-5 curriculum requirements while fostering critical thinking and problem-solving skills.</p>
+                    <div class="info-tile-stats">
+                        <div class="info-stat">
+                            <span class="info-stat-number">Y4-5</span>
+                            <span class="info-stat-label">Years</span>
+                        </div>
+                        <div class="info-stat">
+                            <span class="info-stat-number">100%</span>
+                            <span class="info-stat-label">Aligned</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-tile">
+                    <div class="info-tile-icon">🚀</div>
+                    <h3 class="info-tile-title">Digital Innovation</h3>
+                    <p class="info-tile-description">Leverages interactive technology, digital mapping, and multimedia content to create engaging learning experiences.</p>
+                    <div class="info-tile-stats">
+                        <div class="info-stat">
+                            <span class="info-stat-number">10</span>
+                            <span class="info-stat-label">Tools</span>
+                        </div>
+                        <div class="info-stat">
+                            <span class="info-stat-number">360°</span>
+                            <span class="info-stat-label">View</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-tile">
+                    <div class="info-tile-icon">👥</div>
+                    <h3 class="info-tile-title">Collaborative Focus</h3>
+                    <p class="info-tile-description">Promotes teamwork and communication through group challenges, peer learning, and shared discoveries.</p>
+                    <div class="info-tile-stats">
+                        <div class="info-stat">
+                            <span class="info-stat-number">5</span>
+                            <span class="info-stat-label">Group Tasks</span>
+                        </div>
+                        <div class="info-stat">
+                            <span class="info-stat-number">25+</span>
+                            <span class="info-stat-label">Skills</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
