@@ -102,7 +102,7 @@
       backdrop-filter: blur(8px); margin-right:6px; color:#0f172a; font-weight:600
     }
 
-    .grid{ display:grid; gap:18px; grid-template-columns: 1.35fr .65fr }
+    .grid{ display:grid; gap:18px; grid-template-columns: 1fr }
     @media (max-width: 980px){ .grid{ grid-template-columns:1fr } }
 
     .glass{
@@ -150,7 +150,7 @@
 
     /* Document viewer */
     .docframe{
-      aspect-ratio: 16/10; width:100%; border:0; border-radius:16px; background:#fff;
+      width:100%; height:80vh; border:0; border-radius:16px; background:#fff;
       box-shadow: 0 10px 30px rgba(0,0,0,.08);
     }
     .docfallback{ font-size:.95rem; color:var(--muted); margin-top:8px }
@@ -238,8 +238,8 @@
 
     <!-- CONTENT -->
     <section class="grid">
-      <!-- Left: Viewer -->
-      <div class="glass">
+      <!-- Full-width Viewer -->
+      <div class="glass" style="grid-column: 1/-1">
         <!-- If you have exported a PDF, drop it at ./assets/report/Tanglin_Tech_Integration_Report.pdf -->
         <object
           class="docframe"
@@ -253,8 +253,8 @@
         </object>
       </div>
 
-      <!-- Right: Quick controls + summaries -->
-      <div class="glass side-grid">
+      <!-- Controls + summaries (below PDF) -->
+      <div class="glass side-grid" style="grid-column: 1/-1">
         <div class="panel" style="grid-column: span 2">
           <h3>Open or download</h3>
           <div class="actions">
