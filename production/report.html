@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Technology Integration Report • Year 4 Nature — Tanglin Trust School</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <link rel="icon" type="image/x-icon" href="./favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+
+  <!-- Fonts / Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+
+  <!-- Site CSS (reuse your design system) -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/accessibility.css">
+
+  <style>
+    :root{
+      --glass-bg: rgba(255,255,255,0.18);
+      --glass-border: rgba(255,255,255,0.35);
+      --ink:#1f2937;
+      --muted:#64748b;
+      --primary:#0ea5e9;
+      --green:#22c55e;
+      --radius-xl: 1rem;
+      --radius-2xl: 1.5rem;
+      --shadow-xl: 0 25px 50px -12px rgba(0,0,0,.25);
+    }
+    body{
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: #ffffff;
+      color: var(--ink);
+    }
+    /* Subtle animated background to match home */
+    body::before{
+      content:"";
+      position:fixed; inset:0; z-index:-1;
+      background:
+       radial-gradient(circle at 20% 80%, rgba(14,165,233,.08) 0%, transparent 60%),
+       radial-gradient(circle at 80% 20%, rgba(34,197,94,.06) 0%, transparent 60%),
+       radial-gradient(circle at 40% 40%, rgba(168,85,247,.05) 0%, transparent 60%),
+       radial-gradient(circle at 60% 60%, rgba(234,67,53,.04) 0%, transparent 50%);
+      animation: bgShift 30s ease-in-out infinite;
+    }
+    @keyframes bgShift{ 0%,100%{transform:scale(1)} 50%{transform:scale(1.02)} }
+
+    /* App bar */
+    .appbar{
+      position:sticky; top:0; z-index:40;
+      display:flex; gap:12px; align-items:center;
+      padding:14px 18px;
+      background: linear-gradient(135deg, #0ea5e9, #22c55e);
+      color:#fff;
+      border-bottom:1px solid rgba(255,255,255,.2);
+    }
+    .brand{ font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; letter-spacing:.2px }
+    .brand small{ display:block; font-weight:600; opacity:.85; font-size:.85rem; margin-top:-2px }
+    .grow{ flex:1 }
+    .btn{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 14px; border-radius:999px; font-weight:700; border:1px solid rgba(255,255,255,.4);
+      color:#fff; text-decoration:none; backdrop-filter: blur(10px);
+    }
+    .btn:hover{ background:rgba(255,255,255,.12) }
+
+    main{ max-width:1200px; margin:22px auto; padding:0 18px }
+
+    /* Hero */
+    .hero{
+      background: rgba(255,255,255,0.25);
+      backdrop-filter: blur(20px);
+      border:1px solid var(--glass-border);
+      border-radius: var(--radius-2xl);
+      padding: 24px 22px;
+      box-shadow: var(--shadow-xl);
+      margin-bottom: 18px;
+    }
+    .title{
+      font-family:'Plus Jakarta Sans',sans-serif;
+      font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+      margin: 0 0 6px;
+      background: linear-gradient(135deg, #0ea5e9, #22c55e);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+      font-weight: 800;
+    }
+    .sub{ color: var(--muted); margin:0 0 10px }
+
+    .chip{ display:inline-flex; align-items:center; gap:6px;
+      border:1px solid rgba(255,255,255,.55);
+      padding:6px 10px; border-radius:999px; font-size:.85rem; background: rgba(255,255,255,.35);
+      backdrop-filter: blur(8px); margin-right:6px; color:#0f172a; font-weight:600
+    }
+
+    .grid{ display:grid; gap:18px; grid-template-columns: 1.35fr .65fr }
+    @media (max-width: 980px){ .grid{ grid-template-columns:1fr } }
+
+    .glass{
+      background: var(--glass-bg);
+      border:1px solid var(--glass-border);
+      border-radius: var(--radius-xl);
+      padding:16px;
+      backdrop-filter: blur(16px);
+    }
+
+    .panel{ background:#fff; border:1px solid #e5e7eb; border-radius:16px; padding:12px }
+    .panel h3{ margin:0 0 8px; font-size:1rem }
+    .panel p, .panel li{ font-size:.95rem; line-height:1.5 }
+
+    .actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:10px }
+    .action{
+      display:inline-flex; align-items:center; gap:8px; border-radius:12px; padding:10px 12px;
+      border:1px solid #d1d5db; background:#fff; text-decoration:none; color:#0f172a; font-weight:700;
+    }
+    .action.primary{
+      border-color: transparent;
+      background: linear-gradient(135deg, #0ea5e9, #22c55e); color:#fff;
+    }
+    .action:hover{ transform: translateY(-1px); box-shadow: 0 8px 20px rgba(0,0,0,.08) }
+
+    /* Document viewer */
+    .docframe{
+      aspect-ratio: 16/10; width:100%; border:0; border-radius:16px; background:#fff;
+      box-shadow: 0 10px 30px rgba(0,0,0,.08);
+    }
+    .docfallback{ font-size:.95rem; color:var(--muted); margin-top:8px }
+
+    /* Quick cards */
+    .quick{
+      display:grid; gap:12px; grid-template-columns:1fr 1fr;
+    }
+    @media (max-width: 680px){ .quick{ grid-template-columns:1fr } }
+
+    .kvp{ display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:12px; border:1px solid #e5e7eb; background:#fff }
+    .kvp .material-icons-round{ color:#0ea5e9 }
+
+    /* Tech at a glance list */
+    .tool-list{ display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap:10px }
+    .tool{ border:1px solid #e5e7eb; border-radius:12px; background:#fff; padding:10px 12px }
+    .tool small{ color:#64748b; display:block; margin-top:2px }
+
+    /* Print */
+    @media print{
+      .appbar{ display:none }
+      main{ max-width:none; margin:0; padding:0 }
+      @page{ size:A4; margin:14mm }
+    }
+  </style>
+</head>
+<body>
+  <header class="appbar">
+    <div class="brand">
+      Tanglin Trust School • Junior School
+      <small>Technology Integration Report — Year 4 Nature</small>
+    </div>
+    <div class="grow"></div>
+    <a class="btn" href="./index.html"><span class="material-icons-round">home</span> Home</a>
+    <a class="btn" href="./lesson1.html?lesson=L1"><span class="material-icons-round">play_arrow</span> Start Lesson 1</a>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <h1 class="title">Technology Integration Report — Year 4 Nature</h1>
+      <p class="sub">Bespoke curriculum. Teacher-first design. Inspection-ready evidence. Prepared by Patrick Phillips.</p>
+      <div>
+        <span class="chip"><span class="material-icons-round">verified</span> Tanglin-aligned</span>
+        <span class="chip"><span class="material-icons-round">hub</span> Web app hub</span>
+        <span class="chip"><span class="material-icons-round">collections_bookmark</span> Seesaw portfolios</span>
+        <span class="chip"><span class="material-icons-round">balance</span> Digital wellbeing</span>
+      </div>
+    </section>
+
+    <!-- CONTENT -->
+    <section class="grid">
+      <!-- Left: Viewer -->
+      <div class="glass">
+        <!-- If you have exported a PDF, drop it at ./assets/report/Tanglin_Tech_Integration_Report.pdf -->
+        <object
+          class="docframe"
+          data="./assets/report/Tanglin_Tech_Integration_Report.pdf#view=FitH"
+          type="application/pdf"
+          aria-label="Technology Integration Report PDF">
+          <div class="panel">
+            <h3>Open the report</h3>
+            <p class="docfallback">Your browser can't display the PDF here. Use the buttons on the right to open or download the document.</p>
+          </div>
+        </object>
+      </div>
+
+      <!-- Right: Quick controls + summaries -->
+      <div class="glass">
+        <div class="panel">
+          <h3>Open or download</h3>
+          <div class="actions">
+            <a class="action primary" href="./assets/report/Tanglin_Tech_Integration_Report.pdf" target="_blank" rel="noopener">
+              <span class="material-icons-round">picture_as_pdf</span> Open PDF
+            </a>
+            <a class="action" href="./assets/report/Tanglin_Tech_Integration_Report.pdf" download>
+              <span class="material-icons-round">download</span> Download PDF
+            </a>
+            <a class="action" href="./assets/report/Tanglin_Y4_Tech_Integration_Report_19September.docx">
+              <span class="material-icons-round">description</span> Download DOCX
+            </a>
+            <button class="action" onclick="window.print()">
+              <span class="material-icons-round">print</span> Print
+            </button>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3>What's inside (at a glance)</h3>
+          <div class="quick">
+            <div class="kvp"><span class="material-icons-round">school</span> Bespoke curriculum alignment, enrichment, Precision Teaching</div>
+            <div class="kvp"><span class="material-icons-round">hub</span> Web app hub + Seesaw evidence — workload-light</div>
+            <div class="kvp"><span class="material-icons-round">campaign</span> Teacher partnership: micro-CPD and in-class coaching</div>
+            <div class="kvp"><span class="material-icons-round">health_and_safety</span> Digital wellbeing and balanced screen time</div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3>Tech at a glance</h3>
+          <div class="tool-list">
+            <div class="tool"><strong>earth.nullschool.net</strong><small>Live global wind/TPW views</small></div>
+            <div class="tool"><strong>Smithsonian Weather Lab</strong><small>Weather variable simulation</small></div>
+            <div class="tool"><strong>Google Earth</strong><small>Measure + annotate for climate/home studies</small></div>
+            <div class="tool"><strong>Google My Maps</strong><small>Collaborative local fieldwork map with audio pins</small></div>
+            <div class="tool"><strong>UCAR Simple Climate Model</strong><small>Adjust variables; see trends</small></div>
+            <div class="tool"><strong>PhET Circuit Kit</strong><small>Virtual circuits for safe experimentation</small></div>
+            <div class="tool"><strong>USGS Earthquake Map</strong><small>Live seismic data for risk discussions</small></div>
+            <div class="tool"><strong>Tinkercad</strong><small>3D prototyping for future-home designs</small></div>
+            <div class="tool"><strong>Padlet / Canva / Book Creator</strong><small>Critique, posters, digital portfolios</small></div>
+            <div class="tool"><strong>Seesaw</strong><small>Photo + voice evidence; retrieval; reflection</small></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3>Using this page</h3>
+          <ul>
+            <li>Open the PDF to read the full proposal.</li>
+            <li>Use the quick list above to jump to tools during planning.</li>
+            <li>Share the DOCX if colleagues want to adapt the copy.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
