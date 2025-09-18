@@ -120,29 +120,39 @@
             padding: 0 var(--space-6);
         }
 
-        /* Spectacular Hero */
+        /* Premium Full-Width Hero */
         .hero {
-            min-height: 90vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             position: relative;
             overflow: hidden;
+            padding: 0;
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.95) 0%, 
+                rgba(248, 250, 252, 0.98) 25%, 
+                rgba(255, 255, 255, 0.95) 50%, 
+                rgba(249, 250, 251, 0.98) 75%, 
+                rgba(255, 255, 255, 0.95) 100%);
         }
 
         .hero-content {
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            border-radius: var(--radius-3xl);
-            padding: var(--space-16) var(--space-8);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 3rem;
+            padding: 4rem 3rem;
             box-shadow: 
-                0 25px 50px -12px rgba(0, 0, 0, 0.15),
-                0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+                0 32px 64px -12px rgba(0, 0, 0, 0.12),
+                0 0 0 1px rgba(255, 255, 255, 0.8) inset,
+                0 2px 4px rgba(0, 0, 0, 0.04);
             position: relative;
-            animation: heroEnter 1s var(--ease-out);
-            max-width: 800px;
+            animation: heroEnter 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            max-width: 1000px;
+            width: 90%;
+            margin: 0 auto;
         }
 
         @keyframes heroEnter {
@@ -150,43 +160,324 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .hero-nature-svg {
-            width: 200px;
-            height: auto;
-            margin: 0 auto var(--space-8) auto;
-            opacity: 0.9;
-            animation: svgFloat 6s ease-in-out infinite;
+        /* Modern Floating Design Elements */
+        .hero-design-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            overflow: hidden;
         }
 
-        @keyframes svgFloat {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+        .floating-shape {
+            position: absolute;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.06),
+                0 0 0 1px rgba(255, 255, 255, 0.4) inset;
         }
 
-        .hero-title {
+        .shape-1 {
+            width: 140px;
+            height: 140px;
+            top: 8%;
+            left: 8%;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(147, 197, 253, 0.1));
+            animation: floatShape1 12s ease-in-out infinite;
+        }
+
+        .shape-2 {
+            width: 100px;
+            height: 100px;
+            top: 15%;
+            right: 12%;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.25), rgba(134, 239, 172, 0.1));
+            animation: floatShape2 14s ease-in-out infinite;
+        }
+
+        .shape-3 {
+            width: 80px;
+            height: 80px;
+            bottom: 15%;
+            left: 15%;
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.25), rgba(196, 181, 253, 0.1));
+            animation: floatShape3 10s ease-in-out infinite;
+        }
+
+        .shape-4 {
+            width: 120px;
+            height: 120px;
+            bottom: 25%;
+            right: 8%;
+            background: linear-gradient(135deg, rgba(244, 63, 94, 0.25), rgba(251, 207, 232, 0.1));
+            animation: floatShape4 13s ease-in-out infinite;
+            border-radius: 35% 65% 70% 30% / 35% 35% 65% 65%;
+        }
+
+        .shape-5 {
+            width: 60px;
+            height: 60px;
+            top: 45%;
+            left: 3%;
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.3), rgba(252, 211, 77, 0.12));
+            animation: floatShape5 8s ease-in-out infinite;
+        }
+
+        .shape-6 {
+            width: 90px;
+            height: 90px;
+            top: 55%;
+            right: 3%;
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.25), rgba(153, 246, 228, 0.1));
+            animation: floatShape6 15s ease-in-out infinite;
+            border-radius: 65% 35% 25% 75% / 60% 25% 75% 40%;
+        }
+
+        @keyframes floatShape1 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+            25% { transform: translate(15px, -20px) rotate(3deg) scale(1.05); }
+            50% { transform: translate(-8px, -30px) rotate(-2deg) scale(0.98); }
+            75% { transform: translate(-20px, -15px) rotate(1deg) scale(1.02); }
+        }
+
+        @keyframes floatShape2 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+            20% { transform: translate(-12px, 18px) rotate(-2deg) scale(1.03); }
+            50% { transform: translate(20px, 8px) rotate(4deg) scale(0.97); }
+            80% { transform: translate(8px, -25px) rotate(-1deg) scale(1.01); }
+        }
+
+        @keyframes floatShape3 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+            30% { transform: translate(18px, 12px) rotate(2deg) scale(1.04); }
+            60% { transform: translate(-15px, 28px) rotate(-3deg) scale(0.96); }
+            90% { transform: translate(12px, -18px) rotate(3deg) scale(1.02); }
+        }
+
+        @keyframes floatShape4 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+            25% { transform: translate(-18px, -12px) rotate(-2deg) scale(1.03); }
+            50% { transform: translate(12px, -28px) rotate(3deg) scale(0.98); }
+            75% { transform: translate(22px, 15px) rotate(-1deg) scale(1.01); }
+        }
+
+        @keyframes floatShape5 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+            20% { transform: translate(10px, -15px) rotate(5deg) scale(1.06); }
+            50% { transform: translate(-12px, -8px) rotate(-4deg) scale(0.95); }
+            80% { transform: translate(6px, 18px) rotate(2deg) scale(1.03); }
+        }
+
+        @keyframes floatShape6 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+            25% { transform: translate(-10px, 22px) rotate(-3deg) scale(1.04); }
+            50% { transform: translate(16px, -12px) rotate(4deg) scale(0.97); }
+            75% { transform: translate(-18px, 10px) rotate(-2deg) scale(1.02); }
+        }
+
+        /* Info Tiles Section */
+        .info-section {
+            padding: var(--space-16) 0;
+            position: relative;
+        }
+
+        .info-header {
+            text-align: center;
+            margin-bottom: var(--space-12);
+        }
+
+        .info-title {
             font-family: var(--font-display);
-            font-size: 4rem;
-            font-weight: 800;
-            color: white;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e293b;
             margin-bottom: var(--space-4);
-            line-height: 1.1;
-            background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 50%, #e0f2fe 100%);
+            background: linear-gradient(135deg, #0f766e 0%, #0369a1 50%, #5b21b6 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: titleGlow 0.8s var(--ease-out) 0.3s both;
+        }
+
+        .info-subtitle {
+            font-size: 1.1rem;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-6);
+            margin-top: var(--space-12);
+        }
+
+        /* Responsive info grid - maintain row consistency */
+        @media (max-width: 1200px) {
+            .info-grid {
+                gap: var(--space-4);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .info-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--space-4);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-4);
+            }
+        }
+
+        .info-tile {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: var(--radius-2xl);
+            padding: var(--space-8);
+            position: relative;
+            overflow: hidden;
+            transition: all var(--duration-normal) var(--ease-out);
+            animation: tileFloat 6s ease-in-out infinite;
+        }
+
+        .info-tile:nth-child(1) {
+            background: rgba(14, 165, 233, 0.1);
+            border-color: rgba(14, 165, 233, 0.2);
+            animation-delay: 0s;
+        }
+
+        .info-tile:nth-child(2) {
+            background: rgba(34, 197, 94, 0.1);
+            border-color: rgba(34, 197, 94, 0.2);
+            animation-delay: 2s;
+        }
+
+        .info-tile:nth-child(3) {
+            background: rgba(168, 85, 247, 0.1);
+            border-color: rgba(168, 85, 247, 0.2);
+            animation-delay: 4s;
+        }
+
+        .info-tile:nth-child(4) {
+            background: rgba(245, 101, 101, 0.1);
+            border-color: rgba(245, 101, 101, 0.2);
+            animation-delay: 1s;
+        }
+
+        .info-tile:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        }
+
+        @keyframes tileFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-3px) rotate(0.5deg); }
+        }
+
+        .info-tile-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--radius-xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--space-4);
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .info-tile-title {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: var(--space-2);
+        }
+
+        .info-tile-description {
+            color: #64748b;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .info-tile-stats {
+            display: flex;
+            gap: var(--space-4);
+            margin-top: var(--space-4);
+        }
+
+        .info-stat {
+            flex: 1;
+            text-align: center;
+            padding: var(--space-3);
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .info-stat-number {
+            display: block;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #1e293b;
+        }
+
+        .info-stat-label {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-top: 2px;
+        }
+
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 900;
+            color: #0f172a;
+            margin-bottom: 1.5rem;
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b  40%, #334155 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: titleGlow 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
         }
 
         @keyframes titleGlow {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { 
+                opacity: 0; 
+                transform: translateY(40px) scale(0.95);
+                filter: blur(4px);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1);
+                filter: blur(0px);
+            }
         }
 
         .hero-subtitle {
-            font-size: 1.25rem;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: var(--space-8);
-            animation: subtitleFade 0.8s var(--ease-out) 0.5s both;
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            color: #475569;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+            font-weight: 400;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: subtitleFade 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
         }
 
         @keyframes subtitleFade {
@@ -195,39 +486,77 @@
         }
 
         .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: var(--space-8);
-            margin-bottom: var(--space-8);
-            animation: statsSlide 0.8s var(--ease-out) 0.7s both;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            animation: statsSlide 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
+        }
+
+        /* Responsive stats grid */
+        @media (max-width: 768px) {
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-stats {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
         }
 
         @keyframes statsSlide {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { 
+                opacity: 0; 
+                transform: translateY(30px) scale(0.95);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1);
+            }
         }
 
         .stat-item {
             text-align: center;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: var(--radius-xl);
-            padding: var(--space-4) var(--space-6);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: 1.5rem;
+            padding: 2rem 1.5rem;
+            backdrop-filter: blur(20px);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 
+                0 4px 20px rgba(0, 0, 0, 0.04),
+                0 0 0 1px rgba(255, 255, 255, 0.9) inset;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.08),
+                0 0 0 1px rgba(255, 255, 255, 0.95) inset;
         }
 
         .stat-number {
             display: block;
-            font-size: 2rem;
-            font-weight: 800;
-            color: white;
+            font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+            font-weight: 900;
+            color: #0f172a;
             font-family: var(--font-display);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .stat-label {
-            font-size: 0.875rem;
-            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            color: #64748b;
             font-weight: 500;
+            letter-spacing: 0.01em;
         }
 
         .hero-actions {
@@ -289,18 +618,18 @@
         }
 
         .btn-outline {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.9);
+            color: #1f2937;
+            border: 2px solid rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(10px);
         }
 
         .btn-outline:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.95);
+            border-color: rgba(0, 0, 0, 0.15);
             transform: translateY(-2px);
             text-decoration: none;
-            color: white;
+            color: #1f2937;
         }
 
         /* Streamlined Lessons Section */
@@ -324,17 +653,13 @@
             font-family: var(--font-display);
             font-size: 3rem;
             font-weight: 800;
-            color: white;
+            color: #1f2937;
             margin-bottom: var(--space-4);
-            background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 50%, #e0f2fe 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
 
         .lessons-subtitle {
             font-size: 1.25rem;
-            color: rgba(255, 255, 255, 0.8);
+            color: #64748b;
             max-width: 600px;
             margin: 0 auto;
         }
@@ -347,18 +672,70 @@
         }
 
         .lesson-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: var(--radius-lg);
-            padding: var(--space-4);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            border-radius: var(--radius-2xl);
+            padding: var(--space-6);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             min-height: 320px;
+            animation: cardSlide 0.8s var(--ease-out) forwards;
+            opacity: 0;
+        }
+
+        .lesson-card:nth-child(1) {
+            background: rgba(14, 165, 233, 0.12);
+            border-color: rgba(14, 165, 233, 0.25);
+        }
+
+        .lesson-card:nth-child(2) {
+            background: rgba(34, 197, 94, 0.12);
+            border-color: rgba(34, 197, 94, 0.25);
+        }
+
+        .lesson-card:nth-child(3) {
+            background: rgba(168, 85, 247, 0.12);
+            border-color: rgba(168, 85, 247, 0.25);
+        }
+
+        .lesson-card:nth-child(4) {
+            background: rgba(245, 101, 101, 0.12);
+            border-color: rgba(245, 101, 101, 0.25);
+        }
+
+        .lesson-card:nth-child(5) {
+            background: rgba(251, 146, 60, 0.12);
+            border-color: rgba(251, 146, 60, 0.25);
+        }
+
+        .lesson-card:nth-child(6) {
+            background: rgba(20, 184, 166, 0.12);
+            border-color: rgba(20, 184, 166, 0.25);
+        }
+
+        .lesson-card:nth-child(7) {
+            background: rgba(139, 92, 246, 0.12);
+            border-color: rgba(139, 92, 246, 0.25);
+        }
+
+        .lesson-card:nth-child(8) {
+            background: rgba(236, 72, 153, 0.12);
+            border-color: rgba(236, 72, 153, 0.25);
+        }
+
+        .lesson-card:nth-child(9) {
+            background: rgba(99, 102, 241, 0.12);
+            border-color: rgba(99, 102, 241, 0.25);
+        }
+
+        .lesson-card:nth-child(10) {
+            background: rgba(16, 185, 129, 0.12);
+            border-color: rgba(16, 185, 129, 0.25);
         }
 
         .lesson-card:nth-child(odd) { animation-delay: 0.1s; }
@@ -946,33 +1323,15 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <!-- Nature Illustration SVG -->
-                <svg class="hero-nature-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="skyHero" x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" style="stop-color:#87CEEB"/>
-                            <stop offset="100%" style="stop-color:#E0F6FF"/>
-                        </linearGradient>
-                        <linearGradient id="earthHero" x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" style="stop-color:#8FBC8F"/>
-                            <stop offset="100%" style="stop-color:#228B22"/>
-                        </linearGradient>
-                    </defs>
-                    <rect width="300" height="200" fill="url(#skyHero)"/>
-                    <ellipse cx="270" cy="40" rx="25" ry="25" fill="#FFD700" opacity="0.9">
-                        <animate attributeName="opacity" values="0.7;1;0.7" dur="3s" repeatCount="indefinite"/>
-                    </ellipse>
-                    <path d="M0,160 Q50,140 100,150 T200,145 T300,150 L300,200 L0,200 Z" fill="url(#earthHero)"/>
-                    <circle cx="60" cy="120" r="15" fill="#228B22"/>
-                    <rect x="58" y="105" width="4" height="15" fill="#8B4513"/>
-                    <circle cx="150" cy="130" r="12" fill="#32CD32"/>
-                    <rect x="148" y="118" width="4" height="12" fill="#8B4513"/>
-                    <circle cx="220" cy="125" r="18" fill="#228B22"/>
-                    <rect x="218" y="107" width="4" height="18" fill="#8B4513"/>
-                    <path d="M50,80 Q80,60 110,80" stroke="#4169E1" stroke-width="3" fill="none" opacity="0.7"/>
-                    <circle cx="70" cy="85" r="6" fill="#87CEEB" opacity="0.5"/>
-                    <circle cx="90" cy="75" r="8" fill="#87CEEB" opacity="0.3"/>
-                </svg>
+                <!-- Modern Floating Design Elements -->
+                <div class="hero-design-elements">
+                    <div class="floating-shape shape-1"></div>
+                    <div class="floating-shape shape-2"></div>
+                    <div class="floating-shape shape-3"></div>
+                    <div class="floating-shape shape-4"></div>
+                    <div class="floating-shape shape-5"></div>
+                    <div class="floating-shape shape-6"></div>
+                </div>
                 
                 <h1 class="hero-title">Harness the Power of Nature</h1>
                 <p class="hero-subtitle">Complete interdisciplinary unit combining Geography, Science, Design & Technology, and Computing to explore how humans adapt to and harness nature's forces</p>
@@ -996,23 +1355,23 @@
                     </div>
                 </div>
                 
-                <div style="background: rgba(255, 255, 255, 0.15); border-radius: 16px; padding: 24px; margin: 24px 0; backdrop-filter: blur(10px);">
-                    <h3 style="color: white; font-size: 1.1rem; font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                <div style="background: rgba(255, 255, 255, 0.9); border-radius: 16px; padding: 24px; margin: 24px 0; backdrop-filter: blur(10px); border: 1px solid rgba(0, 0, 0, 0.08);">
+                    <h3 style="color: #1f2937; font-size: 1.1rem; font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
                         <span class="material-icons-round">school</span>
                         Learning Outcomes
                     </h3>
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; text-align: left;">
-                        <div style="color: rgba(255, 255, 255, 0.9); font-size: 0.9rem; line-height: 1.5;">
-                            <strong>🌍 Geography:</strong> Climate patterns, weather systems, and global environmental variation
+                        <div style="color: #475569; font-size: 0.9rem; line-height: 1.5;">
+                            <strong style="color: #1f2937;">🌍 Geography:</strong> Climate patterns, weather systems, and global environmental variation
                         </div>
-                        <div style="color: rgba(255, 255, 255, 0.9); font-size: 0.9rem; line-height: 1.5;">
-                            <strong>🔬 Science:</strong> Forces, materials, structures, and scientific investigation methods
+                        <div style="color: #475569; font-size: 0.9rem; line-height: 1.5;">
+                            <strong style="color: #1f2937;">🔬 Science:</strong> Forces, materials, structures, and scientific investigation methods
                         </div>
-                        <div style="color: rgba(255, 255, 255, 0.9); font-size: 0.9rem; line-height: 1.5;">
-                            <strong>🛠️ Design & Tech:</strong> Problem-solving, prototyping, testing, and iterative design
+                        <div style="color: #475569; font-size: 0.9rem; line-height: 1.5;">
+                            <strong style="color: #1f2937;">🛠️ Design & Tech:</strong> Problem-solving, prototyping, testing, and iterative design
                         </div>
-                        <div style="color: rgba(255, 255, 255, 0.9); font-size: 0.9rem; line-height: 1.5;">
-                            <strong>💻 Computing:</strong> Data analysis, digital tools, and technological solutions
+                        <div style="color: #475569; font-size: 0.9rem; line-height: 1.5;">
+                            <strong style="color: #1f2937;">💻 Computing:</strong> Data analysis, digital tools, and technological solutions
                         </div>
                     </div>
                 </div>
@@ -1030,6 +1389,82 @@
                         <span>Start Teaching</span>
                         <span class="material-icons-round">play_arrow</span>
                     </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Tiles Section -->
+    <section class="info-section">
+        <div class="container">
+            <div class="info-header">
+                <h2 class="info-title">Learning Journey Overview</h2>
+                <p class="info-subtitle">Discover the comprehensive approach that makes this educational experience exceptional</p>
+            </div>
+            
+            <div class="info-grid">
+                <div class="info-tile">
+                    <div class="info-tile-icon">🌍</div>
+                    <h3 class="info-tile-title">Interdisciplinary Learning</h3>
+                    <p class="info-tile-description">Seamlessly integrates Geography, Science, Design & Technology, and Computing through real-world challenges and hands-on activities.</p>
+                    <div class="info-tile-stats">
+                        <div class="info-stat">
+                            <span class="info-stat-number">4</span>
+                            <span class="info-stat-label">Subjects</span>
+                        </div>
+                        <div class="info-stat">
+                            <span class="info-stat-number">15+</span>
+                            <span class="info-stat-label">Activities</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-tile">
+                    <div class="info-tile-icon">🎯</div>
+                    <h3 class="info-tile-title">Standards Aligned</h3>
+                    <p class="info-tile-description">Carefully crafted to meet Year 4-5 curriculum requirements while fostering critical thinking and problem-solving skills.</p>
+                    <div class="info-tile-stats">
+                        <div class="info-stat">
+                            <span class="info-stat-number">Y4-5</span>
+                            <span class="info-stat-label">Years</span>
+                        </div>
+                        <div class="info-stat">
+                            <span class="info-stat-number">100%</span>
+                            <span class="info-stat-label">Aligned</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-tile">
+                    <div class="info-tile-icon">🚀</div>
+                    <h3 class="info-tile-title">Digital Innovation</h3>
+                    <p class="info-tile-description">Leverages interactive technology, digital mapping, and multimedia content to create engaging learning experiences.</p>
+                    <div class="info-tile-stats">
+                        <div class="info-stat">
+                            <span class="info-stat-number">10</span>
+                            <span class="info-stat-label">Tools</span>
+                        </div>
+                        <div class="info-stat">
+                            <span class="info-stat-number">360°</span>
+                            <span class="info-stat-label">View</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-tile">
+                    <div class="info-tile-icon">👥</div>
+                    <h3 class="info-tile-title">Collaborative Focus</h3>
+                    <p class="info-tile-description">Promotes teamwork and communication through group challenges, peer learning, and shared discoveries.</p>
+                    <div class="info-tile-stats">
+                        <div class="info-stat">
+                            <span class="info-stat-number">5</span>
+                            <span class="info-stat-label">Group Tasks</span>
+                        </div>
+                        <div class="info-stat">
+                            <span class="info-stat-number">25+</span>
+                            <span class="info-stat-label">Skills</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1190,7 +1625,9 @@
                     
                     // Create proper lesson links
                     const lessonNumber = lesson.id.substring(1);
-                    const lessonLink = `/lesson${lessonNumber}.html?lesson=${lesson.id}`;
+                    const lessonLink = lesson.id === 'L1' ? 
+                        '/learn-enhanced.html?lesson=L1' : 
+                        `/learn-lesson${lessonNumber}.html?lesson=${lesson.id}`;
                     // Teacher pack links - pointing to HTML teacher pack pages
                     const teacherPackLinks = {
                         'L1': './teacher-pack-L1.html',
