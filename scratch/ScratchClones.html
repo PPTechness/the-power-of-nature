@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Scratch: Space Game with Cloning — Lesson Board</title>
+<style>
+  :root{
+    --bg:#ffffff; /* white background */
+    --tile: rgba(255,255,255,0.6);
+    --tile-border: 1px solid rgba(15,23,42,0.06);
+    --tile-shadow: 0 10px 28px rgba(16,24,40,.10), 0 1px 0 rgba(255,255,255,.35) inset;
+    --text:#0b1220; --muted:#475569;
+    --accent:#0ea5e9; --accent-2:#8b5cf6; --ok:#16a34a; --warn:#ef4444;
+    /* Scratch palette for labels */
+    --events:#ffbf00; --control:#ffab19; --motion:#4c97ff; --looks:#9966ff; --operators:#59c059; --sensing:#5cb1d6;
+  }
+  html,body{height:100%}
+  body{margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; background:var(--bg); color:var(--text);}
+  .page{max-width:1200px; margin:0 auto; padding:28px 20px 44px}
+  header{display:flex; flex-wrap:wrap; gap:14px; align-items:center; justify-content:space-between;}
+  h1{font-size: clamp(28px, 4vw, 44px); margin:0; letter-spacing:.2px}
+  .sub{color:var(--muted)}
+  .bar{display:flex; gap:10px; flex-wrap:wrap}
+  .btn{border:0; border-radius:14px; padding:10px 14px; font-weight:700; background:linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.6)); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: var(--tile-shadow); color:var(--text); cursor:pointer}
+  .btn:active{transform:translateY(1px)}
+
+  /* Tile layout */
+  .section-title{margin:24px 0 10px; font-size: clamp(18px, 2.6vw, 26px)}
+  .tiles{display:grid; grid-template-columns: repeat(12, 1fr); gap:16px}
+  .tile{grid-column: span 4; background:var(--tile); border:var(--tile-border); border-radius:18px; box-shadow:var(--tile-shadow); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); padding:16px}
+  .tile h2{margin:0 0 6px; font-size: clamp(16px, 2.2vw, 22px)}
+  .tile p{margin:8px 0 0}
+  .kicker{font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:6px}
+  .fine{color:var(--muted); font-size:14px}
+  .pill{display:inline-flex; align-items:center; gap:6px; font-weight:800; border-radius:999px; padding:6px 10px; margin:0 6px 6px 0}
+  .p-events{background:var(--events)} .p-control{background:var(--control)} .p-motion{background:var(--motion); color:#071b3c}
+  .p-looks{background:var(--looks); color:#12063a} .p-operators{background:var(--operators)} .p-sensing{background:var(--sensing); color:#05222b}
+  .block{display:inline-flex; align-items:center; padding:10px 12px; border-radius:14px; font-weight:800; color:#fff; box-shadow:0 10px 18px rgba(17,24,39,.12)}
+  .b-events{background:var(--events); color:#2b2000}
+  .b-control{background:var(--control); color:#2b1500}
+  .b-motion{background:var(--motion)} .b-looks{background:var(--looks)} .b-operators{background:var(--operators)}
+  ol, ul{margin:6px 0 0 18px;} li{margin:6px 0}
+  .q{font-weight:700}
+  .two-col{columns:2; column-gap:16px}
+  .center{display:flex; justify-content:center}
+  figure{margin:0}
+
+  /* Responsive */
+  @media (max-width:1100px){ .tile{grid-column: span 6} }
+  @media (max-width:720px){ .tile{grid-column: span 12} .two-col{columns:1} }
+
+  /* Presenter mode for projectors */
+  .presenter .tile{font-size:1.2rem}
+  .presenter h2{font-size:1.6rem}
+
+/* Simple Mode & Focus Mode */
+.simple .hide-in-simple{display:none}
+.focus .hide-in-focus{display:none}
+
+/* Number badges */
+.badge{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:#111827;color:#fff;font-weight:800;margin-right:8px}
+
+/* Step row layout */
+.step-row{display:flex;align-items:center;gap:10px;margin:10px 0}
+.step-row .label{min-width:120px;color:var(--muted);font-weight:700}
+
+/* Modal (image maximiser) */
+.modal{position:fixed;inset:0;background:rgba(2,6,23,.85);display:none;align-items:center;justify-content:center;z-index:50}
+.modal.open{display:flex}
+.modal img{max-width:96vw;max-height:92vh;border-radius:14px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+
+/* Buttons group */
+.toolbar{display:flex;gap:10px;flex-wrap:wrap}
+
+/* Additional modal cursor styles */
+.modal{cursor:zoom-out}
+.modal img{cursor:default}
+</style>
+<script>
+  function togglePresenter(){ document.documentElement.classList.toggle('presenter'); }
+  function toggleSimple(){
+    document.documentElement.classList.toggle('simple');
+  }
+  function toggleFocus(){
+    document.documentElement.classList.toggle('focus');
+  }
+  function openModal(){
+    const m = document.getElementById('imgModal');
+    m.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(){
+    const m = document.getElementById('imgModal');
+    m.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  // Close on ESC and backdrop click
+  window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape'){ closeModal(); }});
+  window.addEventListener('click', (e)=>{
+    const m = document.getElementById('imgModal');
+    if(m.classList.contains('open') && e.target === m){ closeModal(); }
+  });
+</script>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div>
+        <h1>Scratch: Space Game with <span style="color:var(--accent)">Cloning</span></h1>
+        <div class="sub">Board‑ready tiles • simple flow • identity focus: everyone here is a <b>coder</b>.</div>
+      </div>
+      <div class="bar">
+        <div class="toolbar">
+          <button class="btn" onclick="togglePresenter()">Presenter Mode</button>
+          <button class="btn" onclick="toggleSimple()">Simple Mode</button>
+          <button class="btn" onclick="toggleFocus()">Hide Pedagogy</button>
+          <a class="btn" href="#guide">Jump to Steps</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- 1) PEDAGOGY (top row) -->
+    <div class="hide-in-focus">
+    <h2 class="section-title">Teaching Pedagogy</h2>
+    <section class="tiles" aria-label="Pedagogy tiles">
+      <article class="tile" aria-labelledby="obj-h">
+        <div class="kicker">Lesson objectives</div>
+        <h2 id="obj-h">What we are learning</h2>
+        <ul>
+          <li>Create <b>clones</b> to spawn repeated asteroids.</li>
+          <li>Position sprites with <b>go to x/y</b>; move with <b>change x by</b>.</li>
+          <li>Control with <b>repeat until</b> using <b>x position &lt; −240</b>.</li>
+          <li>Explain how cloning saves time vs. many sprites.</li>
+        </ul>
+      </article>
+
+      <article class="tile hide-in-simple" aria-labelledby="succ-h">
+        <div class="kicker">Success criteria</div>
+        <h2 id="succ-h">What great looks like</h2>
+        <ul>
+          <li>Asteroids appear continuously at random heights.</li>
+          <li>They move left and delete when off‑screen.</li>
+          <li>You can describe the clone pattern from memory.</li>
+        </ul>
+      </article>
+
+      <article class="tile" aria-labelledby="vocab-h">
+        <div class="kicker">Vocabulary</div>
+        <h2 id="vocab-h">Words coders use</h2>
+        <div class="two-col">
+          <ul>
+            <li><b>Sprite</b> — object/character.</li>
+            <li><b>Script</b> — stack of blocks.</li>
+            <li><b>Clone</b> — fast copy made by code.</li>
+            <li><b>Event</b> — start signal (green flag).</li>
+            <li><b>Loop</b> — do it again and again.</li>
+            <li><b>Condition</b> — test, e.g. <i>x position &lt; −240</i>.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="tile hide-in-simple" aria-labelledby="moves-h">
+        <div class="kicker">Teacher moves</div>
+        <h2 id="moves-h">Running the room</h2>
+        <ul>
+          <li>Pairs share one keyboard; swap driver every 5 minutes.</li>
+          <li>One student volunteer models actions while the class builds along.</li>
+          <li>Use “small steps → test”: press the flag after each block stack.</li>
+        </ul>
+      </article>
+
+      <article class="tile hide-in-simple" aria-labelledby="qs-h">
+        <div class="kicker">Typical questions</div>
+        <h2 id="qs-h">Check understanding</h2>
+        <ul>
+          <li class="q">Where do clones start and why use <i>pick random</i> for y?</li>
+          <li class="q">What happens if wait = 0.2 or 1.2?</li>
+          <li class="q">What breaks without <b>delete this clone</b>?</li>
+          <li class="q">Why not <i>touching edge?</i> here?</li>
+        </ul>
+      </article>
+
+      <article class="tile hide-in-simple" aria-labelledby="identity-h">
+        <div class="kicker">What it’s like to be a coder</div>
+        <h2 id="identity-h">Coder mindset</h2>
+        <ul>
+          <li><b>Talk in blocks</b>: “Events → flag; Control → repeat until …”.</li>
+          <li><b>Read clues</b>: nothing shows → check <i>show</i>/<i>green flag</i>.</li>
+          <li><b>Debug calmly</b>: change one thing, test, repeat.</li>
+        </ul>
+      </article>
+    </section>
+    </div>
+
+    <!-- 2) GUIDE (middle row) -->
+    <h2 id="guide" class="section-title">Step‑by‑Step Guide</h2>
+    <section class="tiles" aria-label="Guide tiles">
+      <article class="tile" aria-labelledby="steps-h" style="grid-column: span 7">
+        <div class="kicker">Colour‑matched to Scratch</div>
+        <div>
+          <div class="step-row"><span class="badge">1</span><span>Delete the cat → choose a rock → rename to <b>Asteroid</b>.</span></div>
+          <div class="step-row"><span class="badge">2</span><span><span class="pill p-events">Events</span> <span class="block b-events">when green flag clicked</span> → <span class="pill p-looks">Looks</span> <span class="block b-looks">hide</span></span></div>
+          <div class="step-row"><span class="badge">3</span><span>New script: <span class="pill p-events">Events</span> <span class="block b-events">when green flag clicked</span> → <span class="pill p-control">Control</span> <span class="block b-control">forever</span> → inside add <span class="block b-control">create clone of myself</span> then <span class="block b-control">wait 0.7 seconds</span>.</span></div>
+          <div class="step-row"><span class="badge">4</span><span>New script: <span class="pill p-control">Control</span> <span class="block b-control">when I start as a clone</span> → <span class="pill p-motion">Motion</span> <span class="block b-motion">go to x: 240 y: <span class="block b-operators" style="border-radius:10px">pick random −170 to 170</span></span> → <span class="pill p-looks">Looks</span> <span class="block b-looks">show</span>.</span></div>
+          <div class="step-row"><span class="badge">5</span><span><span class="pill p-control">Control</span> <span class="block b-control">repeat until (<span class="block b-operators" style="border-radius:10px">x position &lt; −240</span>)</span> → inside add <span class="pill p-motion">Motion</span> <span class="block b-motion">change x by −10</span> → after loop add <span class="pill p-control">Control</span> <span class="block b-control">delete this clone</span>.</span></div>
+        </div>
+        <p class="fine hide-in-simple">Why not <i>touching edge?</i> Starting at x=240 often counts as “touching” and skips movement. The <b>x position</b> test waits until the clone moves off‑screen.</p>
+      </article>
+
+      <article class="tile" aria-labelledby="fig-h" style="grid-column: span 5">
+        <div class="kicker">Visual reference</div>
+        <h2 id="fig-h">Blocks at a glance</h2>
+        <figure>
+          <!-- Put the image file next to this HTML and keep the same name -->
+          <div class="center"><img src="asteroid-clone-script.png" title="Click to maximise" onclick="openModal()" alt="Scratch blocks: hide on green flag; spawner with create clone and wait; clone script with go to x 240, random y, show, repeat until x position < -240, change x by -10, delete this clone" style="max-width:100%; height:auto; border-radius:12px; box-shadow:var(--tile-shadow); border:var(--tile-border); cursor:zoom-in"/></div>
+        </figure>
+      </article>
+    </section>
+
+    <!-- 3) TROUBLESHOOT + EXTEND (bottom row) -->
+    <h2 class="section-title">Troubleshoot & Extend</h2>
+    <section class="tiles" aria-label="Troubleshoot tiles">
+      <article class="tile" aria-labelledby="fix-h" style="grid-column: span 6">
+        <div class="kicker">Fast fixes</div>
+        <ul>
+          <li><b>See nothing?</b> Add <b>show</b> in the clone script and press the flag.</li>
+          <li><b>Clones vanish?</b> Use <b>x position &lt; −240</b> (not <i>touching edge?</i>).</li>
+          <li><b>Laggy?</b> Add <b>delete this clone</b> after the loop.</li>
+          <li><b>Same height?</b> Put <b>pick random −170 to 170</b> in the <b>y</b> slot.</li>
+        </ul>
+      </article>
+
+      <article class="tile" aria-labelledby="wow-h" style="grid-column: span 6">
+        <div class="kicker">Wow moments</div>
+        <h2 id="wow-h">For early finishers</h2>
+        <ul>
+          <li>Add a <b>Score</b> variable and +1 when a laser hits an asteroid.</li>
+          <li>Increase speed every 10 points (use a <b>speed</b> variable).</li>
+          <li>Change costume each spawn for visual variety.</li>
+          <li>Add a <b>Lives</b> variable and end the game when it reaches 0.</li>
+        </ul>
+      </article>
+    </section>
+
+    <p class="fine" style="margin-top:18px; text-align:center">Tip: project in Presenter Mode for bigger text. This layout keeps the pedagogy up top and the step‑by‑step with a visual reference just below.</p>
+  </div>
+
+  <div id="imgModal" class="modal" role="dialog" aria-modal="true" aria-label="Maximised image">
+    <button class="close" aria-label="Close" onclick="closeModal()">Close ✕</button>
+    <img src="asteroid-clone-script.png" alt="Maximised view of the asteroid clone script" />
+  </div>
+</body>
+</html>
