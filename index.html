@@ -562,7 +562,7 @@
         .hero-actions {
             display: flex;
             justify-content: center;
-            gap: var(--space-4);
+            gap: var(--space-3);
             flex-wrap: wrap;
             animation: actionsSlide 0.8s var(--ease-out) 0.9s both;
         }
@@ -630,6 +630,9 @@
             transform: translateY(-2px);
             text-decoration: none;
             color: #1f2937;
+            box-shadow: 
+                0 8px 25px rgba(0, 0, 0, 0.1),
+                0 0 0 1px rgba(255, 255, 255, 0.9) inset;
         }
 
         /* Streamlined Lessons Section */
@@ -927,6 +930,7 @@
             
             .hero-actions {
                 flex-direction: column;
+                gap: var(--space-3);
             }
             
             .lessons-grid {
@@ -1373,7 +1377,7 @@
                         <span>Explore Lessons</span>
                         <span class="material-icons-round">arrow_forward</span>
                     </a>
-                    <a href="/scratch/ScratchClones.html" class="btn btn-outline" title="Open the Scratch Clones lesson board">
+                    <a href="./scratch/ScratchClones.html" class="btn btn-outline" title="Open the Scratch Clones lesson board">
                         <span>Scratch Clones Board</span>
                         <span class="material-icons-round">auto_awesome_motion</span>
                     </a>
